@@ -1,10 +1,11 @@
 import Hero from "./components/Hero";
+import Featured from "./components/Featured";
 
 export default function HomePage() {
   return (
     <main>
       <Hero />
-      {/* Le reste viendra ici plus tard */}
+      <Featured />
     </main>
   );
 }
