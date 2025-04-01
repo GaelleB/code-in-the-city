@@ -13,15 +13,18 @@ export default function Header() {
 
         <nav className="mt-4">
             <ul className="flex justify-center space-x-6 text-sm md:text-base font-medium">
-            <li>
-                <Link href="/" className="hover:underline">Accueil</Link>
-            </li>
-            <li>
-                <Link href="/blog" className="hover:underline">Articles</Link>
-            </li>
-            <li>
-                <Link href="/contact" className="hover:underline">Contact</Link>
-            </li>
+                <li>
+                    <Link href="/" className="hover:underline">Accueil</Link>
+                </li>
+                <li>
+                <Link href="/about" className="hover:underline"> À propos</Link>
+                </li>
+                <li>
+                    <Link href="/blog" className="hover:underline">Articles</Link>
+                </li>
+                <li>
+                    <Link href="/contact" className="hover:underline">Contact</Link>
+                </li>
             </ul>
         </nav>
         </header>
