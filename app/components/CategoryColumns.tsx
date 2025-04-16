@@ -1,36 +1,47 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import articles from '../data/articles';
+import Link from "next/link";
+import articles from "../data/articles";
 
 export default function CategoryColumns() {
-    const categories = ['Développement', 'Séries', 'Musique'];
+  // Regroupement des articles par catégorie
+    const categories = ["Développement Web", "Séries", "Musique"];
 
-    // Je filtre les articles pour chaque catégorie
-    const categorizedArticles = categories.map((category) => ({
-        name: category,
-        articles: articles.filter((article) => article.category === category).slice(0, 2),
-    }));
+    const groupedArticles = categories.map((category) => {
+        return {
+            category,
+            articles: articles.filter((article) => article.category === category).slice(0, 3),
+        };
+    });
 
     return (
-        <section className="max-w-6xl mx-auto px-4 py-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {categorizedArticles.map((cat) => (
-                <div key={cat.name}>
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4">{cat.name}</h3>
-                    {cat.articles.map((article) => (
-                    <div key={article.id} className="mb-4">
-                        <h4 className="text-lg font-semibold">{article.title}</h4>
-                        <p className="text-sm text-gray-600">{article.date}</p>
-                        <p className="text-sm text-gray-800 mt-1">{article.content.slice(0, 80)}...</p>
-                    </div>
+        <section className="max-w-6xl mx-auto px-4 py-16">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-12 border-b pb-4">
+                Rubriques
+            </h2>
+
+            <div className="grid md:grid-cols-3 gap-12">
+                {groupedArticles.map(({ category, articles }) => (
+                <div key={category}>
+                    <h3 className="text-xl font-semibold font-serif mb-6 border-b border-black pb-2">
+                    {category}
+                    </h3>
+                    <ul className="space-y-6">
+                    {articles.map((article) => (
+                        <li key={article.id}>
+                        <p className="text-sm text-gray-500 italic mb-1">{article.date}</p>
+                        <Link
+                            href={`/blog/${article.id}`}
+                            className="text-[--color-text-dark] hover:text-[--color-primary] font-bold block"
+                        >
+                            {article.title}
+                        </Link>
+                        <p className="text-gray-700 text-sm leading-relaxed">
+                            {article.content.slice(0, 80)}...
+                        </p>
+                        </li>
                     ))}
-                    <Link
-                    href="/blog"
-                    className="inline-block mt-4 text-blue-600 hover:underline text-sm font-medium"
-                    >
-                    Voir tous les articles
-                    </Link>
+                    </ul>
                 </div>
                 ))}
             </div>
