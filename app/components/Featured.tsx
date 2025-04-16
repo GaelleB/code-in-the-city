@@ -2,37 +2,86 @@
 
 import articles from "../data/articles";
 import Link from "next/link";
+import Image from "next/image";
 
-// Je déclare le type de chaque article, pour que TypeScript comprenne
 interface Article {
-    id: number;
-    title: string;
-    date: string;
-    content: string;
+  id: number;
+  title: string;
+  date: string;
+  content: string;
+  image: string;
 }
 
 export default function Featured() {
-  // Je prend les 3 premiers articles pour la section "À la Une"
-    const featuredArticles: Article[] = articles.slice(0, 3);
+  const featuredArticles = articles.slice(0, 3);
+  const otherArticles = articles.slice(3);
 
-    return (
-        <section className="max-w-6xl mx-auto px-4 py-12">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-8">À la Une</h2>
+  return (
+    <section className="max-w-6xl mx-auto px-4 py-12 bg-[--color-background-body]">
+      <h2 className="text-3xl md:text-4xl font-serif font-bold mb-12">À la Une</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {featuredArticles.map((article: Article) => (
-                <div key={article.id} className="border p-6 shadow-sm hover:shadow-md transition duration-300 bg-white">
-                    <h3 className="text-xl font-bold font-serif mb-2">{article.title}</h3>
-                    <p className="text-sm text-gray-600 italic mb-4">{article.date}</p>
-                    <p className="text-gray-700 mb-4">
-                    {article.content.slice(0, 100)}...
-                    </p>
-                    <Link href={`/blog/${article.id}`} className="text-blue-600 hover:underline">
-                    Lire l’article
-                    </Link>
-                </div>
-                ))}
+      <div className="flex flex-col gap-16">
+        {featuredArticles.map((article: Article) => (
+          <div
+            key={article.id}
+            className="grid md:grid-cols-2 gap-8 border-t border-gray-300 pt-8"
+          >
+            {/* Image à gauche */}
+            <div className="w-full h-full">
+              <Image
+                src={article.image}
+                alt={article.title}
+                width={600}
+                height={400}
+                className="object-cover w-full h-full rounded shadow-sm"
+              />
             </div>
-        </section>
-    );
+
+            {/* Texte à droite */}
+            <div className="flex flex-col justify-between">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-gray-500 mb-2">
+                  {article.date}
+                </p>
+                <h3 className="text-2xl font-serif font-bold mb-4">
+                  {article.title}
+                </h3>
+                <p className="text-gray-800 text-justify mb-4 leading-relaxed">
+                  {article.content.slice(0, 160)}...
+                </p>
+              </div>
+              <Link
+                href={`/blog/${article.id}`}
+                className="text-[--color-primary] hover:underline font-semibold"
+              >
+                Lire l’article →
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Articles suivants sans image */}
+      <div className="mt-16">
+        {otherArticles.map((article: Article) => (
+          <div key={article.id} className="border-t border-gray-300 py-6">
+            <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">
+              {article.date}
+            </p>
+            <h4 className="text-xl font-serif font-bold mb-2">
+              <Link
+                href={`/blog/${article.id}`}
+                className="hover:underline text-black"
+              >
+                {article.title}
+              </Link>
+            </h4>
+            <p className="text-gray-700 text-sm leading-relaxed">
+              {article.content.slice(0, 100)}...
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }
