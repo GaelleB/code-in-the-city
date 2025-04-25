@@ -23,6 +23,9 @@ export default function Header() {
                         <Link href="/blog" className="hover:underline">Articles</Link>
                     </li>
                     <li>
+                    <Link href="/series">Séries</Link>
+                    </li>
+                    <li>
                         <Link href="/contact" className="hover:underline">Contact</Link>
                     </li>
                 </ul>
