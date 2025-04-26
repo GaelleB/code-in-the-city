@@ -23,7 +23,10 @@ export default function Header() {
                         <Link href="/blog" className="hover:underline">Articles</Link>
                     </li>
                     <li>
-                    <Link href="/series">Séries</Link>
+                        <Link href="/series" className="hover:underline">Séries</Link>
+                    </li>
+                    <li>
+                        <Link href="/lieux" className="hover:underline">Lieux de tournage</Link>
                     </li>
                     <li>
                         <Link href="/contact" className="hover:underline">Contact</Link>
