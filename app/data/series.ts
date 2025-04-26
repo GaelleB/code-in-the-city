@@ -4,6 +4,7 @@ export type Serie = {
   originalTitle: string;
   years: string;
   synopsis: string;
+  lieux: string;
   castingBySeason: {
     [season: string]: {
       actor: string;
@@ -25,6 +26,7 @@ export const series: Serie[] = [
     originalTitle: "Dawson's Creek",
     years: "1998 - 2003",
     synopsis: "Un groupe d'ados dans une petite ville côtière navigue entre amours, rêves et doutes.",
+    lieux: "Wilmington, Caroline du Nord. Cape Fear River, Southport, ponton emblématique entre Joey et Dawson.",
     castingBySeason: {
       "Saison 1": [
       { actor: "James Van Der Beek", character: "Dawson Leery", ageAtStart: 21 },
