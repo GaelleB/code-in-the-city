@@ -21,6 +21,12 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
             <p className="italic text-gray-600 mb-2">{serie.years}</p>
             <p className="text-gray-800 mb-6">{serie.synopsis}</p>
 
+            {serie.lieux && (
+                <p className="text-gray-800 mb-6">
+                    <strong>Lieu de tournage :</strong> {serie.lieux}
+                </p>
+            )}
+            
             <section className="mb-12">
                 <h2 className="text-2xl font-semibold mb-6">Distribution principale</h2>
                 {Object.entries(serie.castingBySeason).map(([season, actors]) => (
