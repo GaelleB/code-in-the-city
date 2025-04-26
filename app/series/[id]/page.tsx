@@ -49,12 +49,14 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
                     ))}
                 </ul>
             </section>
-
+            
+            {/*
             <section className="mb-12">
                 <h2 className="text-2xl font-semibold mb-4">Mon ressenti</h2>
                 <p className="text-gray-800 mb-2"> <strong>À 14 ans :</strong> {serie.ressentiJeune}</p>
                 <p className="text-gray-800"> <strong>À 36 ans :</strong> {serie.ressentiAdulte}</p>
             </section>
+            */}
 
             {serie.image && (
                 <div className="mt-8">
