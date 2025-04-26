@@ -22,18 +22,23 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
             <p className="text-gray-800 mb-6">{serie.synopsis}</p>
 
             <section className="mb-12">
-                <h2 className="text-2xl font-semibold mb-4">Casting principal</h2>
-                <ul className="text-gray-800 list-disc list-inside space-y-2">
-                    {serie.casting.map((actor, index) => (
+                <h2 className="text-2xl font-semibold mb-6">Distribution principale</h2>
+                {Object.entries(serie.castingBySeason).map(([season, actors]) => (
+                    <div key={season}>
+                    <h3 className="text-xl font-bold mt-6 mb-2">{season}</h3>
+                    <ul className="list-disc list-inside space-y-2 text-gray-800">
+                        {actors.map((actor, index) => (
                         <li key={index}>
-                        <strong>{actor.actor}</strong> — {actor.character} ({actor.ageAtStart} ans)
+                            <strong>{actor.actor}</strong> — {actor.character} ({actor.ageAtStart} ans)
                         </li>
-                    ))}
-                </ul>
+                        ))}
+                    </ul>
+                    </div>
+                ))}
             </section>
 
             <section className="mb-12">
-                <h2 className="text-2xl font-semibold mb-4">Musiques marquantes</h2>
+                <h2 className="text-2xl font-semibold mb-4">Bande originale</h2>
                 <ul className="list-disc list-inside text-gray-700">
                     {serie.musiques.map((m, i) => (
                         <li key={i}>{m}</li>
