@@ -10,3 +10,12 @@
   --color-text-light: #ffffff;
   --color-text-dark: #000000;
 }
+
+body {
+  background-image: url('/images/wallpaper.jpg');
+  background-size: cover; /* Couvre tout l'écran */
+  background-repeat: no-repeat; /* Pas de répétition disgracieuse */
+  background-attachment: fixed; /* Effet "parchemin" qui suit au scroll */
+  background-position: center; /* Centre l'image */
+  background-color: #f9f5f0; /* Couleur de fond douce si l'image est trop légère */
+}
