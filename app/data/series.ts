@@ -64,37 +64,37 @@ export const series: Serie[] = [
     synopsis:
       "À Tree Hill, deux demi-frères ennemis, Lucas et Nathan Scott, se disputent la gloire du basket, l’amour, et leur place dans le monde.",
     lieux: "Wilmington, Caroline du Nord (USA)",
-      castingBySeason: {
-      "Saison 1": [
-        { actor: "Chad Michael Murray", character: "Lucas Scott", ageAtStart: 22 },
-        { actor: "James Lafferty", character: "Nathan Scott", ageAtStart: 18 },
-        { actor: "Hilarie Burton", character: "Peyton Sawyer", ageAtStart: 21 },
-        { actor: "Bethany Joy Lenz", character: "Haley James", ageAtStart: 22 },
-        { actor: "Sophia Bush", character: "Brooke Davis", ageAtStart: 21 },
-        { actor: "Paul Johansson", character: "Dan Scott", ageAtStart: 39 },
-        { actor: "Moira Kelly", character: "Karen Roe", ageAtStart: 36 },
-        { actor: "Barry Corbin", character: "Coach Whitey Durham", ageAtStart: 63 }
-      ],
-      "Saison 2": [
-        { actor: "Michael Copon", character: "Felix Taggaro", ageAtStart: 22 },
-        { actor: "Daniella Alonso", character: "Anna Taggaro", ageAtStart: 26 }
-      ],
-      "Saison 3": [
-        { actor: "Tyler Hilton", character: "Chris Keller", ageAtStart: 22 }
-      ],
-      "Saison 4": [
-        { actor: "Stephen Colletti", character: "Chase Adams", ageAtStart: 20 }
-      ],
-      "Saison 5": [
-        { actor: "Robert Buckley", character: "Clay Evans", ageAtStart: 26 },
-        { actor: "Shantel VanSanten", character: "Quinn James", ageAtStart: 22 },
-        { actor: "Austin Nichols", character: "Julian Baker", ageAtStart: 27 },
-        { actor: "Jana Kramer", character: "Alex Dupre", ageAtStart: 25 }
-      ],
-      "Saison 6": [
-        { actor: "Jackson Brundage", character: "Jamie Scott", ageAtStart: 4 }
-      ]
-    },
+    castingBySeason: {
+    "Saison 1": [
+      { actor: "Chad Michael Murray", character: "Lucas Scott", ageAtStart: 22 },
+      { actor: "James Lafferty", character: "Nathan Scott", ageAtStart: 18 },
+      { actor: "Hilarie Burton", character: "Peyton Sawyer", ageAtStart: 21 },
+      { actor: "Bethany Joy Lenz", character: "Haley James", ageAtStart: 22 },
+      { actor: "Sophia Bush", character: "Brooke Davis", ageAtStart: 21 },
+      { actor: "Paul Johansson", character: "Dan Scott", ageAtStart: 39 },
+      { actor: "Moira Kelly", character: "Karen Roe", ageAtStart: 36 },
+      { actor: "Barry Corbin", character: "Coach Whitey Durham", ageAtStart: 63 }
+    ],
+    "Saison 2": [
+      { actor: "Michael Copon", character: "Felix Taggaro", ageAtStart: 22 },
+      { actor: "Daniella Alonso", character: "Anna Taggaro", ageAtStart: 26 }
+    ],
+    "Saison 3": [
+      { actor: "Tyler Hilton", character: "Chris Keller", ageAtStart: 22 }
+    ],
+    "Saison 4": [
+      { actor: "Stephen Colletti", character: "Chase Adams", ageAtStart: 20 }
+    ],
+    "Saison 5": [
+      { actor: "Robert Buckley", character: "Clay Evans", ageAtStart: 26 },
+      { actor: "Shantel VanSanten", character: "Quinn James", ageAtStart: 22 },
+      { actor: "Austin Nichols", character: "Julian Baker", ageAtStart: 27 },
+      { actor: "Jana Kramer", character: "Alex Dupre", ageAtStart: 25 }
+    ],
+    "Saison 6": [
+      { actor: "Jackson Brundage", character: "Jamie Scott", ageAtStart: 4 }
+    ]
+  },
     anecdotes: [
       "Chad Michael Murray avait auditionné pour jouer Nathan avant d'être choisi pour Lucas.",
       "Hilarie Burton (Peyton) n’avait jamais joué d'actrice professionnelle avant One Tree Hill."
