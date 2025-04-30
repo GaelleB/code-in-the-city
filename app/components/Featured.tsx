@@ -18,16 +18,18 @@ export default function Featured() {
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-12 bg-[--color-background-body]">
-      <h2 className="text-3xl md:text-4xl font-serif font-bold mb-12">À la Une</h2>
+      <h2 className="text-3xl md:text-4xl font-serif font-bold mb-12 border-b border-[--color-secondary] pb-2">
+        À la Une
+      </h2>
 
       <div className="flex flex-col gap-16">
         {featuredArticles.map((article: Article) => (
           <div
             key={article.id}
-            className="grid md:grid-cols-2 gap-8 border-t border-gray-300 pt-8"
+            className="flex flex-col md:flex-row gap-6 rounded-lg border border-[var(--color-secondary)] bg-white/90 p-6 shadow-md transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg"
           >
             {/* Image à gauche */}
-            <div className="w-full h-full">
+            <div className="w-full md:w-1/2 h-full">
               <Image
                 src={article.image}
                 alt={article.title}
@@ -38,7 +40,7 @@ export default function Featured() {
             </div>
 
             {/* Texte à droite */}
-            <div className="flex flex-col justify-between">
+            <div className="flex flex-col justify-between md:w-1/2">
               <div>
                 <p className="text-xs uppercase tracking-widest text-gray-500 mb-2">
                   {article.date}
@@ -52,7 +54,7 @@ export default function Featured() {
               </div>
               <Link
                 href={`/blog/${article.id}`}
-                className="text-[--color-primary] hover:underline font-semibold"
+                className="text-[--color-primary] hover:underline font-semibold hover:text-black transition-colors"
               >
                 Lire l’article →
               </Link>

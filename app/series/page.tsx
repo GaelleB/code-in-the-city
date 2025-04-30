@@ -12,20 +12,20 @@ export default function SeriesPage() {
         {series.map((serie) => (
           <div
             key={serie.id}
-            className="border-2 border-[var(--color-secondary)] rounded shadow-md bg-white hover:shadow-lg transition"
+            className="rounded-lg border border-[var(--color-secondary)] bg-white/90 p-6 shadow-md transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg"
           >
-            <div className="p-4">
-              <h2 className="text-2xl font-serif font-bold mb-2 text-gray-900">{serie.title}</h2>
-              <p className="text-sm text-gray-500 italic mb-2">{serie.years}</p>
-              <p className="text-gray-700 mb-4">{serie.synopsis}</p>
-              <Link
-                href={`/series/${serie.id}`}
-                className="text-blue-600 font-medium hover:underline mt-auto self-start"
-              >
-                Lire la fiche →
-              </Link>
-            </div>
-          </div>
+            <h3 className="text-2xl font-serif font-bold mb-2">{serie.title}</h3>
+            <p className="text-sm text-gray-600 italic mb-4">{serie.years}</p>
+            <p className="text-gray-800 mb-4 leading-relaxed text-justify">
+              {serie.synopsis.slice(0, 150)}...
+            </p>
+            <Link
+              href={`/series/${serie.id}`}
+              className="text-[var(--color-primary)] hover:underline font-semibold hover:text-black transition-colors"
+            >
+              Lire la fiche →
+            </Link>
+          </div>        
         ))}
       </section>
     </main>

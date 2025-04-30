@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Header() {
     return (
-        <header className="border-b border-[--color-dark] bg-[--color-background] text-center py-6 text-[--color-text-dark] font-[--font-serif]">
+        <header className="border-b border-[var(--color-dark)] text-center py-6 text-[var(--color-text-dark)] font-[--font-serif]">
             <h1 className="text-4xl md:text-5xl font-bold tracking-wide uppercase">
                 Code in the City
             </h1>

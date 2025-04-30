@@ -23,7 +23,7 @@ export default function CategoryColumns() {
             <div className="grid md:grid-cols-3 gap-12">
                 {groupedArticles.map(({ category, articles }) => (
                 <div key={category}>
-                    <h3 className="text-xl font-semibold font-serif mb-6 border-b border-black pb-2">
+                    <h3 className="text-xl font-semibold font-serif mb-6 border-b border-[var(--color-text-dark)] pb-2">
                     {category}
                     </h3>
                     <ul className="space-y-6">
