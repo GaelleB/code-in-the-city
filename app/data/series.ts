@@ -63,38 +63,77 @@ export const series: Serie[] = [
     years: "2003 - 2012",
     synopsis:
       "À Tree Hill, deux demi-frères ennemis, Lucas et Nathan Scott, se disputent la gloire du basket, l’amour, et leur place dans le monde.",
-    lieux: "Wilmington, Caroline du Nord (USA)",
+    lieux: "Wilmington (Caroline du Nord) : Rivercourt, le pont, Screen Gems Studios, Tric Nightclub…",
     castingBySeason: {
-    "Saison 1": [
-      { actor: "Chad Michael Murray", character: "Lucas Scott", ageAtStart: 22 },
-      { actor: "James Lafferty", character: "Nathan Scott", ageAtStart: 18 },
-      { actor: "Hilarie Burton", character: "Peyton Sawyer", ageAtStart: 21 },
-      { actor: "Bethany Joy Lenz", character: "Haley James", ageAtStart: 22 },
-      { actor: "Sophia Bush", character: "Brooke Davis", ageAtStart: 21 },
-      { actor: "Paul Johansson", character: "Dan Scott", ageAtStart: 39 },
-      { actor: "Moira Kelly", character: "Karen Roe", ageAtStart: 36 },
-      { actor: "Barry Corbin", character: "Coach Whitey Durham", ageAtStart: 63 }
-    ],
-    "Saison 2": [
-      { actor: "Michael Copon", character: "Felix Taggaro", ageAtStart: 22 },
-      { actor: "Daniella Alonso", character: "Anna Taggaro", ageAtStart: 26 }
-    ],
-    "Saison 3": [
-      { actor: "Tyler Hilton", character: "Chris Keller", ageAtStart: 22 }
-    ],
-    "Saison 4": [
-      { actor: "Stephen Colletti", character: "Chase Adams", ageAtStart: 20 }
-    ],
-    "Saison 5": [
-      { actor: "Robert Buckley", character: "Clay Evans", ageAtStart: 26 },
-      { actor: "Shantel VanSanten", character: "Quinn James", ageAtStart: 22 },
-      { actor: "Austin Nichols", character: "Julian Baker", ageAtStart: 27 },
-      { actor: "Jana Kramer", character: "Alex Dupre", ageAtStart: 25 }
-    ],
-    "Saison 6": [
-      { actor: "Jackson Brundage", character: "Jamie Scott", ageAtStart: 4 }
-    ]
-  },
+      "Saison 1": [
+        { actor: "Chad Michael Murray", character: "Lucas Scott", ageAtStart: 22 },
+        { actor: "James Lafferty", character: "Nathan Scott", ageAtStart: 18 },
+        { actor: "Hilarie Burton", character: "Peyton Sawyer", ageAtStart: 21 },
+        { actor: "Bethany Joy Lenz", character: "Haley James", ageAtStart: 22 },
+        { actor: "Sophia Bush", character: "Brooke Davis", ageAtStart: 21 },
+        { actor: "Barbara Alyn Woods", character: "Deb Scott", ageAtStart: 41 },
+        { actor: "Paul Johansson", character: "Dan Scott", ageAtStart: 39 },
+        { actor: "Moira Kelly", character: "Karen Roe", ageAtStart: 36 },
+        { actor: "Barry Corbin", character: "Whitey Durham", ageAtStart: 63 },
+        { actor: "Craig Sheffer", character: "Keith Scott", ageAtStart: 43 },
+        { actor: "Lee Norris", character: "Marvin 'Micro' McFadden", ageAtStart: 21 },
+        { actor: "Antwon Tanner", character: "Skills Taylor", ageAtStart: 28 },
+        { actor: "Bevin Prince", character: "Bevin Mirskey", ageAtStart: 20 },
+        { actor: "Bryan Greenberg", character: "Jake Jagielski", ageAtStart: 24 }
+      ],
+      "Saison 2": [
+        { actor: "Michael Copon", character: "Felix Taggaro", ageAtStart: 22 },
+        { actor: "Daniella Alonso", character: "Anna Taggaro", ageAtStart: 26 },
+        { actor: "Danielle Harris", character: "Rachel Gatina", ageAtStart: 26 },
+        { actor: "Tyler Hilton", character: "Chris Keller", ageAtStart: 21 },
+        { actor: "Kieren Hutchison", character: "Andy Hargrove", ageAtStart: 30 },
+        { actor: "Lindsey McKeon", character: "Taylor James", ageAtStart: 25 },
+        { actor: "Colin Fickes", character: "Jimmy Edwards", ageAtStart: 23 }
+      ],
+      "Saison 3": [
+        { actor: "Sheryl Lee", character: "Ellie Harp", ageAtStart: 38 },
+        { actor: "Amber Wallace", character: "Glenda Farrell", ageAtStart: 22 },
+        { actor: "Cullen Moss", character: "Junk Moretti", ageAtStart: 26 },
+        { actor: "Vaughn Wilson", character: "Fergie Thompson", ageAtStart: 27 }
+      ],
+      "Saison 4": [
+        { actor: "Stephen Colletti", character: "Chase Adams", ageAtStart: 20 },
+        { actor: "Matt Barr", character: "Ian Banks", ageAtStart: 22 },
+        { actor: "Kelsey Chow", character: "Gigi Silveri", ageAtStart: 17 },
+        { actor: "Rick Fox", character: "Daunte Jones", ageAtStart: 37 }
+      ],
+      "Saison 5": [
+        { actor: "Lisa Goldstein", character: "Millicent Huxtable", ageAtStart: 25 },
+        { actor: "Torrey DeVitto", character: "Carrie", ageAtStart: 24 },
+        { actor: "Joe Manganiello", character: "Owen Morello", ageAtStart: 30 },
+        { actor: "Michaela McManus", character: "Lindsey Strauss", ageAtStart: 24 },
+        { actor: "Kate Voegele", character: "Mia Catalano", ageAtStart: 21 },
+        { actor: "Daphne Zuniga", character: "Victoria Davis", ageAtStart: 46 },
+        { actor: "Robert Buckley", character: "Clay Evans", ageAtStart: 26 },
+        { actor: "Shantel VanSanten", character: "Quinn James", ageAtStart: 23 }
+      ],
+      "Saison 6": [
+        { actor: "Jackson Brundage", character: "Jamie Scott", ageAtStart: 4 },
+        { actor: "Austin Nichols", character: "Julian Baker", ageAtStart: 27 },
+        { actor: "Ashley Rickards", character: "Sam Walker", ageAtStart: 17 },
+        { actor: "James Van Der Beek", character: "Reese Dixon", ageAtStart: 31 }
+      ],
+      "Saison 7": [
+        { actor: "India de Beaufort", character: "Miranda Stone", ageAtStart: 22 },
+        { actor: "Kate French", character: "Renee Richardson", ageAtStart: 25 },
+        { actor: "Scott Holroyd", character: "David Fletcher", ageAtStart: 30 },
+        { actor: "Amanda Schull", character: "Katie Ryan / Sara", ageAtStart: 30 }
+      ],
+      "Saison 8": [
+        { actor: "Laura Izibor", character: "Erin McCree", ageAtStart: 24 },
+        { actor: "Gregory Harrison", character: "Paul Norris", ageAtStart: 56 },
+        { actor: "Chelsea Kane", character: "Tara Richards", ageAtStart: 23 }
+      ],
+      "Saison 9": [
+        { actor: "Pierce Gagnon", character: "Logan Evans", ageAtStart: 6 },
+        { actor: "Devin McGee", character: "Xavier Daniels", ageAtStart: 30 }
+      ]
+    },
     anecdotes: [
       "Chad Michael Murray avait auditionné pour jouer Nathan avant d'être choisi pour Lucas.",
       "Hilarie Burton (Peyton) n’avait jamais joué d'actrice professionnelle avant One Tree Hill."
