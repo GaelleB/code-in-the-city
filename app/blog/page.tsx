@@ -11,7 +11,7 @@ export default function BlogPage() {
 
             <section className="grid md:grid-cols-2 gap-8">
                 {articles.map((article) => (
-                <div key={article.id} className="border p-6 rounded shadow-sm hover:shadow-md transition bg-white">
+                <div key={article.id} className="rounded-lg border border-[var(--color-secondary)] bg-white/90 p-6 shadow-md transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg">
                     <div className="mb-4">
                     <Image
                         src={article.image}

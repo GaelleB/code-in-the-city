@@ -36,7 +36,7 @@ export default function LieuxPage() {
 
             {/* Carte Les frères Scott */}
             <section className="mb-12">
-                <div className="bg-white bg-opacity-80 shadow-lg rounded-xl p-8">
+            <div className="rounded-lg border border-[var(--color-secondary)] bg-white/90 p-6 shadow-md transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg">
                     <h2 className="text-2xl font-bold mb-4">Les Frères Scott</h2>
                     <p className="text-gray-800 mb-4">
                     Tournée également à Wilmington, la petite ville de Tree Hill prend vie entre les ruelles tranquilles, le Rivercourt et le fameux pont.
