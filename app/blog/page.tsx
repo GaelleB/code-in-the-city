@@ -1,40 +1,33 @@
-"use client";
-
+import Card from "@/components/Card";
 import articles from "../data/articles";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function BlogPage() {
     return (
-        <main className="max-w-6xl mx-auto px-4 py-12">
-            <h1 className="text-3xl md:text-4xl font-serif font-bold mb-8">Tous les articles</h1>
-
-            <section className="grid md:grid-cols-2 gap-8">
+        <section className="max-w-6xl mx-auto px-4 py-12">
+            <h2 className="text-3xl font-serif font-bold mb-8 border-b border-[var(--color-secondary)] pb-2">
+                Tous les articles
+            </h2>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {articles.map((article) => (
-                <div key={article.id} className="rounded-lg border border-[var(--color-secondary)] bg-white/90 p-6 shadow-md transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg">
-                    <div className="mb-4">
-                    <Image
-                        src={article.image}
-                        alt={article.title}
-                        width={600}
-                        height={400}
-                        className="w-full h-48 object-cover rounded"
-                    />
-                    </div>
-                    <p className="text-sm text-gray-500 italic mb-2">{article.date} · {article.category}</p>
-                    <h2 className="text-xl font-bold font-serif mb-2">{article.title}</h2>
-                    <p className="text-gray-700 mb-4 leading-relaxed">
+                <Card key={article.id}>
+                    <p className="text-xs uppercase tracking-widest text-[var(--color-text-dark)] mb-2">
+                    {article.date}
+                    </p>
+                    <h3 className="text-xl font-serif font-bold mb-2">
+                    <Link
+                        href={`/blog/${article.id}`}
+                        className="text-[var(--color-primary)] hover:underline hover:text-black transition-colors"
+                    >
+                        {article.title}
+                    </Link>
+                    </h3>
+                    <p className="text-[var(--color-text-dark)] text-sm leading-relaxed">
                     {article.content.slice(0, 120)}...
                     </p>
-                    <Link
-                    href={`/blog/${article.id}`}
-                    className="text-[--color-primary] hover:underline font-semibold"
-                    >
-                    Lire l’article →
-                    </Link>
-                </div>
+                </Card>
                 ))}
-            </section>
-        </main>
+            </div>
+        </section>
     );
 }

@@ -1,64 +1,54 @@
-"use client";
-
+import Card from "@/components/Card";
 import Link from "next/link";
 
-export default function LieuxPage() {
+export default function Lieux() {
     return (
         <main className="max-w-6xl mx-auto px-4 py-12">
-            <h1 className="text-4xl font-serif font-bold mb-12">Lieux de tournage emblématiques</h1>
+            <h1 className="text-4xl font-serif font-bold mb-10 border-b border-[var(--color-secondary)] pb-2">
+                Lieux de tournage emblématiques
+            </h1>
 
-            {/* Carte Dawson */}
-            <section className="mb-12">
-                <div className="rounded-lg border border-[var(--color-secondary)] bg-white/90 p-6 shadow-md transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg"                >
+            <section className="space-y-12">
+                <Card>
                 <h2 className="text-2xl font-bold mb-4">Dawson&apos;s Creek</h2>
-                <p className="text-gray-800 mb-4">
-                    Tournée principalement à Wilmington (Caroline du Nord) et Southport, sur les rives du Cape Fear.
-                    Le ponton de Joey et Dawson existe réellement à Southport.
-                    La magie des ados en quête de leurs rêves flotte toujours dans l’air salin.
+                <p className="text-[var(--color-text-dark)] mb-4">
+                    Tournée à Wilmington (Caroline du Nord), le long de la Cape Fear River. Le ponton de Joey et Dawson est accessible à Southport.
                 </p>
-
-                <ul className="list-disc list-inside text-gray-700 mb-4">
-                    <li>Screen Gems Studios (Wilmington)</li>
-                    <li>Riverwalk - Cape Fear River (Wilmington)</li>
-                    <li>Ponton de Southport (Joey et Dawson)</li>
+                <ul className="list-disc list-inside text-[var(--color-text-dark)] mb-4">
+                    <li>Screen Gems Studios</li>
+                    <li>Cape Fear Riverwalk</li>
+                    <li>Southport Pier</li>
                 </ul>
-
                 <Link
                     href="https://www.google.com/maps/place/Wilmington,+NC,+USA"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-700 underline"
+                    className="text-[var(--color-primary)] hover:underline font-medium hover:text-black transition-colors"
                 >
-                    Voir Wilmington sur Google Maps →
+                    Voir sur Google Maps →
                 </Link>
-                </div>
-            </section>
+                </Card>
 
-            {/* Carte Les frères Scott */}
-            <section className="mb-12">
-            <div className="rounded-lg border border-[var(--color-secondary)] bg-white/90 p-6 shadow-md transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg">
-                    <h2 className="text-2xl font-bold mb-4">Les Frères Scott</h2>
-                    <p className="text-gray-800 mb-4">
-                    Tournée également à Wilmington, la petite ville de Tree Hill prend vie entre les ruelles tranquilles, le Rivercourt et le fameux pont.
-                    La magie des premiers amours et des rêves de basket vibre encore dans l&apos;air de la Caroline du Nord.
-                    </p>
-
-                    <ul className="list-disc list-inside text-gray-700 mb-4">
-                        <li>Rivercourt - le terrain de basket emblématique (aujourd&apos;hui disparu, mais lieu accessible)</li>
-                        <li>Le fameux pont où Lucas court dans le générique</li>
-                        <li>Tric Nightclub (lieu des concerts dans la série)</li>
-                        <li>Screen Gems Studios (studio principal des scènes intérieures)</li>
-                    </ul>
-
-                    <Link
+                <Card>
+                <h2 className="text-2xl font-bold mb-4">Les Frères Scott</h2>
+                <p className="text-[var(--color-text-dark)] mb-4">
+                    Tournée elle aussi à Wilmington (Caroline du Nord), la série One Tree Hill a marqué de nombreux fans avec ses lieux devenus mythiques. Le Rivercourt n&apos;existe plus, mais l&apos;esprit de Tree Hill est partout en ville.
+                </p>
+                <ul className="list-disc list-inside text-[var(--color-text-dark)] mb-4">
+                    <li>Le pont de Lucas (6th Street Bridge)</li>
+                    <li>Screen Gems Studios</li>
+                    <li>Rivercourt Park (ancien emplacement)</li>
+                    <li>Tric Nightclub (lieu réel transformé)</li>
+                </ul>
+                <Link
                     href="https://www.google.com/maps/place/Wilmington,+NC,+USA"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-700 underline"
-                    >
-                        Voir Wilmington sur Google Maps →
-                    </Link>
-                </div>
+                    className="text-[var(--color-primary)] hover:underline font-medium hover:text-black transition-colors"
+                >
+                    Voir sur Google Maps →
+                </Link>
+                </Card>
             </section>
         </main>
     );

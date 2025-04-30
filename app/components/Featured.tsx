@@ -1,5 +1,4 @@
-"use client";
-
+import Card from "@/components/Card";
 import articles from "../data/articles";
 import Link from "next/link";
 import Image from "next/image";
@@ -18,17 +17,13 @@ export default function Featured() {
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-12 bg-[--color-background-body]">
-      <h2 className="text-3xl md:text-4xl font-serif font-bold mb-12 border-b border-[--color-secondary] pb-2">
+      <h2 className="text-3xl md:text-4xl font-serif font-bold mb-12 border-b border-[var(--color-secondary)] pb-2">
         À la Une
       </h2>
 
       <div className="flex flex-col gap-16">
         {featuredArticles.map((article: Article) => (
-          <div
-            key={article.id}
-            className="flex flex-col md:flex-row gap-6 rounded-lg border border-[var(--color-secondary)] bg-white/90 p-6 shadow-md transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg"
-          >
-            {/* Image à gauche */}
+          <Card key={article.id} className="flex flex-col md:flex-row gap-6">
             <div className="w-full md:w-1/2 h-full">
               <Image
                 src={article.image}
@@ -39,49 +34,44 @@ export default function Featured() {
               />
             </div>
 
-            {/* Texte à droite */}
             <div className="flex flex-col justify-between md:w-1/2">
               <div>
-                <p className="text-xs uppercase tracking-widest text-gray-500 mb-2">
+                <p className="text-xs uppercase tracking-widest text-[var(--color-text-dark)] mb-2">
                   {article.date}
                 </p>
                 <h3 className="text-2xl font-serif font-bold mb-4">
                   {article.title}
                 </h3>
-                <p className="text-gray-800 text-justify mb-4 leading-relaxed">
+                <p className="text-[var(--color-text-dark)] text-justify mb-4 leading-relaxed">
                   {article.content.slice(0, 160)}...
                 </p>
               </div>
               <Link
                 href={`/blog/${article.id}`}
-                className="text-[--color-primary] hover:underline font-semibold hover:text-black transition-colors"
+                className="text-[var(--color-primary)] hover:underline font-semibold hover:text-black transition-colors"
               >
                 Lire l’article →
               </Link>
             </div>
-          </div>
+          </Card>
         ))}
       </div>
 
-      {/* Articles suivants sans image */}
       <div className="mt-16">
         {otherArticles.map((article: Article) => (
-          <div key={article.id} className="border-t border-gray-300 py-6">
-            <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">
+          <Card key={article.id}>
+            <p className="text-xs uppercase tracking-widest text-[var(--color-text-dark)] mb-1">
               {article.date}
             </p>
             <h4 className="text-xl font-serif font-bold mb-2">
-              <Link
-                href={`/blog/${article.id}`}
-                className="hover:underline text-black"
-              >
+              <Link href={`/blog/${article.id}`} className="hover:underline text-black">
                 {article.title}
               </Link>
             </h4>
-            <p className="text-gray-700 text-sm leading-relaxed">
+            <p className="text-[var(--color-text-dark)] text-sm leading-relaxed">
               {article.content.slice(0, 100)}...
             </p>
-          </div>
+          </Card>
         ))}
       </div>
     </section>
