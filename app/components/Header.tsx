@@ -26,6 +26,9 @@ export default function Header() {
                         <Link href="/series" className="hover:underline">Séries</Link>
                     </li>
                     <li>
+                        <Link href="/musiques" className="hover:underline">Musiques</Link>
+                    </li>
+                    <li>
                         <Link href="/lieux" className="hover:underline">Lieux de tournage</Link>
                     </li>
                 </ul>
