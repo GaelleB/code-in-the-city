@@ -11,12 +11,14 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: ArticleProps) {
+export async function generateMetadata({
+    params,
+}: {
+    params: { id: string };
+}) {
     const articleId = parseInt(params.id);
     const article = articles.find((a) => a.id === articleId);
-
     if (!article) return {};
-
     return {
         title: `${article.title} - Code in the City`,
         description: article.content.slice(0, 150),
