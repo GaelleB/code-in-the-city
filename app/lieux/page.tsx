@@ -5,10 +5,13 @@ export default function Lieux() {
     return (
         <main className="max-w-6xl mx-auto px-4 py-12 animate-fade-in">
             <h1 className="text-4xl font-serif font-bold mb-10 border-b border-[var(--color-secondary)] pb-2">
-                Lieux de tournage emblématiques
+                Lieux de tournage
             </h1>
 
             <section className="space-y-12">
+                <p className="font-cursive text-lg text-[var(--color-dark)] mb-4">
+                    Ces lieux ne sont pas que des décors. Ce sont des souvenirs, des frissons, des repères.
+                </p>
                 <Card>
                 <h2 className="text-2xl font-bold mb-4">Dawson&apos;s Creek</h2>
                 <p className="text-[var(--color-text-dark)] mb-4">

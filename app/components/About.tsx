@@ -20,8 +20,14 @@ export default function About() {
                         Je suis Gaëlle, développeuse web passionnée par les séries, la musique et les histoires qui nous façonnent.
                         Ce blog, c’est mon espace d’expression, entre storytelling et code, New York et Tree Hill.
                     </p>
-                    <p className="text-lg leading-relaxed text-[var(--color-dark)]">
+                    <p className="text-lg leading-relaxed text-[var(--color-dark)] mb-4">
                         Ici, je mêle souvenirs et savoir-faire, inspirations et intuitions. Tu y trouveras autant de lignes de code que de lignes de vie.
+                    </p>
+                    <p className="font-cursive text-xl text-[var(--color-dark)] mt-8">
+                        Entre Brooklyn et Tree Hill, j’écris mes souvenirs en HTML.
+                    </p>
+                    <p className="text-lg leading-relaxed text-[var(--color-dark)] italic mt-8">
+                        Un blog comme un vieux journal. Codé, mais vivant.
                     </p>
                 </div>
             </div>

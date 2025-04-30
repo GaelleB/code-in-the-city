@@ -58,6 +58,9 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
                 <h2 className="text-3xl font-serif font-semibold mb-4 border-b border-[var(--color-secondary)] pb-1">
                 Bande originale
                 </h2>
+                <p className="font-cursive text-lg text-[var(--color-dark)] mb-2">
+                    « La musique qui a bercé mes soirs d’adolescence. »
+                </p>
                 <ul className="list-disc list-inside text-[var(--color-dark)] space-y-2">
                 {serie.musiques.map((m, i) => (
                     <li key={i}>{m}</li>
