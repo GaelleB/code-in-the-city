@@ -1,13 +1,11 @@
 import { notFound } from "next/navigation";
 import articles from "@/data/articles";
 
-type PageProps = {
-  params: {
-    id: string;
-  };
-};
-
-export default function ArticlePage({ params }: PageProps) {
+export default async function ArticlePage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const articleId = parseInt(params.id);
   const article = articles.find((a) => a.id === articleId);
 
