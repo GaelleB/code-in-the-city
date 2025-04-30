@@ -28,9 +28,6 @@ export default function Header() {
                     <li>
                         <Link href="/lieux" className="hover:underline">Lieux de tournage</Link>
                     </li>
-                    <li>
-                        <Link href="/contact" className="hover:underline">Contact</Link>
-                    </li>
                 </ul>
             </nav>
         </header>

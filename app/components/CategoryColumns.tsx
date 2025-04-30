@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import articles from "../data/articles";
+import articles from "@/data/articles";
 
 export default function CategoryColumns() {
   // Regroupement des articles par catégorie

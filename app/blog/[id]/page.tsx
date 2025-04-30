@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import articles from "@/app/data/articles";
+import articles from "@/data/articles";
 import Head from "next/head";
 
 interface ArticleProps {

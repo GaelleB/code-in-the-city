@@ -1,6 +1,6 @@
-import Hero from "./components/Hero";
-import Featured from "./components/Featured";
-import CategoryColumns from "./components/CategoryColumns";
+import Hero from "@/components/Hero";
+import Featured from "@/components/Featured";
+import CategoryColumns from "@/components/CategoryColumns";
 
 export default function HomePage() {
   return (

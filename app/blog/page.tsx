@@ -1,5 +1,5 @@
 import Card from "@/components/Card";
-import articles from "../data/articles";
+import articles from "@/data/articles";
 import Link from "next/link";
 
 export default function BlogPage() {
