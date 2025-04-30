@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Lieux() {
     return (
-        <main className="max-w-6xl mx-auto px-4 py-12">
+        <main className="max-w-6xl mx-auto px-4 py-12 animate-fade-in">
             <h1 className="text-4xl font-serif font-bold mb-10 border-b border-[var(--color-secondary)] pb-2">
                 Lieux de tournage emblématiques
             </h1>

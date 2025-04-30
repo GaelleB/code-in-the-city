@@ -4,10 +4,10 @@ import Link from "next/link";
 
 export default function BlogPage() {
     return (
-        <section className="max-w-6xl mx-auto px-4 py-12">
-            <h2 className="text-3xl font-serif font-bold mb-8 border-b border-[var(--color-secondary)] pb-2">
+        <section className="max-w-6xl mx-auto px-4 py-12 animate-fade-in">
+            <h1 className="text-4xl font-serif font-bold mb-10 border-b border-[var(--color-secondary)] pb-2">
                 Tous les articles
-            </h2>
+            </h1>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {articles.map((article) => (
                 <Card key={article.id}>

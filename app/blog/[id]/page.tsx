@@ -7,11 +7,13 @@ export default async function ArticlePage({ params }: { params: { id: string } }
   if (!article) return notFound();
 
   return (
-    <article className="max-w-3xl mx-auto px-4 py-12">
+    <article className="max-w-3xl mx-auto px-4 py-12 animate-fade-in">
       <p className="text-sm text-[var(--color-text-dark)]">
         {article.date} · {article.category}
       </p>
-      <h1 className="text-4xl font-serif font-bold mb-6">{article.title}</h1>
+      <h1 className="text-4xl font-serif font-bold mb-6 border-b-2 border-[var(--color-secondary)] pb-2">
+        {article.title}
+      </h1>
       <p className="text-lg leading-relaxed text-[var(--color-text-dark)] whitespace-pre-line">
         {article.content}
       </p>

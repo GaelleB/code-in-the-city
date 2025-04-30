@@ -4,7 +4,7 @@ import { series } from "@/data/series";
 
 export default function SeriesPage() {
   return (
-    <main className="max-w-6xl mx-auto px-4 py-12">
+    <main className="max-w-6xl mx-auto px-4 py-12 animate-fade-in">
       <h1 className="text-4xl font-serif font-bold mb-10 border-b border-[var(--color-secondary)] pb-2">
         Toutes les séries
       </h1>
