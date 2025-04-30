@@ -1,13 +1,8 @@
 import { notFound } from "next/navigation";
 import articles from "@/data/articles";
 
-export default async function ArticlePage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const articleId = parseInt(params.id);
-  const article = articles.find((a) => a.id === articleId);
+export default async function ArticlePage({ params }: { params: { id: string } }) {
+  const article = articles.find((a) => a.id === parseInt(params.id));
 
   if (!article) return notFound();
 
