@@ -14,7 +14,6 @@ export type Serie = {
     }[];
   };
   anecdotes: string[];
-  musiques: string[];
   ressentiJeune: string;
   ressentiAdulte: string;
   image: string;
@@ -27,7 +26,7 @@ export const series: Serie[] = [
     originalTitle: "Dawson's Creek",
     years: "1998 - 2003",
     synopsis: "Un groupe d'ados dans une petite ville côtière navigue entre amours, rêves et doutes.",
-    musique: [],
+    musique: [1],
     lieux: 1,
     castingBySeason: {
       "Saison 1": [
@@ -52,7 +51,6 @@ export const series: Serie[] = [
       "Katie Holmes passait ses auditions depuis sa cave à Toledo.",
       "Joshua Jackson avait auditionné pour le rôle de Dawson à l'origine."
     ],
-    musiques: ["Paula Cole - I Don't Want to Wait"],
     ressentiJeune: "À 14 ans, je rêvais de Joey, de Pacey, de leurs silences qui disaient tout.",
     ressentiAdulte: "Aujourd'hui, je ressens la nostalgie douce de Dawson qui refuse de grandir.",
     image: "/images/dawson.jpg"
@@ -140,9 +138,6 @@ export const series: Serie[] = [
     anecdotes: [
       "Chad Michael Murray avait auditionné pour jouer Nathan avant d'être choisi pour Lucas.",
       "Hilarie Burton (Peyton) n’avait jamais joué d'actrice professionnelle avant One Tree Hill."
-    ],
-    musiques: [
-      "Gavin DeGraw - I Don't Want to Be",
     ],
     ressentiJeune:
       "À 15 ans, Tree Hill, c'était la promesse que l'amitié et l'amour guérissent tout.",
