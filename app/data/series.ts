@@ -4,7 +4,8 @@ export type Serie = {
   originalTitle: string;
   years: string;
   synopsis: string;
-  lieux: string;
+  musique: number[];
+  lieux: number;
   castingBySeason: {
     [season: string]: {
       actor: string;
@@ -26,7 +27,8 @@ export const series: Serie[] = [
     originalTitle: "Dawson's Creek",
     years: "1998 - 2003",
     synopsis: "Un groupe d'ados dans une petite ville côtière navigue entre amours, rêves et doutes.",
-    lieux: "Wilmington, Caroline du Nord. Cape Fear River, Southport, ponton emblématique entre Joey et Dawson.",
+    musique: [],
+    lieux: 1,
     castingBySeason: {
       "Saison 1": [
       { actor: "James Van Der Beek", character: "Dawson Leery", ageAtStart: 21 },
@@ -63,7 +65,8 @@ export const series: Serie[] = [
     years: "2003 - 2012",
     synopsis:
       "À Tree Hill, deux demi-frères ennemis, Lucas et Nathan Scott, se disputent la gloire du basket, l’amour, et leur place dans le monde.",
-    lieux: "Wilmington (Caroline du Nord) : Rivercourt, le pont, Screen Gems Studios, Tric Nightclub…",
+    musique: [1, 2],
+    lieux: 1,
     castingBySeason: {
       "Saison 1": [
         { actor: "Chad Michael Murray", character: "Lucas Scott", ageAtStart: 22 },
