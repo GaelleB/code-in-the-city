@@ -7,32 +7,33 @@ export default function About() {
     const photoRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-    // Animation photo
-    if (photoRef.current) {
-        gsap.fromTo(
-            photoRef.current,
-            { opacity: 0, scale: 0.9, y: 20 },
-            { opacity: 1, scale: 1, y: 0, duration: 1.2, ease: "power2.out" }
-        );
-    }
-
-    // Animation texte en cascade
-    if (textRef.current) {
-        gsap.fromTo(
-            textRef.current.querySelectorAll("p"),
-            { opacity: 0, y: 20 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power2.out",
-                stagger: 0.2,
-                delay: 0.4,
+        useEffect(() => {
+            // Animation photo
+            if (photoRef.current) {
+                gsap.fromTo(
+                    photoRef.current,
+                    { opacity: 0, scale: 0.9, y: 20 },
+                    { opacity: 1, scale: 1, y: 0, duration: 1.2, ease: "power2.out" }
+                );
             }
-        );
-        }
-    }, []);
+
+            // Animation texte en cascade
+            if (textRef.current) {
+                gsap.fromTo(
+                    textRef.current.querySelectorAll("p"),
+                    { opacity: 0, y: 20 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        ease: "power2.out",
+                        stagger: 0.2,
+                        delay: 0.4,
+                    }
+                );
+                }
+        }, []
+    );
 
     return (
         <section className="max-w-4xl mx-auto px-4 py-20">
