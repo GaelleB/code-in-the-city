@@ -27,7 +27,7 @@ export default function MusiquePage() {
                     )}
 
                     <Link
-                    href={`/musique/${artiste.id}`}
+                    href={`/musiques/${artiste.id}`}
                     className="text-[var(--color-primary)] hover:underline hover:text-black font-medium transition-colors"
                     >
                     Voir la fiche →
