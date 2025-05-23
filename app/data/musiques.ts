@@ -11,7 +11,7 @@ export const musiques: Artiste[] = [
     {
         id: 1,
         nom: "Joshua Radin",
-        image: "/images/joshua.jpg",
+        image: "/images/joshua-radin.jpg",
         seriesLiees: [1],
         chansonsConnues: ["Winter", "I'd Rather Be With You"],
         anecdotes: [
@@ -21,7 +21,7 @@ export const musiques: Artiste[] = [
     {
         id: 2,
         nom: "Gavin DeGraw",
-        image: "/images/gavin.jpg",
+        image: "/images/gavin-degraw.jpg",
         seriesLiees: [2],
         chansonsConnues: ["I Don't Want to Be", "Follow Through"],
         anecdotes: [
