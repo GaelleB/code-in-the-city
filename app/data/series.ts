@@ -63,7 +63,7 @@ export const series: Serie[] = [
     years: "2003 - 2012",
     synopsis:
       "À Tree Hill, deux demi-frères ennemis, Lucas et Nathan Scott, se disputent la gloire du basket, l’amour, et leur place dans le monde.",
-    musique: [1, 2],
+    musique: [2],
     lieux: 1,
     castingBySeason: {
       "Saison 1": [

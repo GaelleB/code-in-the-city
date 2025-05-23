@@ -20,7 +20,7 @@ export const musiques: Artiste[] = [
         nom: "Gavin DeGraw",
         image: "/images/gavin-degraw.jpg",
         seriesLiees: [2],
-        chansonsConnues: ["I Don't Want to Be", "Follow Through"]
+        chansonsConnues: ["I Don't Want to Be"]
     },
     {
         id: 3,
