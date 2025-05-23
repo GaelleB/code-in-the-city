@@ -26,7 +26,7 @@ export const series: Serie[] = [
     originalTitle: "Dawson's Creek",
     years: "1998 - 2003",
     synopsis: "Un groupe d'ados dans une petite ville côtière navigue entre amours, rêves et doutes.",
-    musique: [1],
+    musique: [3],
     lieux: 1,
     castingBySeason: {
       "Saison 1": [

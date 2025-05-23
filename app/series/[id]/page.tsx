@@ -45,6 +45,18 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
             </section>
         )}
 
+        {serie.musique.length > 0 && (
+            <section className="mb-10">
+                <h2 className="text-2xl font-serif font-semibold mb-2">Bande originale</h2>
+                <ul className="list-disc list-inside text-[var(--color-dark)] space-y-1 mb-6">
+                {artistes.map((artiste) =>
+                    artiste.chansonsConnues.map((titre, i) => (
+                    <li key={`${artiste.id}-${i}`}>{titre}</li>
+                    ))
+                )}
+                </ul>
+            </section>
+        )}
         {artistes.length > 0 && (
             <section className="mb-10">
             <h2 className="text-2xl font-serif font-semibold mb-2">Artistes associés</h2>

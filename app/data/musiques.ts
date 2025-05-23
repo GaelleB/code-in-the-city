@@ -13,19 +13,20 @@ export const musiques: Artiste[] = [
         nom: "Joshua Radin",
         image: "/images/joshua-radin.jpg",
         seriesLiees: [1],
-        chansonsConnues: ["Winter", "I'd Rather Be With You"],
-        anecdotes: [
-        "Découvert grâce à Zach Braff, il devient une voix incontournable des séries drama."
-        ]
+        chansonsConnues: ["Winter", "I'd Rather Be With You"]
     },
     {
         id: 2,
         nom: "Gavin DeGraw",
         image: "/images/gavin-degraw.jpg",
         seriesLiees: [2],
-        chansonsConnues: ["I Don't Want to Be", "Follow Through"],
-        anecdotes: [
-        "Son titre emblématique a servi d’opening pendant 8 saisons de One Tree Hill."
-        ]
-    }
+        chansonsConnues: ["I Don't Want to Be", "Follow Through"]
+    },
+    {
+        id: 3,
+        nom: "Paula Cole",
+        image: "/images/paula-cole.jpg",
+        seriesLiees: [3],
+        chansonsConnues: ["I Don't Want to Wait"],
+    },
 ];
