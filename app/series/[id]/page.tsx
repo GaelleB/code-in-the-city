@@ -1,23 +1,18 @@
 import { notFound } from "next/navigation";
 import { series } from "@/data/series";
-import { musiques } from "@/data/musiques";
+import { musiques, Artiste } from "@/data/musiques";
 import { lieux } from "@/data/lieux";
 import Image from "next/image";
 import Link from "next/link";
-
-export async function generateStaticParams() {
-    return series.map((serie) => ({
-        id: serie.id.toString(),
-    }));
-}
 
 export default function SerieDetail({ params }: { params: { id: string } }) {
     const serie = series.find((s) => s.id === Number(params.id));
     if (!serie) return notFound();
 
     const lieu = lieux.find((l) => l.id === serie.lieux);
-    const artistes = musiques.filter(a =>
-        serie.musique.includes(a.id)
+    const musiquesIds: number[] = serie.musique;
+    const artistes = musiques.filter((a: Artiste) =>
+        musiquesIds.includes(a.id)
     );
 
     return (
@@ -45,18 +40,6 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
             </section>
         )}
 
-        {serie.musique.length > 0 && (
-            <section className="mb-10">
-                <h2 className="text-2xl font-serif font-semibold mb-2">Bande originale</h2>
-                <ul className="list-disc list-inside text-[var(--color-dark)] space-y-1 mb-6">
-                {artistes.map((artiste) =>
-                    artiste.chansonsConnues.map((titre, i) => (
-                    <li key={`${artiste.id}-${i}`}>{titre}</li>
-                    ))
-                )}
-                </ul>
-            </section>
-        )}
         {artistes.length > 0 && (
             <section className="mb-10">
             <h2 className="text-2xl font-serif font-semibold mb-2">Artistes associés</h2>
@@ -75,34 +58,33 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
             </section>
         )}
 
-        <section className="mb-16">
+        {serie.casting && (
+            <section className="mb-16">
             <h2 className="text-3xl font-serif font-semibold mb-6 border-b border-[var(--color-secondary)] pb-1">
-            Distribution principale
+                Distribution principale
             </h2>
-            {Object.entries(serie.castingBySeason).map(([season, actors]) => (
-            <div key={season} className="mb-6">
-                <h3 className="text-xl font-bold mb-2 mt-4 text-[var(--color-dark)]">{season}</h3>
-                <ul className="list-disc list-inside space-y-2 text-[var(--color-dark)]">
-                {actors.map((actor, index) => (
-                    <li key={index} className="transition-all duration-200 hover:text-black">
+            <ul className="list-disc list-inside space-y-2 text-[var(--color-dark)]">
+                {serie.casting.map((actor, index) => (
+                <li key={index} className="transition-all duration-200 hover:text-black">
                     <strong>{actor.actor}</strong> — {actor.character} ({actor.ageAtStart} ans)
-                    </li>
+                </li>
                 ))}
-                </ul>
-            </div>
-            ))}
-        </section>
+            </ul>
+            </section>
+        )}
 
-        <section className="mb-16">
+        {serie.anecdotes?.length > 0 && (
+            <section className="mb-16">
             <h2 className="text-3xl font-serif font-semibold mb-4 border-b border-[var(--color-secondary)] pb-1">
-            Anecdotes
+                Anecdotes
             </h2>
             <ul className="list-disc list-inside text-[var(--color-dark)] space-y-2">
-            {serie.anecdotes.map((a, i) => (
+                {serie.anecdotes.map((a, i) => (
                 <li key={i}>{a}</li>
-            ))}
+                ))}
             </ul>
-        </section>
+            </section>
+        )}
 
         {serie.image && (
             <div className="mt-12">
