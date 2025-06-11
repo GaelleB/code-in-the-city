@@ -2,6 +2,7 @@ export type Lieu = {
     id: number;
     nom: string;
     description: string;
+    mapUrl: string;
 };
 
 export const lieux: Lieu[] = [
@@ -9,18 +10,21 @@ export const lieux: Lieu[] = [
         id: 1,
         nom: "Wilmington (Caroline du Nord)",
         description:
-        "Ville emblématique de tournage pour Dawson et Les Frères Scott, avec le Rivercourt, le pont de Lucas, et les studios Screen Gems."
+        "Ville emblématique de tournage pour Dawson et Les Frères Scott, avec le Rivercourt, le pont de Lucas, et les studios Screen Gems.",
+        mapUrl: "https://www.google.com/maps/place/Wilmington,+NC,+USA"
     },
     {
         id: 2,
         nom: "Seattle (fictif)",
         description:
-        "Grey's Anatomy est censée se dérouler à Seattle, mais les scènes extérieures sont tournées à Los Angeles."
+        "Grey's Anatomy est censée se dérouler à Seattle, mais les scènes extérieures sont tournées à Los Angeles.",
+        mapUrl: "https://www.google.com/maps/place/Wilmington,+NC,+USA"
     },
     {
         id: 3,
         nom: "Los Angeles",
         description:
-        "Lieu de tournage de nombreuses séries, dont Grey's Anatomy, pour les extérieurs d’hôpital et de ville."
+        "Lieu de tournage de nombreuses séries, dont Grey's Anatomy, pour les extérieurs d’hôpital et de ville.",
+        mapUrl: "https://www.google.com/maps/place/Wilmington,+NC,+USA"
     }
 ];
