@@ -41,11 +41,6 @@ body {
   animation: fade-in-up 0.8s ease-out both;
 }
 
-.cinematic {
-  filter: grayscale(90%) contrast(1.1);
-  background-color: #f9f9f9;
-}
-
 /* Film overlay : bande pellicule superposée sur le contenu */
 .film-overlay {
   position: relative;
@@ -63,16 +58,27 @@ body {
   left: 0; right: 0;
   height: 48px;
   background: url("/images/film-strip.png") repeat-x;
-  background-size: auto 48px;
+  background-size: auto 55px;
   z-index: 2;
   pointer-events: none;
 }
 
 /* Bande du haut */
-.film-overlay::before { top: 0; }
+.film-overlay::before { top: 8px; }
 
 /* Bande du bas, retournée */
 .film-overlay::after  {
-  bottom: 0;
+  bottom: 40px;
   transform: rotate(180deg);
+}
+
+.film-strip-container {
+  position: relative;
+}
+
+.film-strip-image {
+  object-fit: cover;
+  opacity: 0;
+  transition: transform 0.3s ease;
+  z-index: 0;
 }

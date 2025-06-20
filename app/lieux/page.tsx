@@ -1,12 +1,14 @@
 "use client";
+
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Card from "@/components/Card";
 import Link from "next/link";
 import FilmOverlay from "@/components/FilmOverlay";
 import { lieux } from "@/data/lieux";
+import Image from "next/image";
 
-// Composant pour titres narratifs sur les cartes
+// Titre narratif
 function NarrativeTitle({ index }: { index: number }) {
     return (
         <h3 className="font-serif italic text-lg text-[var(--color-secondary)] mb-2">
@@ -18,7 +20,6 @@ function NarrativeTitle({ index }: { index: number }) {
 export default function Lieux() {
     const containerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-    // Animation GSAP en cascade pour chaque FilmOverlay wrapper
     useEffect(() => {
         const elems = containerRefs.current.filter(Boolean) as HTMLDivElement[];
         if (elems.length) {
@@ -45,11 +46,22 @@ export default function Lieux() {
                     <FilmOverlay key={lieu.id}>
                         <div
                             ref={(el) => {
-                                containerRefs.current[idx] = el;
+                            containerRefs.current[idx] = el;
                             }}
-                            className="relative"
-                            >
-                            <Card className="cinematic relative">
+                            className="group relative film-strip-container transition-transform duration-300 hover:-translate-y-1"
+                        >
+                            {/* Image pellicule en fond */}
+                            <Image
+                            src="/images/film-strip.png"
+                            alt="Effet pellicule"
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="film-strip-image pointer-events-none"
+                            />
+
+                            {/* Contenu de la carte */}
+                            <div className="film-card relative z-10">
+                            <Card className="bg-white">
                                 <NarrativeTitle index={idx} />
                                 <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-2">
                                 <span className="text-xl">🎥</span> {lieu.nom}
@@ -58,14 +70,15 @@ export default function Lieux() {
                                 {lieu.description}
                                 </p>
                                 <Link
-                                    href={lieu.mapUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-[var(--color-primary)] hover:underline font-medium hover:text-black transition-colors"
-                                    >
-                                    Voir sur Google Maps →
+                                href={lieu.mapUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-[var(--color-primary)] hover:underline font-medium hover:text-black transition-colors"
+                                >
+                                Voir sur Google Maps →
                                 </Link>
                             </Card>
+                            </div>
                         </div>
                     </FilmOverlay>
                 ))}
