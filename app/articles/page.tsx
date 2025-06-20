@@ -2,7 +2,7 @@ import Card from "@/components/Card";
 import articles from "@/data/articles";
 import Link from "next/link";
 
-export default function BlogPage() {
+export default function ArticlePage() {
     return (
         <section className="max-w-6xl mx-auto px-4 py-12 animate-fade-in">
             <h1 className="text-4xl font-serif font-bold mb-10 border-b border-[var(--color-secondary)] pb-2">
@@ -16,7 +16,7 @@ export default function BlogPage() {
                     </p>
                     <h3 className="text-xl font-serif font-bold mb-2">
                     <Link
-                        href={`/blog/${article.id}`}
+                        href={`/articles/${article.id}`}
                         className="text-[var(--color-primary)] hover:underline hover:text-black transition-colors"
                     >
                         {article.title}
