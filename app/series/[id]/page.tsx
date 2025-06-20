@@ -282,8 +282,136 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
                         <li>Le montage final de l’épisode "The Train", avec la voix off – une claque émotionnelle.</li>
                     </>
                     )}
-
                 </ul>
+            </section>
+
+            {/* Bande originale */}
+            <section className="mb-10">
+            <h2 className="text-2xl font-serif font-semibold mb-2">Bande originale</h2>
+            <ul className="list-disc list-inside text-[var(--color-dark)] space-y-1">
+
+                {serie.id === 1 && (
+                <>
+                    <li>"I Don’t Want to Wait" — Paula Cole</li>
+                </>
+                )}
+
+                {serie.id === 2 && (
+                <>
+                    <li>"I Don’t Want to Be" — Gavin DeGraw</li>
+                </>
+                )}
+
+                {serie.id === 3 && (
+                <>
+                    <li>"Where You Lead" — Carole King & Louise Goffin</li>
+                </>
+                )}
+
+                {serie.id === 4 && (
+                <>
+                    <li>"Wisteria Lane Theme" — Danny Elfman</li>
+                </>
+                )}
+
+                {serie.id === 5 && (
+                <>
+                    <li>"Gossip Girl Main Title" — Transcenders</li>
+                </>
+                )}
+
+                {serie.id === 6 && (
+                <>
+                    <li>Aucune vraie chanson générique, mais l’ambiance musicale est portée par le piano et les choix pop/folk iconiques.</li>
+                </>
+                )}
+
+                {serie.id === 7 && (
+                <>
+                    <li>Aucune bande originale officielle, mais le ton est posé dès l’épisode 1 avec "Breathe (2AM)" de Anna Nalick.</li>
+                </>
+                )}
+
+                {serie.id === 8 && (
+                <>
+                    <li>"This Is Us Theme" — Siddhartha Khosla</li>
+                </>
+                )}
+
+            </ul>
+            </section>
+
+            {/* Chansons entendues */}
+            <section className="mb-10">
+            <h2 className="text-2xl font-serif font-semibold mb-2">Chansons entendues</h2>
+            <ul className="list-disc list-inside text-[var(--color-dark)] mb-10 space-y-1">
+
+                {serie.id === 1 && (
+                <>
+                    <li>"As I Lay Me Down" — Sophie B. Hawkins</li>
+                    <li>"Kiss the Rain" — Billie Myers</li>
+                    <li>"Ready for a Fall" — PJ Olsson</li>
+                </>
+                )}
+
+                {serie.id === 2 && (
+                <>
+                    <li>"Winter" — Joshua Radin</li>
+                    <li>"Halo" — Bethany Joy Lenz</li>
+                    <li>"The Good Kind" — The Wreckers</li>
+                    <li>"When It Comes" — Tyler Hilton</li>
+                </>
+                )}
+
+                {serie.id === 3 && (
+                <>
+                    <li>"Reflecting Light" — Sam Phillips</li>
+                    <li>"There She Goes" — The La’s</li>
+                    <li>"Then She Appeared" — XTC</li>
+                </>
+                )}
+
+                {serie.id === 4 && (
+                <>
+                    <li>"Breathe (2AM)" — Anna Nalick</li>
+                    <li>"Band of Gold" — Freda Payne</li>
+                    <li>"Thank You" — Dido</li>
+                </>
+                )}
+
+                {serie.id === 5 && (
+                <>
+                    <li>"Young Folks" — Peter Bjorn and John</li>
+                    <li>"With Me" — Sum 41</li>
+                    <li>"You've Got the Love" — Florence + The Machine</li>
+                </>
+                )}
+
+                {serie.id === 6 && (
+                <>
+                    <li>"How to Save a Life" — The Fray</li>
+                    <li>"Chasing Cars" — Snow Patrol</li>
+                    <li>"Keep Breathing" — Ingrid Michaelson</li>
+                    <li>"The Story" — Brandi Carlile</li>
+                </>
+                )}
+
+                {serie.id === 7 && (
+                <>
+                    <li>"Breakable" — Ingrid Michaelson</li>
+                    <li>"Closer to You" — Brandi Carlile</li>
+                </>
+                )}
+
+                {serie.id === 8 && (
+                <>
+                    <li>"Death with Dignity" — Sufjan Stevens</li>
+                    <li>"Salvation" — Gabrielle Aplin</li>
+                    <li>"Somewhere Only We Know" — Keane</li>
+                </>
+                )}
+
+            </ul>
             </section>
 
 
