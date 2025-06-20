@@ -139,6 +139,82 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
                 </div>
             </section>
 
+            {/* Section Personnages marquants */}
+            <section className="mb-8">
+                <h2 className="text-2xl font-serif font-semibold mb-2">Personnages marquants</h2>
+                <ul className="list-disc list-inside text-[var(--color-dark)] mb-8 space-y-2">
+                    {serie.id === 1 && (
+                    <>
+                        <li><strong>Pacey Witter</strong> : mon doudou absolu. Loyal, drôle, inattendu. Il m’a fait rêver d’un amour doux et libre.</li>
+                        <li><strong>Joey Potter</strong> : quand elle est avec Pacey, je l’aime. Elle devient plus humaine, moins prisonnière de ses contradictions.</li>
+                        <li><strong>Dawson Leery</strong> : il m’a émue par sa persévérance. Son rêve de cinéma, il l’a tenu jusqu’au bout. Et ça, c’est beau.</li>
+                        <li><strong>Andie McPhee</strong> : bouleversante dans ses failles, insupportable par moments… mais je ne peux pas la laisser de côté.</li>
+                    </>
+                    )}
+
+                    {serie.id === 2 && (
+                    <>
+                        <li><strong>Brooke Davis</strong> : ma number one. Elle m’a tellement touchée. Derrière son humour, il y a un cœur immense.</li>
+                        <li><strong>Julian Baker</strong> : trop souvent moqué, alors qu’il est exceptionnel. Doux, drôle, brillant. Il mérite l’amour du monde entier.</li>
+                        <li><strong>Dan Scott</strong> : complexe, abîmé, dérangeant. Il m’a fait réfléchir sur la possibilité du pardon, même pour l’impardonnable.</li>
+                    </>
+                    )}
+
+                    {serie.id === 3 && (
+                    <>
+                        <li><strong>Lorelai Gilmore</strong> : c’est moi, quelque part. Forte, drôle, et pleine de blessures qu’on ne montre pas.</li>
+                        <li><strong>Luke Danes</strong> : râleur au cœur tendre. Son amour discret pour Lorelai m’a toujours touchée.</li>
+                        <li><strong>Jess Mariano</strong> : mon chéri d’amour, mon Jess. Rebelle, perdu, intelligent. Il m’a toujours parlé droit au cœur.</li>
+                        <li><strong>Paris Geller</strong> : intense et incomprise. Je l’adore, elle est brillante, agaçante, profondément humaine.</li>
+                    </>
+                    )}
+
+                    {serie.id === 4 && (
+                    <>
+                        <li><strong>Bree Van de Kamp</strong> : la plus complexe. Sa carapace de perfection cache des tempêtes intimes.</li>
+                        <li><strong>Lynette Scavo</strong> : la plus humaine. Une mère, une battante, une femme qui me touche à chaque épisode.</li>
+                        <li><strong>Tom Scavo</strong> : il a été présent, loyal, imparfait. Je l’ai aimé pour ça.</li>
+                        <li><strong>Susan Mayer</strong> : maladroite, paumée, touchante. Elle me fait sourire même quand elle m’énerve.</li>
+                        <li><strong>Gabrielle Solis</strong> : je l’adore. Superficielle en apparence, mais tellement plus profonde qu’on ne croit.</li>
+                        <li><strong>Karen McCluskey</strong> : la mamie qu’on rêve d’avoir. Son franc-parler et sa tendresse m’ont profondément marquée.</li>
+                        <li><strong>Mike Delfino</strong> : mon doudou d’amour. Protecteur, mystérieux, juste. Je ne m’en suis jamais remise.</li>
+                    </>
+                    )}
+
+                    {serie.id === 5 && (
+                    <>
+                        <li><strong>Blair Waldorf</strong> : mon obsession. Son besoin d’amour caché derrière une carapace acide, c’est tout ce que j’aime.</li>
+                        <li><strong>Chuck Bass</strong> : sombre, brisé, irrésistible. Il m’a toujours captivée.</li>
+                        <li><strong>Dan Humphrey</strong> : le garçon de l’ombre. Je l’ai aimé pour sa lucidité et ses contradictions.</li>
+                    </>
+                    )}
+
+                    {serie.id === 6 && (
+                    <>
+                        <li><strong>Meredith Grey</strong> : je me retrouve en elle. Silencieuse, blessée, mais toujours debout.</li>
+                        <li><strong>Miranda Bailey</strong> : je la kiffe, vraiment. Elle est forte, juste, mal jugée au début. Elle a toute mon admiration.</li>
+                        <li><strong>Izzie Stevens</strong> : lumineuse, touchante, instable. Elle m’a toujours bouleversée.</li>
+                        <li><strong>Alex Karev</strong> : il grogne, il fuit, mais il aime fort. Je l’ai adoré dans toutes ses nuances.</li>
+                        <li><strong>Jackson Avery</strong> : le beau boss. Oui, je l’assume. Mais il est aussi bien plus que ça : sensible et sincère.</li>
+                    </>
+                    )}
+
+                    {serie.id === 7 && (
+                    <>
+                        <li><strong>Addison Montgomery</strong> : élégante, brillante, perdue. Elle incarne une force douce qui me parle.</li>
+                        <li><strong>Cooper Freedman</strong> : drôle, maladroit, loyal. Je l’aime pour son humanité sans prétention.</li>
+                    </>
+                    )}
+
+                    {serie.id === 8 && (
+                    <>
+                        <li><strong>Jack Pearson</strong> : pilier, père, homme imparfait et magnifique. Il m’a donné foi en l’amour vrai.</li>
+                        <li><strong>Randall Pearson</strong> : il veut tout bien faire, quitte à se perdre. Je comprends ça tellement fort.</li>
+                    </>
+                    )}
+                </ul>
+            </section>
+
             {lieu && (
                 <section className="mb-10">
                     <h2 className="text-2xl font-serif font-semibold mb-2">Lieu de tournage</h2>
