@@ -215,6 +215,78 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
                 </ul>
             </section>
 
+            {/* Scènes cultes */}
+            <section className="mb-8">
+                <h2 className="text-2xl font-serif font-semibold mb-2">Scènes cultes</h2>
+                <ul className="list-disc list-inside text-[var(--color-dark)] mb-8">
+
+                    {serie.id === 1 && (
+                    <>
+                        <li>La scène du baiser entre Pacey et Joey sur le bateau – l’instant où tout bascule.</li>
+                        <li>Quand Pacey crie à Joey sur le quai qu’il veut être avec elle et personne d’autre.</li>
+                        <li>La dernière scène où Dawson réalise son rêve de réalisateur, en hommage à Spielberg.</li>
+                    </>
+                    )}
+
+                    {serie.id === 2 && (
+                    <>
+                        <li>La scène finale avec *I Don’t Want to Be* chanté par Gavin DeGraw en live – frissons garantis.</li>
+                        <li>Julian avouant à Brooke qu’elle est « son tout », juste avant la naissance des jumeaux.</li>
+                        <li>La rédemption impossible de Dan face à Nathan et Jamie – déchirant.</li>
+                    </>
+                    )}
+
+                    {serie.id === 3 && (
+                    <>
+                        <li>Le discours de Lorelai au mariage de Sookie, quand elle réalise qu’elle est amoureuse de Luke.</li>
+                        <li>La première rencontre entre Lorelai et Luke... ou plutôt, leur premier "vrai" baiser (ENFIN).</li>
+                        <li>Jess qui laisse à Rory un mot dans *The Subsect* et disparaît – mon cœur s’arrête à chaque fois.</li>
+                    </>
+                    )}
+
+                    {serie.id === 4 && (
+                    <>
+                        <li>Mike Delfino mourant dans les bras de Susan, sur fond de voix off – mon doudou parti trop tôt.</li>
+                        <li>Gabrielle courant pieds nus dans la rue avec son bébé – mère courage, malgré les apparences.</li>
+                        <li>La scène de Karen McCluskey racontant son histoire à Roy, avant de partir – douce et bouleversante.</li>
+                    </>
+                    )}
+
+                    {serie.id === 5 && (
+                    <>
+                        <li>Chuck qui dit à Blair : « Trois mots, huit lettres… dis les, et je suis à toi. »</li>
+                        <li>Dan révélant qu’il est Gossip Girl – scène choc, quoi qu’on en pense.</li>
+                        <li>Blair et Chuck qui se marient à la va-vite, entourés de flics – chaotique et parfait.</li>
+                    </>
+                    )}
+
+                    {serie.id === 6 && (
+                    <>
+                        <li>Le monologue de Meredith après la mort de Derek – glaçant, silencieux, inoubliable.</li>
+                        <li>Miranda Bailey expliquant à une patiente pourquoi elle a choisi la médecine – puissante, humaine.</li>
+                        <li>La scène où Izzie voit Denny dans sa robe rose – et s’effondre – je pleure à chaque fois.</li>
+                    </>
+                    )}
+
+                    {serie.id === 7 && (
+                    <>
+                        <li>Addison seule, dans sa voiture, après avoir appris qu’elle ne pouvait pas avoir d’enfant – silence assourdissant.</li>
+                        <li>Cooper confessant à Charlotte qu’il ne veut pas d’autre femme – l’une des plus belles déclarations de la série.</li>
+                    </>
+                    )}
+
+                    {serie.id === 8 && (
+                    <>
+                        <li>Jack Pearson qui parle à son fils adolescent dans un flashback – une leçon d’amour paternel.</li>
+                        <li>Randall face à sa mère biologique – quand il comprend ce que c’est que grandir entre deux mondes.</li>
+                        <li>Le montage final de l’épisode "The Train", avec la voix off – une claque émotionnelle.</li>
+                    </>
+                    )}
+
+                </ul>
+            </section>
+
+
             {lieu && (
                 <section className="mb-10">
                     <h2 className="text-2xl font-serif font-semibold mb-2">Lieu de tournage</h2>
