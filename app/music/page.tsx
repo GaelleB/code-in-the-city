@@ -2,7 +2,7 @@ import { musiques } from "@/data/musiques";
 import Card from "@/components/Card";
 import Link from "next/link";
 
-export default function MusiquePage() {
+export default function MusicPage() {
     return (
         <main className="max-w-6xl mx-auto px-4 py-12 animate-fade-in">
             <h1 className="text-4xl font-serif font-bold mb-10 border-b-2 border-[var(--color-secondary)] pb-2">

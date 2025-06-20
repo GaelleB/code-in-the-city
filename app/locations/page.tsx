@@ -17,7 +17,7 @@ function NarrativeTitle({ index }: { index: number }) {
     );
 }
 
-export default function Lieux() {
+export default function LocationPage() {
     const containerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
     useEffect(() => {
