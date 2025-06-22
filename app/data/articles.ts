@@ -90,7 +90,7 @@ export const articles: Article[] = [
         title: "Flexbox : Tout ranger pour ne pas s'effondrer",
         date: "21-06-2025",
         category: "Développement Web",
-        image: "/images/flexbox.webp",
+        image: "/images/flexbox.jpg",
         content: [
             `Avant, mon code c'était une valise de vacances faite à l'arrache.  
             Tout tenait debout, mais à l’ouverture, c’était Hiroshima.`,
