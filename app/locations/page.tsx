@@ -83,6 +83,16 @@ export default function LocationPage() {
                     </FilmOverlay>
                 ))}
             </section>
+            <section className="mt-12">
+                <Link href="/locations/itineraires-geek">
+                    <Card className="cursor-pointer">
+                        <h3 className="text-xl font-serif font-semibold">Itinéraires geek</h3>
+                        <p className="text-[var(--color-dark)]">
+                        Pars à l’aventure sur les traces de tes séries préférées.
+                        </p>
+                    </Card>
+                </Link>
+            </section>
         </main>
     );
 }
