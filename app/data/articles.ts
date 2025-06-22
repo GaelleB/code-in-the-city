@@ -24,7 +24,7 @@ export const articles: Article[] = [
             Je venais du paramédical, j’avais quitté une vie qui ne me convenait plus, et j’entrais dans un monde où on parlait de balises, de classes, de margin et de padding comme si tout ça allait de soi.`,
 
             `Sauf que moi, rien n’allait de soi.
-            Et puis un jour, on m’a dit d’écrire ceci : <h1>Bonjour, monde</h1>
+            Et puis un jour, on m’a dit d’écrire ceci : <h1>Hello, world</h1>
 
             C’était simple. Trop simple peut-être.
             Mais quand j’ai vu ces mots s’afficher en grand dans mon navigateur, quelque chose s’est passé.
