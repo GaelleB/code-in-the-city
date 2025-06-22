@@ -1,38 +1,71 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
 
 export default function Header() {
+    const [isOpen, setIsOpen] = useState(false);
+    const toggleMenu = () => setIsOpen(!isOpen);
+
+    const links = [
+        { label: "Home", href: "/" },
+        { label: "About", href: "/about" },
+        { label: "Articles", href: "/articles" },
+        { label: "Series", href: "/series" },
+        { label: "Music", href: "/music" },
+        { label: "Filming locations", href: "/locations" },
+    ];
+
     return (
-        <header className="border-b border-[var(--color-dark)] text-center py-6 text-[var(--color-text-dark)] font-[--font-serif]">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-wide uppercase">
+        <header className="relative border-b border-[var(--color-dark)] text-center py-6 text-[var(--color-text-dark)] font-serif">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-wide uppercase">
                 Code in the City
             </h1>
+
             <p className="mt-2 italic text-sm md:text-base">
                 Series, Sounds & Stories
             </p>
 
-            <nav className="mt-4">
+            {/* Nav desktop */}
+            <nav className="hidden md:block mt-4">
                 <ul className="flex justify-center space-x-6 text-sm md:text-base font-medium">
-                    <li>
-                        <Link href="/" className="hover:underline">Home</Link>
+                {links.map(({ label, href }) => (
+                    <li key={href}>
+                    <Link href={href} className="hover:underline">
+                        {label}
+                    </Link>
                     </li>
-                    <li>
-                        <Link href="/about" className="hover:underline">About</Link>
-                    </li>
-                    <li>
-                        <Link href="/articles" className="hover:underline">Articles</Link>
-                    </li>
-                    <li>
-                        <Link href="/series" className="hover:underline">Series</Link>
-                    </li>
-                    <li>
-                        <Link href="/music" className="hover:underline">Music</Link>
-                    </li>
-                    <li>
-                        <Link href="/locations" className="hover:underline">Filming locations</Link>
-                    </li>
+                ))}
                 </ul>
             </nav>
+
+            {/* Bouton hamburger mobile */}
+            <button
+                onClick={toggleMenu}
+                aria-label={isOpen ? "Close menu" : "Open menu"}
+                className="md:hidden absolute top-6 right-4 p-2 text-[var(--color-dark)]"
+            >
+                {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+
+            {/* Nav mobile */}
+            {isOpen && (
+                <nav className="md:hidden mt-4">
+                    <ul className="flex flex-col items-center space-y-4 py-4 text-base font-medium bg-[rgba(255,255,255,0.9)]">
+                        {links.map(({ label, href }) => (
+                        <li key={href}>
+                            <Link
+                            href={href}
+                            onClick={() => setIsOpen(false)}
+                            className="hover:underline"
+                            >
+                            {label}
+                            </Link>
+                        </li>
+                        ))}
+                    </ul>
+                </nav>
+            )}
         </header>
     );
 }
