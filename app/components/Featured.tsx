@@ -4,14 +4,14 @@ import { articles } from "@/data/articles";
 
 export default function Featured() {
   return (
-    <section className="my-16">
+    <section className="my-16 px-4 sm:px-6 lg:px-8">
       <h2 className="text-3xl font-serif font-semibold mb-6 border-b border-[var(--color-secondary)] pb-1">
         Articles à la une
       </h2>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {articles.map((article) => {
-          // Je récupère un extrait de l'article (chaîne ou tableau de paragraphes)
+          // Extrait de l'article (chaîne ou tableau de paragraphes)
           const fullText =
             typeof article.content === "string"
               ? article.content
@@ -19,23 +19,26 @@ export default function Featured() {
           const excerpt = fullText.slice(0, 140);
 
           return (
-            <Card key={article.id}>
-              <p className="text-xs uppercase tracking-wide text-[var(--color-text-dark)] mb-2">
-                {article.date}
-              </p>
+            <Link
+              key={article.id}
+              href={`/articles/${article.id}`}
+              className="block px-2 sm:px-4 hover:opacity-90 transition-opacity"
+            >
+              <Card className="h-full">
+                <p className="text-xs uppercase tracking-wide text-[var(--color-text-dark)] mb-2">
+                  {article.date}
+                </p>
 
-              <Link
-                href={`/articles/${article.id}`}
-                className="text-lg text-[var(--color-primary)] font-bold hover:underline"
-              >
-                {article.title}
-              </Link>
+                <h3 className="text-lg text-[var(--color-primary)] font-bold hover:underline">
+                  {article.title}
+                </h3>
 
-              <p className="mt-2 text-[var(--color-dark)]">
-                {excerpt}
-                {fullText.length > excerpt.length && "…"}
-              </p>
-            </Card>
+                <p className="mt-2 text-[var(--color-dark)]">
+                  {excerpt}
+                  {fullText.length > excerpt.length && "…"}
+                </p>
+              </Card>
+            </Link>
           );
         })}
       </div>
