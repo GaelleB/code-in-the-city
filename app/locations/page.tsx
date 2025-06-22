@@ -88,7 +88,7 @@ export default function LocationPage() {
                     <Card className="cursor-pointer">
                         <h3 className="text-xl font-serif font-semibold">Itinéraires geek</h3>
                         <p className="text-[var(--color-dark)]">
-                        Pars à l’aventure sur les traces de tes séries préférées.
+                        Pars à l’aventure sur les traces de mes séries préférées.
                         </p>
                     </Card>
                 </Link>
