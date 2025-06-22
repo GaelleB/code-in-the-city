@@ -48,7 +48,7 @@ export const articles: Article[] = [
             Et j’ai ri. Comme une gamine qui découvre un nouveau jouet.
 
             Le CSS, ce n’est pas “de la déco”.  
-            C’est la voix du site. Son ton. Son style. Sa manière de te dire : “Regarde, je suis vivant.”`,
+            C’est la voix du site, son ton, son style. Sa manière de te dire : “Regarde, je suis vivant.”`,
 
             `Grâce au CSS, j’ai appris à parler autrement.  
             Pas avec des mots, mais avec des marges. Avec des arrondis. Avec des transitions douces.  
@@ -85,5 +85,5 @@ export const articles: Article[] = [
         ],
     },
 
-  // … tes autres articles
+  // … les autres articles
 ];

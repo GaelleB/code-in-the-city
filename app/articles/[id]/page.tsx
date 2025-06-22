@@ -13,8 +13,8 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
       <Image
         src={article.image}
         alt={article.title}
-        width={800}
-        height={400}
+        width={400}
+        height={200}
         className="rounded-lg my-6"
       />
       {article.content.map((paragraph, idx) => (
