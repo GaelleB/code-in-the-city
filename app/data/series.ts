@@ -34,7 +34,7 @@ export const series: Serie[] = [
       { actor: "Katie Holmes", character: "Joey Potter", ageAtStart: 19 },
       { actor: "Joshua Jackson", character: "Pacey Witter", ageAtStart: 20 }
     ],
-    image: "/images/dawsons-creek.jpg"
+    image: "/images/dawson.jpg"
   },
   {
     id: 2,
@@ -54,7 +54,7 @@ export const series: Serie[] = [
       { actor: "James Lafferty", character: "Nathan Scott", ageAtStart: 18 },
       { actor: "Hilarie Burton", character: "Peyton Sawyer", ageAtStart: 21 }
     ],
-    image: "/images/one-tree-hill.jpg"
+    image: "/images/freres-scott.jpg"
   },
   {
     id: 3,
@@ -93,7 +93,7 @@ export const series: Serie[] = [
       { actor: "Felicity Huffman", character: "Lynette Scavo", ageAtStart: 42 },
       { actor: "Eva Longoria", character: "Gabrielle Solis", ageAtStart: 29 }
     ],
-    image: "/images/desperate-housewives.jpg"
+    image: "/images/desperates-housewives.jpg"
   },
   {
     id: 5,
@@ -112,7 +112,7 @@ export const series: Serie[] = [
       { actor: "Leighton Meester", character: "Blair Waldorf", ageAtStart: 21 },
       { actor: "Blake Lively", character: "Serena van der Woodsen", ageAtStart: 20 }
     ],
-    image: "/images/gossip-girl.jpg"
+    image: "/images/gossip-girl.webp"
   },
   {
     id: 6,
@@ -131,7 +131,7 @@ export const series: Serie[] = [
       { actor: "Ellen Pompeo", character: "Meredith Grey", ageAtStart: 36 },
       { actor: "Sandra Oh", character: "Cristina Yang", ageAtStart: 34 }
     ],
-    image: "/images/greys-anatomy.jpg"
+    image: "/images/greys-anatomy.png"
   },
   {
     id: 7,
