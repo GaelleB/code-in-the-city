@@ -85,5 +85,67 @@ export const articles: Article[] = [
         ],
     },
 
+    {
+        id: 2,
+        title: "Flexbox : Tout ranger pour ne pas s'effondrer",
+        date: "21-06-2025",
+        category: "Développement Web",
+        image: "/images/flexbox.webp",
+        content: [
+            `Avant, mon code c'était une valise de vacances faite à l'arrache.  
+            Tout tenait debout, mais à l’ouverture, c’était Hiroshima.`,
+
+            `Puis j’ai rencontré Flexbox.  
+            Un outil ? Oui.  
+            Mais surtout une philosophie.`,
+
+            `Avec Flexbox, j’ai appris à tout poser à plat.  
+            À ranger les choses une par une, dans un ordre logique, fluide, adaptable.`,
+
+            `C’est un peu comme quand tu déménages et que tu veux que le canapé rentre dans le coffre.  
+            T’as beau forcer, si tu ne pivotes pas dans le bon sens, rien ne rentre.`,
+
+            `Avec Flexbox, tout trouve sa place.  
+            Même ce fichu bouton qui voulait rester en haut à droite alors que moi, je le voulais au centre.`,
+
+            `J’ai compris qu’organiser, ce n’était pas brider.  
+            C’était offrir de la place à chaque élément pour exister sans empiéter.`,
+
+            `Comme dans la vie, en fait.`,
+        ],
+    },
+
+    {
+        id: 3,
+        title: "SASS : Tout ranger pour ne pas s'effondrer (bis)",
+        date: "22-06-2025",
+        category: "Développement Web",
+        image: "/images/sass.webp",
+        content: [
+            `Tu crois que c’est du code.  
+            Mais en fait, c’est de la survie mentale.`,
+
+            `Quand j’ai découvert SASS, j’étais au bord du burn-out visuel.  
+            Des dizaines de fichiers CSS qui se marchaient dessus,  
+            des couleurs écrites à la main, ligne par ligne,  
+            et aucune logique, juste du chaos décoratif.`,
+
+            `Avec SASS, j’ai pu nommer ce que je vivais.  
+            Créer des variables.  
+            Faire des listes.  
+            Hiérarchiser.`,
+
+            `Soudain, écrire du style est devenu un jeu de Lego :  
+            Je pioche une couleur dans une boîte, une taille dans une autre.  
+            Je crée des mixins comme on créerait des sorts dans un grimoire personnel.`,
+
+            `SASS m’a appris à m’alléger.  
+            À ne pas tout réinventer à chaque fois.  
+            À créer mes fondations pour ne pas m'effondrer.`,
+
+            `Et ça, ça dépasse le code.`,
+        ],
+    },
+
   // … les autres articles
 ];
