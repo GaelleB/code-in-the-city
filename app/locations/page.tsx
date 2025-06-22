@@ -92,6 +92,15 @@ export default function LocationPage() {
                         </p>
                     </Card>
                 </Link>
+
+                <Link href="/locations/inspiration-ny">
+                    <Card className="cursor-pointer">
+                        <h3 className="text-xl font-serif font-semibold">Inspiration NY</h3>
+                        <p className="text-[var(--color-dark)]">
+                        Entre gratte-ciels et ruelles secrètes, laisse-toi inspirer par New York.
+                        </p>
+                    </Card>
+                </Link>
             </section>
         </main>
     );
