@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import { notFound } from "next/navigation";
 import { series } from "@/data/series";
 import { musiques, Artiste } from "@/data/musiques";
