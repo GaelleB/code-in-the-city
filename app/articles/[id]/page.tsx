@@ -9,8 +9,8 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
 
   return (
     <article className="mx-auto px-4 sm:px-6 lg:px-20 py-12 text-[var(--color-dark)]">
-      <h1 className="text-xl text-[var(--color-dark)] mb-4">{article.title}</h1>
-      <p className="text-sm text-[var(--color-dark)] mb-4">{article.date}</p>
+      <h1 className="text-3xl font-serif font-semibold text-[var(--color-dark)] mb-4">{article.title}</h1>
+      <p className="text-xl text-[var(--color-dark)] mb-4">{article.date}</p>
       <Image
         src={article.image}
         alt={article.title}
