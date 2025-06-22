@@ -11,7 +11,7 @@ export const articles: Article[] = [
     {
         id: 1,
         title: "HTML & CSS : la base de tout",
-        date: "2025-06-20",
+        date: "20-06-2025",
         category: "Développement Web",
         image: "/images/html-css.webp",
         content: [
