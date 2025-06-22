@@ -485,6 +485,70 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
                 </ul>
             </section>
 
+            {/* Playlist émotion */}
+            <section className="mb-10">
+                <h2 className="text-2xl font-serif font-semibold mb-2">Playlist émotion</h2>
+                <ul className="list-disc list-inside text-[var(--color-dark)] mb-10 space-y-1">
+                    {serie.id === 1 && (
+                        <>
+                            <li>"I Don’t Want to Wait" — Paula Cole (parce que chaque note, c’est un souvenir d’ado qui revient)</li>
+                            <li>"As I Lay Me Down" — Sophie B. Hawkins (pour ces soirs de pluie intérieure où tout vacille doucement)</li>
+                            <li>"Pushing Up Daisies" — Jann Arden (la chanson qu’on écoute quand on n’a pas les mots mais trop de cœur)</li>
+                        </>
+                    )}
+
+                    {serie.id === 2 && (
+                        <>
+                            <li>"I Don’t Want to Be" — Gavin DeGraw (l’hymne d’une génération qui cherche sa place et ose rêver)</li>
+                            <li>"Winter" — Joshua Radin (une caresse dans le chaos — à écouter quand le monde devient trop bruyant)</li>
+                            <li>"Halo" — Bethany Joy Lenz (parce que sa voix, c’est la voix de Brooke, fragile et immense à la fois)</li>
+                        </>
+                    )}
+
+                    {serie.id === 3 && (
+                        <>
+                            <li>"Where You Lead" — Carole King & Louise Goffin (parce qu’on rêve toutes de marcher dans Stars Hollow avec ça en fond)</li>
+                            <li>"Reflecting Light" — Sam Phillips (la chanson des regards qui en disent trop, mais pas assez vite)</li>
+                        </>
+                    )}
+
+                    {serie.id === 4 && (
+                        <>
+                            <li>"Goodbye to You" — Michelle Branch (pour toutes les séparations qu’on n’a pas choisies)</li>
+                            <li>"Band of Gold" — Freda Payne (parce que Desperate Housewives, c’est aussi ça : la nostalgie masquée par les sourires)</li>
+                        </>
+                    )}
+
+                    {serie.id === 5 && (
+                        <>
+                            <li>"With Me" — Sum 41 (parce qu’on a tous eu un cœur trop plein, trop jeune, trop seul)</li>
+                            <li>"You’ve Got the Love" — Florence + The Machine (l’espoir en version brutale et sublime)</li>
+                        </>
+                    )}
+
+                    {serie.id === 6 && (
+                        <>
+                            <li>"How to Save a Life" — The Fray (on ne s’en remet jamais vraiment)</li>
+                            <li>"The Story" — Brandi Carlile (parce que cette chanson, c’est Grey’s en une ligne : « All of these lines across my face… »)</li>
+                        </>
+                    )}
+
+                    {serie.id === 7 && (
+                        <>
+                            <li>"Breathe (2 AM)" — Anna Nalick (c’est elle qui donne le ton, dès le départ — fragile, vraie, urgente)</li>
+                            <li>"Breakable" — Ingrid Michaelson (la tendresse qu’on n’ose pas toujours montrer, mais qu’on ressent tout le temps)</li>
+                        </>
+                    )}
+
+                    {serie.id === 8 && (
+                        <>
+                            <li>"Death with Dignity" — Sufjan Stevens (une chanson qui te laisse en larmes sans que tu comprennes pourquoi)</li>
+                            <li>"Salvation" — Gabrielle Aplin (celle qu’on écoute quand on veut croire que tout ira bien, même si ça fait mal)</li>
+                        </>
+                    )}
+                </ul>
+            </section>
+
 
             {lieu && (
                 <section className="mb-10">
