@@ -414,6 +414,77 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
             </ul>
             </section>
 
+            {/* Artistes coup de cœur */}
+            <section className="mb-10">
+                <h2 className="text-2xl font-serif font-semibold mb-2">Artistes coup de cœur</h2>
+                <ul className="list-disc list-inside text-[var(--color-dark)] mb-10 space-y-1">
+
+                    {serie.id === 1 && (
+                    <>
+                        <li><strong>Paula Cole</strong> — parce qu’elle incarne l’adolescence à elle seule, avec une voix qui serre le cœur dès les premières notes.</li>
+                        <li><strong>Sophie B. Hawkins</strong> — pour sa douceur mélancolique, parfaite pour les nuits d’ado où tout déborde.</li>
+                    </>
+                    )}
+
+                    {serie.id === 2 && (
+                    <>
+                        <li><strong>Gavin DeGraw</strong> — mon amour de toujours. Je connais tous ses albums. Il m’a accompagnée dans mes chagrins, mes débuts, mes rêves.</li>
+                        <li><strong>Joshua Radin</strong> — la voix des soirs calmes, des silences qui font du bien. Un artiste qui m’apaise à chaque écoute.</li>
+                        <li><strong>Bethany Joy Lenz</strong> — bien plus qu’une actrice : une artiste sensible, sincère, que je respecte profondément.</li>
+                        <li><strong>The Wreckers</strong> — pour cette country douce-amère qui sent l’Amérique et les routes qu’on prend seule.</li>
+                    </>
+                    )}
+
+                    {serie.id === 3 && (
+                    <>
+                        <li><strong>Carole King</strong> — une légende, bien sûr, mais aussi une mère musicale. Sa voix me ramène toujours à quelque chose de sûr, de chaud.</li>
+                        <li><strong>Sam Phillips</strong> — pour ses murmures doux, toujours en fond, jamais envahissants, mais qui restent longtemps après.</li>
+                    </>
+                    )}
+
+                    {serie.id === 4 && (
+                    <>
+                        <li><strong>Anna Nalick</strong> — sa chanson m’a marquée à vie. Elle revient dans plusieurs séries, mais ici elle m’a cueillie.</li>
+                        <li><strong>Joss Stone</strong> — pour sa puissance vocale qui détonne au milieu des secrets bien rangés de Wisteria Lane.</li>
+                    </>
+                    )}
+
+                    {serie.id === 5 && (
+                    <>
+                        <li><strong>Florence + The Machine</strong> — quand sa voix surgit dans une scène, le monde s’arrête. Elle incarne tout ce que Gossip Girl cache sous les paillettes.</li>
+                        <li><strong>Peter Bjorn and John</strong> — ce sifflement est devenu mythique. Une mélodie qui reste coincée dans la tête… et dans la série.</li>
+                    </>
+                    )}
+
+                    {serie.id === 6 && (
+                    <>
+                        <li><strong>Snow Patrol</strong> — *Chasing Cars* est devenu un classique, mais pour moi, c’est surtout une déchirure douce.</li>
+                        <li><strong>The Fray</strong> — *How to Save a Life*… faut-il vraiment expliquer pourquoi ce titre m’a marquée ?</li>
+                        <li><strong>Ingrid Michaelson</strong> — sa voix fragile, ses paroles brutes. Elle colle parfaitement à Grey’s Anatomy, et à ce que je ressens en la regardant.</li>
+                        <li><strong>Brandi Carlile</strong> — une artiste entière, qui chante le vrai, sans filtre. Elle fait partie de celles que j’écoute en boucle quand je doute.</li>
+                    </>
+                    )}
+
+                    {serie.id === 7 && (
+                    <>
+                        <li><strong>Anna Nalick</strong> — encore elle, mais parce que *Breathe (2 AM)* est l’âme même de Private Practice.</li>
+                        <li><strong>Ingrid Michaelson</strong> — elle revient, parce qu’elle colle aussi à cette série plus intime, plus introspective.</li>
+                        <li><strong>Brandi Carlile</strong> — comme dans Grey’s, elle sait chanter la vulnérabilité sans pathos.</li>
+                    </>
+                    )}
+
+                    {serie.id === 8 && (
+                    <>
+                        <li><strong>Sufjan Stevens</strong> — ses morceaux me brisent et me réparent. *Death with Dignity* est une gifle émotionnelle.</li>
+                        <li><strong>Gabrielle Aplin</strong> — tout en douceur, mais jamais fade. Sa voix m’emmène loin, là où ça fait mal et ça apaise en même temps.</li>
+                        <li><strong>Ruelle</strong> — parfaite pour l’ambiance de This Is Us. Sombre, éthérée, pleine d’émotion retenue.</li>
+                        <li><strong>Keane</strong> — *Somewhere Only We Know*, c’est la chanson des souvenirs qu’on n’arrive jamais à oublier.</li>
+                    </>
+                    )}
+
+                </ul>
+            </section>
+
 
             {lieu && (
                 <section className="mb-10">
