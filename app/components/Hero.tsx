@@ -14,10 +14,10 @@ export default function Hero() {
             />
             <div className="absolute inset-0 bg-black/70 flex items-end justify-center pb-12 px-4">
                 <Link
-                    href="/blog"
+                    href="/welcome"
                     className="uppercase tracking-wider px-6 py-2 bg-[#f1cd52] !text-black font-semibold rounded shadow-md ring-1 ring-black/20 hover:brightness-110 transition"
                     >
-                    Entrer
+                    Entrée
                 </Link>
             </div>
         </section>
