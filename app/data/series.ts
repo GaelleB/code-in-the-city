@@ -24,7 +24,7 @@ export const series: Serie[] = [
     synopsis:
       "Dawson, Joey, Pacey et leurs amis traversent les tumultes de l'adolescence dans une petite ville de bord de mer, entre rêves de cinéma et chagrins d'amour.",
     lieux: 1,
-    musique: [1, 2],
+    musique: [1],
     anecdotes: [
       "La maison de Dawson est une vraie maison située à Wilmington.",
       "La chanson 'I Don't Want to Wait' de Paula Cole est devenue culte."
@@ -44,7 +44,7 @@ export const series: Serie[] = [
     synopsis:
       "Lucas et Nathan Scott, demi-frères que tout oppose, évoluent dans la ville fictive de Tree Hill, entre basket, amitiés complexes et histoires d’amour bouleversantes.",
     lieux: 2,
-    musique: [2, 3],
+    musique: [2],
     anecdotes: [
       "Le Rivercourt a été démonté après la fin de la série.",
       "Gavin DeGraw y chante en live dans l’épisode final."
@@ -64,7 +64,7 @@ export const series: Serie[] = [
     synopsis:
       "À Stars Hollow, Lorelai Gilmore élève seule sa fille Rory, entre caféine, références pop culture et relations compliquées avec ses parents issus de la haute société.",
     lieux: 3,
-    musique: [4],
+    musique: [3],
     anecdotes: [
       "La série est connue pour ses dialogues ultra rapides.",
       "Lorelai boit plus de café que n’importe quel humain normal."
@@ -83,7 +83,7 @@ export const series: Serie[] = [
     synopsis:
       "Bienvenue à Wisteria Lane, où derrière chaque haie bien taillée se cachent secrets, meurtres et maris infidèles. Quatre femmes, quatre vies pas si parfaites.",
     lieux: 4,
-    musique: [5],
+    musique: [4],
     anecdotes: [
       "La rue Wisteria Lane est un décor réutilisé dans plusieurs séries.",
       "Le personnage de Mary Alice Young est mort dès l’épisode 1."
@@ -103,7 +103,7 @@ export const series: Serie[] = [
     synopsis:
       "Sur l’Upper East Side, un blog anonyme révèle les secrets croustillants d’adolescents privilégiés. Blair, Serena, Chuck… et une voix off inoubliable : 'XOXO, Gossip Girl'.",
     lieux: 5,
-    musique: [6],
+    musique: [5],
     anecdotes: [
       "La série a lancé la mode des blogs anonymes dans les années 2000.",
       "Le reboot a vu le jour en 2021, mais n’a pas eu le même succès."
@@ -122,7 +122,7 @@ export const series: Serie[] = [
     synopsis:
       "Meredith Grey, interne en chirurgie, découvre l’envers de l’hôpital, entre opérations d’urgence et drames amoureux. Une série culte devenue phénomène mondial.",
     lieux: 6,
-    musique: [7],
+    musique: [],
     anecdotes: [
       "Le nom de la série est un clin d’œil à un célèbre manuel médical.",
       "Plus de 400 épisodes diffusés à ce jour."
@@ -141,7 +141,7 @@ export const series: Serie[] = [
     synopsis:
       "Spin-off de Grey’s Anatomy, cette série suit Addison Montgomery dans sa nouvelle vie au sein d’un cabinet médical privé à Los Angeles. Une ambiance plus intime et psychologique.",
     lieux: 7,
-    musique: [8],
+    musique: [6],
     anecdotes: [
       "La série a permis d’explorer des sujets plus sombres que dans Grey’s Anatomy.",
       "Addison était l’un des personnages préférés des fans."
@@ -160,7 +160,7 @@ export const series: Serie[] = [
     synopsis:
       "La famille Pearson à travers les décennies, entre drames, souvenirs et instants suspendus. Une série bouleversante sur la mémoire, l’amour, la perte et la filiation.",
     lieux: 8,
-    musique: [9],
+    musique: [7],
     anecdotes: [
       "Chaque épisode se déroule sur plusieurs temporalités.",
       "La série a été acclamée pour sa narration émotive."
