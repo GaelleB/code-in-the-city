@@ -43,11 +43,11 @@ export async function generateStaticParams() {
             </section>
         )}
 
-        {artiste.chansonsConnues.length > 0 && (
+        {artiste.bo.length > 0 && (
             <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-2">Chansons connues</h2>
+            <h2 className="text-2xl font-semibold mb-2">Chansons entendues</h2>
             <ul className="list-disc list-inside text-[var(--color-dark)] space-y-1">
-                {artiste.chansonsConnues.map((chanson, index) => (
+                {artiste.bo.map((chanson, index) => (
                 <li key={index}>{chanson}</li>
                 ))}
             </ul>

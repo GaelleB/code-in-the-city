@@ -20,9 +20,9 @@ export default function MusicPage() {
                     </p>
                     )}
 
-                    {artiste.chansonsConnues.length > 0 && (
+                    {artiste.bo.length > 0 && (
                     <p className="text-[var(--color-dark)] text-sm leading-relaxed mb-4">
-                        {artiste.chansonsConnues.slice(0, 2).join(" · ")}
+                        {artiste.bo.slice(0, 2).join(" · ")}
                     </p>
                     )}
 

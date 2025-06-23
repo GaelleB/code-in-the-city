@@ -3,6 +3,7 @@
 import { notFound } from "next/navigation";
 import { series } from "@/data/series";
 import { musiques, Artiste } from "@/data/musiques";
+import { chansonsEntendues } from "@/data/chansons-entendues";
 import { lieux } from "@/data/lieux";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,6 +17,8 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
     const artistes = musiques.filter((a: Artiste) =>
         musiquesIds.includes(a.id)
     );
+    const entry = chansonsEntendues.find((c) => c.serieId === serie.id);
+    const chansons = entry?.chansons ?? [];
 
     return (
         <main className="max-w-4xl mx-auto px-4 py-16 animate-fade-in">
@@ -288,77 +291,18 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
             </section>
 
             {/* Chansons entendues */}
-            <section className="mb-10">
-            <h2 className="text-2xl font-serif font-semibold mb-2">Chansons entendues</h2>
-            <ul className="list-disc list-inside text-[var(--color-dark)] mb-10 space-y-1">
-
-                {serie.id === 1 && (
-                <>
-                    <li>"As I Lay Me Down" — Sophie B. Hawkins</li>
-                    <li>"Kiss the Rain" — Billie Myers</li>
-                    <li>"Ready for a Fall" — PJ Olsson</li>
-                </>
-                )}
-
-                {serie.id === 2 && (
-                <>
-                    <li>"Winter" — Joshua Radin</li>
-                    <li>"Halo" — Bethany Joy Lenz</li>
-                    <li>"The Good Kind" — The Wreckers</li>
-                    <li>"When It Comes" — Tyler Hilton</li>
-                </>
-                )}
-
-                {serie.id === 3 && (
-                <>
-                    <li>"Reflecting Light" — Sam Phillips</li>
-                    <li>"There She Goes" — The La’s</li>
-                    <li>"Then She Appeared" — XTC</li>
-                </>
-                )}
-
-                {serie.id === 4 && (
-                <>
-                    <li>"Breathe (2AM)" — Anna Nalick</li>
-                    <li>"Band of Gold" — Freda Payne</li>
-                    <li>"Thank You" — Dido</li>
-                </>
-                )}
-
-                {serie.id === 5 && (
-                <>
-                    <li>"Young Folks" — Peter Bjorn and John</li>
-                    <li>"With Me" — Sum 41</li>
-                    <li>"You've Got the Love" — Florence + The Machine</li>
-                </>
-                )}
-
-                {serie.id === 6 && (
-                <>
-                    <li>"How to Save a Life" — The Fray</li>
-                    <li>"Chasing Cars" — Snow Patrol</li>
-                    <li>"Keep Breathing" — Ingrid Michaelson</li>
-                    <li>"The Story" — Brandi Carlile</li>
-                </>
-                )}
-
-                {serie.id === 7 && (
-                <>
-                    <li>"Breakable" — Ingrid Michaelson</li>
-                    <li>"Closer to You" — Brandi Carlile</li>
-                </>
-                )}
-
-                {serie.id === 8 && (
-                <>
-                    <li>"Death with Dignity" — Sufjan Stevens</li>
-                    <li>"Salvation" — Gabrielle Aplin</li>
-                    <li>"Somewhere Only We Know" — Keane</li>
-                </>
-                )}
-
-            </ul>
-            </section>
+            {chansons.length > 0 && (
+                <section className="mb-10">
+                    <h2 className="text-2xl font-serif font-semibold mb-2">Chansons entendues</h2>
+                    <ul className="list-disc list-inside text-[var(--color-dark)] mb-10 space-y-1">
+                        {chansons.map(({ titre, artiste }, idx) => (
+                            <li key={idx}>
+                                “{titre}” — {artiste}
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            )}
 
             {/* Artistes coup de cœur */}
             <section className="mb-10">
