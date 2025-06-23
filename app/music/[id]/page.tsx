@@ -53,17 +53,6 @@ export async function generateStaticParams() {
             </ul>
             </section>
         )}
-
-        {artiste.anecdotes && (
-            <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-2">Anecdotes</h2>
-            <ul className="list-disc list-inside text-[var(--color-dark)] space-y-1">
-                {artiste.anecdotes.map((a, index) => (
-                <li key={index}>{a}</li>
-                ))}
-            </ul>
-            </section>
-        )}
         </main>
     );
 }

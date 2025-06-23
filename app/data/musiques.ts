@@ -7,7 +7,7 @@ export interface Artiste {
     anecdotes?: string[];
 }
 
-    export const musiques: Artiste[] = [
+export const musiques: Artiste[] = [
     {
         id: 1,
         nom: "Paula Cole",
@@ -20,7 +20,7 @@ export interface Artiste {
         nom: "Gavin DeGraw",
         image: "/images/gavin-degraw.jpg",
         seriesLiees: ["Les Frères Scott"],
-        chansonsConnues: ["I Don't Want to Be"],
+        chansonsConnues: ["I Don't Want to Be", "Chariot", "Soldier", "Follow Through", "Candy"],
     },
     {
         id: 3,
@@ -45,10 +45,10 @@ export interface Artiste {
     },
     {
         id: 6,
-        nom: "Anna Nalick",
-        image: "/images/anna-nalick.jpg",
+        nom: "Chad Fissher",
+        image: "/images/chad-fischer.jpg",
         seriesLiees: ["Private Practice"],
-        chansonsConnues: ["Breathe (2AM)"],
+        chansonsConnues: ["Private Practice Theme"],
     },
     {
         id: 7,

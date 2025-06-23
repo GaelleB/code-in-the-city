@@ -415,7 +415,7 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
                     <>
                         <li><strong>Anna Nalick</strong> — encore elle, mais parce que *Breathe (2 AM)* est l’âme même de Private Practice.</li>
                         <li><strong>Ingrid Michaelson</strong> — elle revient, parce qu’elle colle aussi à cette série plus intime, plus introspective.</li>
-                        <li><strong>Brandi Carlile</strong> — comme dans Grey’s, elle sait chanter la vulnérabilité sans pathos.</li>
+                        <li><strong>Brandi Carlile</strong> — comme dans Grey’s Anatomy, elle sait chanter la vulnérabilité sans pathos.</li>
                     </>
                     )}
 
