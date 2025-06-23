@@ -287,62 +287,6 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
                 </ul>
             </section>
 
-            {/* Bande originale */}
-            <section className="mb-10">
-            <h2 className="text-2xl font-serif font-semibold mb-2">Bande originale</h2>
-            <ul className="list-disc list-inside text-[var(--color-dark)] space-y-1">
-
-                {serie.id === 1 && (
-                <>
-                    <li>"I Don’t Want to Wait" — Paula Cole</li>
-                </>
-                )}
-
-                {serie.id === 2 && (
-                <>
-                    <li>"I Don’t Want to Be" — Gavin DeGraw</li>
-                </>
-                )}
-
-                {serie.id === 3 && (
-                <>
-                    <li>"Where You Lead" — Carole King & Louise Goffin</li>
-                </>
-                )}
-
-                {serie.id === 4 && (
-                <>
-                    <li>"Wisteria Lane Theme" — Danny Elfman</li>
-                </>
-                )}
-
-                {serie.id === 5 && (
-                <>
-                    <li>"Gossip Girl Main Title" — Transcenders</li>
-                </>
-                )}
-
-                {serie.id === 6 && (
-                <>
-                    <li>Aucune vraie chanson générique, mais l’ambiance musicale est portée par le piano et les choix pop/folk iconiques.</li>
-                </>
-                )}
-
-                {serie.id === 7 && (
-                <>
-                    <li>Aucune bande originale officielle, mais le ton est posé dès l’épisode 1 avec "Breathe (2AM)" de Anna Nalick.</li>
-                </>
-                )}
-
-                {serie.id === 8 && (
-                <>
-                    <li>"This Is Us Theme" — Siddhartha Khosla</li>
-                </>
-                )}
-
-            </ul>
-            </section>
-
             {/* Chansons entendues */}
             <section className="mb-10">
             <h2 className="text-2xl font-serif font-semibold mb-2">Chansons entendues</h2>
