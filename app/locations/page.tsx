@@ -83,7 +83,7 @@ export default function LocationPage() {
                     </FilmOverlay>
                 ))}
             </section>
-            <section className="mt-12">
+            <section className="mt-12 flex flex-col gap-8">
                 <Link href="/locations/itineraires-geek">
                     <Card className="cursor-pointer">
                         <h3 className="text-xl font-serif font-semibold">Itinéraires geek</h3>
