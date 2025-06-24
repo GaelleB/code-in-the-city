@@ -11,7 +11,7 @@ export const lieux: Lieu[] = [
     id: 1,
     nom: "Dawson’s Creek – Capeside Pier",
     description: "Le célèbre ponton de Dawson’s Creek, tourné à Southport.",
-    mapUrl: "https://www.google.com/maps/place/Southport+Pier"
+    mapUrl: "https://www.google.com/maps/search/Wilmington+NC"
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ export const lieux: Lieu[] = [
     id: 6,
     nom: "Grey’s Anatomy – Harborview Medical Center",
     description: "L’hôpital de Seattle qui joue les décors de Grey’s Anatomy.",
-    mapUrl: "https://www.google.com/maps/place/Harborview+Medical+Center"
+    mapUrl: "https://www.google.com/maps/place/Sepulveda+VA+Medical+Center/@34.2442686,-118.4820451,17z/data=!3m1!4b1!4m6!3m5!1s0x80c290834403a7e1:0xa67b8841d16a9d0c!8m2!3d34.2442686!4d-118.4820451!16s%2Fg%2F1tjy1rtq?hl=fr&entry=ttu&g_ep=EgoyMDI1MDYyMi4wIKXMDSoASAFQAw%3D%3D"
   },
   {
     id: 7,
