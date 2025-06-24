@@ -36,6 +36,36 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
                 {serie.synopsis}
             </p>
 
+            {/* Distribution */}
+            {serie.casting && (
+                <section className="mb-16">
+                    <h2 className="text-3xl font-serif font-semibold mb-6 border-b border-[var(--color-secondary)] pb-1">
+                        Distribution principale
+                    </h2>
+                    <ul className="list-disc list-inside space-y-2 text-[var(--color-dark)]">
+                        {serie.casting.map((actor, index) => (
+                        <li key={index} className="transition-all duration-200 hover:text-black">
+                            <strong>{actor.actor}</strong> — {actor.character} ({actor.ageAtStart} ans)
+                        </li>
+                        ))}
+                    </ul>
+                </section>
+            )}
+
+            {/* Anecdotes */}
+            {serie.anecdotes?.length > 0 && (
+                <section className="mb-16">
+                    <h2 className="text-3xl font-serif font-semibold mb-4 border-b border-[var(--color-secondary)] pb-1">
+                        Anecdotes
+                    </h2>
+                    <ul className="list-disc list-inside text-[var(--color-dark)] space-y-2">
+                        {serie.anecdotes.map((a, i) => (
+                        <li key={i}>{a}</li>
+                        ))}
+                    </ul>
+                </section>
+            )}
+
             {/* Ce que m'a apporté cette série */}
             <section className="mb-8">
                 <h2 className="text-2xl font-serif font-semibold mb-2">Ce que m'a apporté cette série</h2>
@@ -439,16 +469,17 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
                 </ul>
             </section>
 
-
+            {/* Lieux de tournage */}       
             {lieu && (
                 <section className="mb-10">
-                    <h2 className="text-2xl font-serif font-semibold mb-2">Lieu de tournage</h2>
+                    <h2 className="text-2xl font-serif font-semibold mb-2">Lieux de tournage</h2>
                     <p className="text-[var(--color-dark)] mb-2">
                         <strong>{lieu.nom}</strong> — {lieu.description}
                     </p>
                 </section>
             )}
 
+            {/* Bande originale */}
             {artistes.length > 0 && (
                 <section className="mb-10">
                     <h2 className="text-2xl font-serif font-semibold mb-2">Bande originale</h2>
@@ -467,34 +498,7 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
                 </section>
             )}
 
-            {serie.casting && (
-                <section className="mb-16">
-                    <h2 className="text-3xl font-serif font-semibold mb-6 border-b border-[var(--color-secondary)] pb-1">
-                        Distribution principale
-                    </h2>
-                    <ul className="list-disc list-inside space-y-2 text-[var(--color-dark)]">
-                        {serie.casting.map((actor, index) => (
-                        <li key={index} className="transition-all duration-200 hover:text-black">
-                            <strong>{actor.actor}</strong> — {actor.character} ({actor.ageAtStart} ans)
-                        </li>
-                        ))}
-                    </ul>
-                </section>
-            )}
-
-            {serie.anecdotes?.length > 0 && (
-                <section className="mb-16">
-                    <h2 className="text-3xl font-serif font-semibold mb-4 border-b border-[var(--color-secondary)] pb-1">
-                        Anecdotes
-                    </h2>
-                    <ul className="list-disc list-inside text-[var(--color-dark)] space-y-2">
-                        {serie.anecdotes.map((a, i) => (
-                        <li key={i}>{a}</li>
-                        ))}
-                    </ul>
-                </section>
-            )}
-
+            {/* Image */}
             {serie.image && (
                 <div className="mt-12">
                     <Image
