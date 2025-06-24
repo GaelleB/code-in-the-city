@@ -36,7 +36,7 @@ export default function InspirationNYPage() {
                         Promenade suspendue entre art urbain et vues sur l’Hudson, idéale pour se ressourcer.
                     </p>
                     <Link
-                        href="https://www.google.com/maps/place/High+Line,+New+York,+NY"
+                        href="https://www.google.com/maps/place/High+Line/@40.7479965,-74.0073398,17z/data=!3m1!4b1!4m6!3m5!1s0x89c259c7840fb4e5:0x583f615c850a3c91!8m2!3d40.7479925!4d-74.0047649!16zL20vMDdqd3dm?entry=ttu&g_ep=EgoyMDI1MDYyMi4wIKXMDSoASAFQAw%3D%3D"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-[var(--color-primary)] hover:underline font-medium"
@@ -51,7 +51,7 @@ export default function InspirationNYPage() {
                         Vue imprenable sur Manhattan et spot de rêve pour photographier la skyline.
                     </p>
                     <Link
-                        href="https://www.google.com/maps/place/Brooklyn+Bridge+Park,+Brooklyn,+NY"
+                        href="https://www.google.com/maps/place/Pont+de+Brooklyn/@40.7058134,-73.9985485,17z/data=!3m1!4b1!4m6!3m5!1s0x89c25a2343ce7b2b:0x2526ddba7abd465c!8m2!3d40.7060855!4d-73.9968643!16zL20vMGN2NGM?entry=ttu&g_ep=EgoyMDI1MDYyMi4wIKXMDSoASAFQAw%3D%3D"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-[var(--color-primary)] hover:underline font-medium"
