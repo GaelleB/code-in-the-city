@@ -69,6 +69,7 @@ export const chansonsEntendues: ChansonEntendue[] = [
         serieNom: "Private Practice",
         chansons: [
             { titre: "Breakable", artiste: "Ingrid Michaelson" },
+            { titre: "Cry Baby", artiste: "Dukes of Daville" },
             { titre: "Closer to You", artiste: "Brandi Carlile" }
         ]
     },
