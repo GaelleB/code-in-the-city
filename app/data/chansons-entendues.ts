@@ -78,7 +78,8 @@ export const chansonsEntendues: ChansonEntendue[] = [
         serieNom: "This Is Us",
         chansons: [
             { titre: "Death with Dignity", artiste: "Sufjan Stevens" },
-            { titre: "Salvation", artiste: "Gabrielle Aplin" },
+            { titre: "Landslide", artiste: "Chrissy Metz" },
+            { titre: "We Can Always Come Back To This", artiste: "Brian Tyree Henry" },
             { titre: "Somewhere Only We Know", artiste: "Keane" }
         ]
     }
