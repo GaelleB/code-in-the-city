@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+"use client";
 
 import { notFound } from "next/navigation";
 import { series } from "@/data/series";
@@ -7,6 +8,7 @@ import { chansonsEntendues } from "@/data/chansons-entendues";
 import { lieux } from "@/data/lieux";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function SerieDetail({ params }: { params: { id: string } }) {
     const serie = series.find((s) => s.id === Number(params.id));
@@ -21,35 +23,72 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
     const chansons = entry?.chansons ?? [];
 
     return (
-        <main className="max-w-4xl mx-auto px-4 py-16 animate-fade-in">
-            <h1 className="text-5xl font-serif font-bold text-gray-900 mb-2 border-b-2 border-[var(--color-secondary)] pb-2">
+        <main className="max-w-4xl mx-auto px-4 py-16">
+            <motion.h1 
+                className="text-5xl font-serif font-bold text-gray-900 mb-2 border-b-2 border-[var(--color-secondary)] pb-2"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
                 {serie.title}
-            </h1>
+            </motion.h1>
 
             {serie.originalTitle && (
-                <p className="italic text-gray-600 mb-1">({serie.originalTitle})</p>
+                <motion.p 
+                    className="italic text-gray-600 mb-1"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4, delay: 0.2 }}
+                >
+                    ({serie.originalTitle})
+                </motion.p>
             )}
 
-            <p className="italic text-gray-600 mb-4">{serie.years}</p>
+            <motion.p 
+                className="italic text-gray-600 mb-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.3 }}
+            >
+                {serie.years}
+            </motion.p>
 
-            <p className="text-[var(--color-dark)] leading-relaxed mb-8 text-justify">
+            <motion.p 
+                className="text-[var(--color-dark)] leading-relaxed mb-8 text-justify"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+            >
                 {serie.synopsis}
-            </p>
+            </motion.p>
 
             {/* Distribution */}
             {serie.casting && (
-                <section className="mb-16">
+                <motion.section 
+                    className="mb-16"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                >
                     <h2 className="text-3xl font-serif font-semibold mb-6 border-b border-[var(--color-secondary)] pb-1">
                         Distribution principale
                     </h2>
                     <ul className="list-disc list-inside space-y-2 text-[var(--color-dark)]">
                         {serie.casting.map((actor, index) => (
-                        <li key={index} className="transition-all duration-200 hover:text-black">
+                        <motion.li 
+                            key={index} 
+                            className="transition-all duration-200 hover:text-black"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.3, delay: index * 0.05 }}
+                        >
                             <strong>{actor.actor}</strong> — {actor.character} ({actor.ageAtStart} ans)
-                        </li>
+                        </motion.li>
                         ))}
                     </ul>
-                </section>
+                </motion.section>
             )}
 
             {/* Anecdotes */}
