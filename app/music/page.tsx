@@ -1,10 +1,13 @@
 import { musiques } from "@/data/musiques";
 import Card from "@/components/Card";
 import Link from "next/link";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export default function MusicPage() {
     return (
         <main className="max-w-6xl mx-auto px-4 py-12 animate-fade-in">
+            <Breadcrumb />
+
             <h1 className="text-4xl font-serif font-bold mb-10 border-b-2 border-[var(--color-secondary)] pb-2">
                 Les artistes qui ont marqué nos séries
             </h1>

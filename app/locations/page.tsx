@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import Card from "@/components/Card";
 import Link from "next/link";
 import FilmOverlay from "@/components/FilmOverlay";
 import { lieux } from "@/data/lieux";
+import { getSeriesForLocation } from "../../utils/relations";
 import Image from "next/image";
+import Breadcrumb from "@/components/Breadcrumb";
 
 // Titre narratif
 function NarrativeTitle({ index }: { index: number }) {
@@ -19,6 +21,7 @@ function NarrativeTitle({ index }: { index: number }) {
 
 export default function LocationPage() {
     const containerRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const [highlightedLieu, setHighlightedLieu] = useState<number | null>(null);
 
     useEffect(() => {
         const elems = containerRefs.current.filter(Boolean) as HTMLDivElement[];
@@ -29,10 +32,35 @@ export default function LocationPage() {
             { opacity: 1, y: 0, duration: 1, ease: "power2.out", stagger: 0.2 }
         );
         }
+
+        // Smooth scroll vers l'ancre si présente dans l'URL et mise en évidence
+        const hash = window.location.hash;
+        if (hash) {
+        const lieuId = hash.replace('#lieu-', '');
+        const lieuIdNumber = parseInt(lieuId);
+
+        if (!isNaN(lieuIdNumber)) {
+            setHighlightedLieu(lieuIdNumber);
+
+            setTimeout(() => {
+            const target = document.querySelector(hash);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            }, 100);
+
+            // Retirer la mise en évidence après 3 secondes
+            setTimeout(() => {
+            setHighlightedLieu(null);
+            }, 3000);
+        }
+        }
     }, []);
 
     return (
-        <main className="max-w-6xl mx-auto px-4 py-12">
+        <main className="max-w-6xl mx-auto px-4 py-12" style={{ scrollBehavior: 'smooth' }}>
+            <Breadcrumb />
+
             <h1 className="text-4xl font-serif font-bold mb-10 border-b border-[var(--color-secondary)] pb-2 animate-fade-in">
                 Lieux de tournage
             </h1>
@@ -45,10 +73,15 @@ export default function LocationPage() {
                 {lieux.map((lieu, idx) => (
                     <FilmOverlay key={lieu.id}>
                         <div
+                            id={`lieu-${lieu.id}`}
                             ref={(el) => {
                             containerRefs.current[idx] = el;
                             }}
-                            className="group relative film-strip-container transition-transform duration-300 hover:-translate-y-1"
+                            className={`group relative film-strip-container transition-all duration-500 hover:-translate-y-1
+                                ${highlightedLieu === lieu.id
+                                    ? 'scale-105 ring-4 ring-[var(--color-primary)] ring-opacity-70 shadow-2xl shadow-[var(--color-primary)]/30 rounded-xl'
+                                    : ''
+                                }`}
                         >
                             {/* Image pellicule en fond */}
                             <Image
@@ -69,6 +102,30 @@ export default function LocationPage() {
                                 <p className="text-[var(--color-text-dark)] mb-4 leading-relaxed">
                                 {lieu.description}
                                 </p>
+
+                                {/* Séries tournées ici */}
+                                {(() => {
+                                const seriesForLocation = getSeriesForLocation(lieu.id);
+                                return seriesForLocation.length > 0 && (
+                                    <div className="mb-4">
+                                    <div className="flex flex-wrap gap-2">
+                                        {seriesForLocation.map((serie) => (
+                                        <Link key={serie.id} href={`/series/${serie.id}`}>
+                                            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium
+                                                           bg-[var(--color-primary)]/10 text-[var(--color-primary)]
+                                                           border border-[var(--color-primary)]/20
+                                                           hover:bg-[var(--color-primary)]/20 hover:border-[var(--color-primary)]/40
+                                                           transition-all duration-200 cursor-pointer">
+                                            <span className="text-base">📺</span>
+                                            <span>{serie.title}</span>
+                                            </span>
+                                        </Link>
+                                        ))}
+                                    </div>
+                                    </div>
+                                );
+                                })()}
+
                                 <Link
                                 href={lieu.mapUrl}
                                 target="_blank"

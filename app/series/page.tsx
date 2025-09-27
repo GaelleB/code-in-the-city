@@ -3,12 +3,15 @@ import Card from "@/components/Card";
 import Link from "next/link";
 import { series } from "@/data/series";
 import { motion } from "framer-motion";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export default function SeriesPage() {
   return (
     <main className="max-w-6xl mx-auto px-4 py-12">
+      <Breadcrumb />
+
       {/* Paragraphe d'introduction */}
-      <motion.p 
+      <motion.p
         className="mb-6 text-lg text-[var(--color-dark)] italic"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}

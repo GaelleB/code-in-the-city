@@ -4,10 +4,13 @@ import Link from "next/link";
 import { itineraires, Spot } from "@/data/itineraires";
 import { series } from "@/data/series";
 import Card from "@/components/Card";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export default function ItinerairesGeekPage() {
     return (
         <main className="max-w-6xl mx-auto px-4 py-12">
+            <Breadcrumb />
+
             <h1 className="text-4xl font-serif font-bold mb-8 border-b border-[var(--color-secondary)] pb-2">
                 Itinéraires geek
             </h1>

@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
 import { musiques } from "@/data/musiques";
 import type { Artiste } from "@/data/musiques";
+import { getSeriesForArtist } from "../../../utils/relations";
+import Link from "next/link";
 import Image from "next/image";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export async function generateStaticParams() {
     return musiques.map((artiste) => ({
@@ -14,8 +17,12 @@ export async function generateStaticParams() {
 
     if (!artiste) return notFound();
 
+    const seriesForArtist = getSeriesForArtist(artiste.id);
+
     return (
         <main className="max-w-4xl mx-auto px-4 py-16 animate-fade-in">
+        <Breadcrumb />
+
         <h1 className="text-4xl font-serif font-bold mb-6 border-b-2 border-[var(--color-secondary)] pb-2">
             {artiste.nom}
         </h1>
@@ -32,16 +39,27 @@ export async function generateStaticParams() {
             </div>
         )}
 
-        {artiste.seriesLiees.length > 0 && (
+        {/* Séries avec cet artiste */}
+        {seriesForArtist.length > 0 && (
             <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-2">Séries liées</h2>
-            <ul className="list-disc list-inside text-[var(--color-dark)] space-y-1">
-                {artiste.seriesLiees.map((serie, index) => (
-                <li key={index}>{serie}</li>
+            <h2 className="text-2xl font-semibold mb-4">Séries avec cet artiste</h2>
+            <div className="flex flex-wrap gap-2">
+                {seriesForArtist.map((serie) => (
+                <Link key={serie.id} href={`/series/${serie.id}`}>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium
+                                   bg-[var(--color-primary)]/10 text-[var(--color-primary)]
+                                   border border-[var(--color-primary)]/20
+                                   hover:bg-[var(--color-primary)]/20 hover:border-[var(--color-primary)]/40
+                                   transition-all duration-200 cursor-pointer">
+                    <span className="text-base">📺</span>
+                    <span>{serie.title}</span>
+                    </span>
+                </Link>
                 ))}
-            </ul>
+            </div>
             </section>
         )}
+
 
         {artiste.bo.length > 0 && (
             <section className="mb-8">

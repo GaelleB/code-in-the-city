@@ -2,10 +2,13 @@
 
 import Card from "@/components/Card";
 import Link from "next/link";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export default function InspirationNYPage() {
     return (
         <main className="max-w-6xl mx-auto px-4 py-12 animate-fade-in">
+            <Breadcrumb />
+
             <h1 className="text-4xl font-serif font-bold mb-6 border-b border-[var(--color-secondary)] pb-2">
                 Inspiration NY
             </h1>

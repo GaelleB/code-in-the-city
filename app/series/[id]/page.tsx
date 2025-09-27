@@ -9,6 +9,8 @@ import { lieux } from "@/data/lieux";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import RelatedLinks from "@/components/RelatedLinks";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export default function SerieDetail({ params }: { params: { id: string } }) {
     const serie = series.find((s) => s.id === Number(params.id));
@@ -24,7 +26,9 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
 
     return (
         <main className="max-w-4xl mx-auto px-4 py-16">
-            <motion.h1 
+            <Breadcrumb />
+
+            <motion.h1
                 className="text-5xl font-serif font-bold text-gray-900 mb-2 border-b-2 border-[var(--color-secondary)] pb-2"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -53,7 +57,7 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
                 {serie.years}
             </motion.p>
 
-            <motion.p 
+            <motion.p
                 className="text-[var(--color-dark)] leading-relaxed mb-8 text-justify"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -61,6 +65,9 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
             >
                 {serie.synopsis}
             </motion.p>
+
+            {/* Liens connexes */}
+            <RelatedLinks serieId={serie.id} />
 
             {/* Distribution */}
             {serie.casting && (
@@ -508,12 +515,17 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
                 </ul>
             </section>
 
-            {/* Lieux de tournage */}       
+            {/* Lieux de tournage */}
             {lieu && (
                 <section className="mb-10">
                     <h2 className="text-2xl font-serif font-semibold mb-2">Lieux de tournage</h2>
                     <p className="text-[var(--color-dark)] mb-2">
-                        <strong>{lieu.nom}</strong> — {lieu.description}
+                        <Link
+                            href={`/locations#lieu-${lieu.id}`}
+                            className="text-[var(--color-primary)] hover:underline hover:text-black transition-colors"
+                        >
+                            <strong>{lieu.nom}</strong>
+                        </Link> — {lieu.description}
                     </p>
                 </section>
             )}
