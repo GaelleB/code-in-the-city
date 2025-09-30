@@ -41,6 +41,26 @@ body {
   animation: fade-in-up 0.8s ease-out both;
 }
 
+/* Désactiver le tap highlight sur mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Améliorer les interactions tactiles */
+button, a, [role="button"] {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Hover states seulement sur desktop */
+@media (hover: hover) and (pointer: fine) {
+  .hover\:scale-105:hover {
+    transform: scale(1.05);
+  }
+}
+
 /* Film overlay : bande pellicule superposée sur le contenu */
 .film-overlay {
   position: relative;

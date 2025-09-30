@@ -4,8 +4,9 @@ import { getAllPlaylists } from "@/data/playlists";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Breadcrumb from "@/components/Breadcrumb";
-import { Music2, Clock, Headphones } from "lucide-react";
-import { useState } from "react";
+import { Music2, Clock, Headphones, RefreshCw } from "lucide-react";
+import { useState, useCallback } from "react";
+import { usePullToRefresh } from "@/hooks/usePullToRefresh";
 
 // Fonction pour estimer la durée moyenne d'une playlist (3min30 par track)
 function estimateDuration(trackCount: number): string {
@@ -36,7 +37,21 @@ const moodEmojis = {
   nuit: "🌙",
 };
 
-function PlaylistCard({ playlist, index }: { playlist: any; index: number }) {
+interface PlaylistCardProps {
+  playlist: {
+    id: number;
+    title: string;
+    mood: string;
+    description: string;
+    tracks: Array<{
+      songTitle: string;
+      artistName: string;
+    }>;
+  };
+  index: number;
+}
+
+function PlaylistCard({ playlist, index }: PlaylistCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const colorClass = moodColors[playlist.mood as keyof typeof moodColors];
   const emoji = moodEmojis[playlist.mood as keyof typeof moodEmojis];
@@ -52,12 +67,14 @@ function PlaylistCard({ playlist, index }: { playlist: any; index: number }) {
       }}
     >
       <Link href={`/music/playlists/${playlist.id}`}>
-        <div
+        <motion.div
           className={`group relative bg-gradient-to-br ${colorClass} backdrop-blur-sm
                      border rounded-2xl overflow-hidden transition-all duration-300
-                     hover:scale-105 hover:shadow-2xl hover:shadow-black/20 cursor-pointer`}
+                     md:hover:scale-105 md:hover:shadow-2xl md:hover:shadow-black/20 cursor-pointer
+                     active:scale-[0.97] touch-manipulation`}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
+          whileTap={{ scale: 0.97 }}
         >
           {/* Cover Image Placeholder */}
           <div className="relative h-40 sm:h-48 bg-gradient-to-br from-black/10 to-black/30 flex items-center justify-center overflow-hidden">
@@ -121,7 +138,7 @@ function PlaylistCard({ playlist, index }: { playlist: any; index: number }) {
               className="overflow-hidden"
             >
               <div className="pt-3 border-t border-gray-200 space-y-1.5">
-                {playlist.tracks.slice(0, 3).map((track: any, idx: number) => (
+                {playlist.tracks.slice(0, 3).map((track, idx: number) => (
                   <motion.div
                     key={idx}
                     initial={{ x: -10, opacity: 0 }}
@@ -151,7 +168,7 @@ function PlaylistCard({ playlist, index }: { playlist: any; index: number }) {
               {playlist.mood}
             </span>
           </div>
-        </div>
+        </motion.div>
       </Link>
     </motion.div>
   );
@@ -160,8 +177,35 @@ function PlaylistCard({ playlist, index }: { playlist: any; index: number }) {
 export default function PlaylistsPage() {
   const playlists = getAllPlaylists();
 
+  // Pull-to-refresh
+  const handleRefresh = useCallback(async () => {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    window.location.reload();
+  }, []);
+
+  const { isPulling, pullDistance } = usePullToRefresh(handleRefresh);
+
   return (
-    <main className="max-w-7xl mx-auto px-4 py-12">
+    <main className="max-w-7xl mx-auto px-4 py-12 relative">
+      {/* Pull-to-refresh indicator */}
+      {pullDistance > 0 && (
+        <motion.div
+          className="fixed top-0 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center"
+          style={{
+            transform: `translateX(-50%) translateY(${Math.min(pullDistance - 40, 60)}px)`,
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: pullDistance > 40 ? 1 : 0 }}
+        >
+          <div className={`bg-white rounded-full p-3 shadow-lg border-2 ${isPulling ? 'border-[var(--color-primary)]' : 'border-gray-300'}`}>
+            <RefreshCw
+              className={`w-5 h-5 ${isPulling ? 'text-[var(--color-primary)] animate-spin' : 'text-gray-400'}`}
+              style={{ transform: `rotate(${pullDistance * 2}deg)` }}
+            />
+          </div>
+        </motion.div>
+      )}
+
       <Breadcrumb />
 
       {/* Header */}

@@ -40,14 +40,14 @@ export default function Featured() {
             >
               <Link
                 href={`/articles/${article.id}`}
-                className="block px-2 sm:px-4 hover:opacity-90 transition-opacity"
+                className="block px-2 sm:px-4 md:hover:opacity-90 transition-opacity active:opacity-70 touch-manipulation"
               >
                 <Card className="h-full">
                   <p className="text-xs uppercase tracking-wide text-[var(--color-text-dark)] mb-2">
                     {article.date}
                   </p>
 
-                  <h3 className="text-lg text-[var(--color-primary)] font-bold hover:underline">
+                  <h3 className="text-lg text-[var(--color-primary)] font-bold md:hover:underline">
                     {article.title}
                   </h3>
 

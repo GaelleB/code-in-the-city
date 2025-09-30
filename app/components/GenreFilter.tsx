@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
@@ -40,11 +40,11 @@ export default function GenreFilter({ tags, onFilterChange, totalItems, classNam
     onFilterChange([]);
   };
 
-  const totalResults = useMemo(() => {
-    if (selectedTags.length === 0) return null;
-    // Le composant parent calcule les résultats, on affiche juste le compteur
-    return selectedTags.length;
-  }, [selectedTags]);
+  // const totalResults = useMemo(() => {
+  //   if (selectedTags.length === 0) return null;
+  //   // Le composant parent calcule les résultats, on affiche juste le compteur
+  //   return selectedTags.length;
+  // }, [selectedTags]);
 
   return (
     <div className={`${className}`}>

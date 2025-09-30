@@ -10,7 +10,7 @@ import Breadcrumb from '../components/Breadcrumb';
 function SearchResults() {
   const searchParams = useSearchParams();
   const query = searchParams.get('q') || '';
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
   const resultsPerPage = 10;
 
   const { series, articles, artistes, lieux, total } = useSearchPage(query);
@@ -125,12 +125,7 @@ function SearchResults() {
   if (!query.trim()) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-16">
-        <Breadcrumb
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Recherche', href: '/search' },
-          ]}
-        />
+        <Breadcrumb />
         <div className="text-center py-20">
           <Search className="w-16 h-16 mx-auto text-gray-300 mb-4" />
           <h1 className="text-3xl font-bold text-[var(--color-dark)] mb-2">

@@ -139,7 +139,7 @@ export default function SearchBar() {
         {query && (
           <button
             onClick={clearSearch}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-black transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 md:hover:text-black transition-colors active:scale-90 touch-manipulation p-1"
             aria-label="Effacer la recherche"
           >
             <X className="w-5 h-5" />
@@ -159,10 +159,10 @@ export default function SearchBar() {
                 key={`${result.type}-${result.id}`}
                 onClick={() => handleResultClick(result)}
                 onMouseEnter={() => setSelectedIndex(index)}
-                className={`w-full flex items-center gap-4 p-3 text-left transition-colors border-b border-gray-200 last:border-b-0 ${
+                className={`w-full flex items-center gap-4 p-3 text-left transition-colors border-b border-gray-200 last:border-b-0 active:bg-gray-100 touch-manipulation ${
                   index === selectedIndex
                     ? 'bg-[var(--color-accent)]/10'
-                    : 'hover:bg-gray-50'
+                    : 'md:hover:bg-gray-50'
                 }`}
               >
                 {/* Image */}
@@ -205,7 +205,7 @@ export default function SearchBar() {
                     key={idx}
                     href={suggestion.url}
                     onClick={clearSearch}
-                    className="block text-sm text-orange-900 hover:text-orange-700 hover:underline font-medium"
+                    className="block text-sm text-orange-900 md:hover:text-orange-700 md:hover:underline font-medium active:opacity-70 touch-manipulation py-1"
                   >
                     🎧 {suggestion.title} <span className="text-xs text-orange-600">({suggestion.mood})</span>
                   </Link>

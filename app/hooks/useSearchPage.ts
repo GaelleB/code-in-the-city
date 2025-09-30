@@ -80,13 +80,14 @@ export function useSearchPage(query: string): GroupedResults {
       const synopsisMatch = fuzzyMatch(serie.synopsis, query);
 
       // Recherche dans les tags de genre
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const serieTagIds = require('../data/tags').seriesTagsMapping[serie.id] || [];
       const tagMatches = serieTagIds.map((tagId: string) => {
         const tag = genreTags.find(t => t.id === tagId);
         if (!tag) return { match: false, score: 0 };
         return fuzzyMatch(tag.label, query);
       });
-      const bestTagMatch = Math.max(...tagMatches.map(m => m.score), 0);
+      const bestTagMatch = Math.max(...tagMatches.map((m: { score: number }) => m.score), 0);
 
       const bestMatch = Math.max(
         titleMatch.score,

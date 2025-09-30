@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { series } from "@/data/series";
 import { musiques } from "@/data/musiques";
-import { lieux } from "@/data/lieux";
+// import { lieux } from "@/data/lieux";
 
 interface BreadcrumbItem {
   label: string;

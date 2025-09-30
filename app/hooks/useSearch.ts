@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect, useCallback } from 'react';
 import { series, Serie } from '../data/series';
 import { articles, Article } from '../data/articles';
 import { musiques, Artiste } from '../data/musiques';
-import { getAllPlaylists, type Playlist, type PlaylistMood } from '../data/playlists';
+import { getAllPlaylists, type Playlist } from '../data/playlists';
 import { chansonsEntendues } from '../data/chansons-entendues';
 
 export type SearchResultType = 'serie' | 'article' | 'artiste' | 'chanson' | 'playlist';

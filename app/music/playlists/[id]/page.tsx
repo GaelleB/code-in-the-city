@@ -8,7 +8,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Breadcrumb from "@/components/Breadcrumb";
 import MusicEmbed from "@/components/MusicEmbed";
-import { Music2, Clock, Headphones, ExternalLink, Sparkles, Play } from "lucide-react";
+import { Music2, Clock, Headphones, Sparkles, Play } from "lucide-react";
 import { useState } from "react";
 
 // Mapping des moods vers des couleurs (tons beige/crème vintage)
@@ -147,13 +147,14 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
               return (
                 <motion.div
                   key={index}
-                  className={`group flex items-center gap-4 px-6 py-4 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0 cursor-pointer ${
+                  className={`group flex items-center gap-4 px-6 py-4 md:hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0 cursor-pointer active:bg-gray-100 touch-manipulation ${
                     selectedTrackIndex === index ? 'bg-[var(--color-primary)]/10 border-l-4 border-l-[var(--color-primary)]' : ''
                   }`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: 0.6 + index * 0.05 }}
                   onClick={() => setSelectedTrackIndex(index)}
+                  whileTap={{ scale: 0.98, backgroundColor: 'rgba(0,0,0,0.05)' }}
                 >
                   {/* Numéro / Play icon */}
                   <div className="w-8 text-center">
@@ -175,7 +176,8 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
                       {artiste ? (
                         <Link
                           href={`/music/${artiste.id}`}
-                          className="hover:underline hover:text-[var(--color-primary)] transition-colors"
+                          className="md:hover:underline md:hover:text-[var(--color-primary)] transition-colors active:opacity-70 touch-manipulation"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           {track.artistName}
                         </Link>
@@ -186,7 +188,8 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
                       {serie && (
                         <Link
                           href={`/series/${serie.id}`}
-                          className="hover:underline hover:text-[var(--color-primary)] transition-colors"
+                          className="md:hover:underline md:hover:text-[var(--color-primary)] transition-colors active:opacity-70 touch-manipulation"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           {serie.title}
                         </Link>

@@ -15,7 +15,7 @@ export default function MusicPage() {
 
             {/* Lien vers les playlists */}
             <Link href="/music/playlists">
-                <Card className="mb-10 cursor-pointer bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 border-2 border-[var(--color-primary)]/30 hover:border-[var(--color-primary)] transition-all hover:shadow-lg">
+                <Card className="mb-10 cursor-pointer bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 border-2 border-[var(--color-primary)]/30 md:hover:border-[var(--color-primary)] transition-all md:hover:shadow-lg active:scale-[0.98] touch-manipulation">
                     <div className="flex items-center gap-4">
                         <div className="w-14 h-14 bg-[var(--color-primary)] rounded-xl flex items-center justify-center shadow-md">
                             <Music2 className="w-8 h-8 text-white" />
@@ -25,7 +25,7 @@ export default function MusicPage() {
                                 Découvrir les Playlists
                             </h3>
                             <p className="text-[var(--color-dark)]">
-                                Des sélections par mood : nostalgie, mélancolie, réconfort, énergie et nuits d'ado
+                                Des sélections par mood : nostalgie, mélancolie, réconfort, énergie et nuits d&apos;ado
                             </p>
                         </div>
                         <span className="text-2xl">→</span>
@@ -52,7 +52,7 @@ export default function MusicPage() {
 
                     <Link
                     href={`/music/${artiste.id}`}
-                    className="text-[var(--color-primary)] hover:underline hover:text-black font-medium transition-colors"
+                    className="text-[var(--color-primary)] md:hover:underline md:hover:text-black font-medium transition-colors active:opacity-70 touch-manipulation inline-block"
                     >
                     Voir la fiche →
                     </Link>

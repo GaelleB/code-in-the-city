@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Breadcrumb from "@/components/Breadcrumb";
 import dynamic from "next/dynamic";
 import { useMemo, useState, useCallback } from "react";
+import { usePullToRefresh } from "@/hooks/usePullToRefresh";
+import { RefreshCw } from "lucide-react";
 
 const GenreFilter = dynamic(() => import("@/components/GenreFilter"), {
   loading: () => <div className="h-20 animate-pulse bg-gray-200 rounded-lg" />,
@@ -24,6 +26,14 @@ export default function SeriesPage() {
     start: 1998,
     end: 2025
   });
+
+  // Pull-to-refresh
+  const handleRefresh = useCallback(async () => {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    window.location.reload();
+  }, []);
+
+  const { isPulling, pullDistance } = usePullToRefresh(handleRefresh);
 
   // Fonction pour extraire l'année de début d'une série
   const getSerieStartYear = (serie: typeof series[0]): number => {
@@ -73,7 +83,26 @@ export default function SeriesPage() {
   const tagsWithCount = getTagsWithCount();
 
   return (
-    <main className="max-w-6xl mx-auto px-4 py-12">
+    <main className="max-w-6xl mx-auto px-4 py-12 relative">
+      {/* Pull-to-refresh indicator */}
+      {pullDistance > 0 && (
+        <motion.div
+          className="fixed top-0 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center"
+          style={{
+            transform: `translateX(-50%) translateY(${Math.min(pullDistance - 40, 60)}px)`,
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: pullDistance > 40 ? 1 : 0 }}
+        >
+          <div className={`bg-white rounded-full p-3 shadow-lg border-2 ${isPulling ? 'border-[var(--color-primary)]' : 'border-gray-300'}`}>
+            <RefreshCw
+              className={`w-5 h-5 ${isPulling ? 'text-[var(--color-primary)] animate-spin' : 'text-gray-400'}`}
+              style={{ transform: `rotate(${pullDistance * 2}deg)` }}
+            />
+          </div>
+        </motion.div>
+      )}
+
       <Breadcrumb />
 
       {/* Paragraphe d'introduction */}
@@ -187,7 +216,7 @@ export default function SeriesPage() {
                 </p>
                 <Link
                   href={`/series/${serie.id}`}
-                  className="text-[var(--color-primary)] hover:underline font-semibold hover:text-black transition-colors"
+                  className="text-[var(--color-primary)] md:hover:underline font-semibold md:hover:text-black transition-colors active:opacity-70 touch-manipulation inline-block"
                 >
                   Lire la fiche →
                 </Link>

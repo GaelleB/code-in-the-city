@@ -4,11 +4,40 @@ import Card from "@/components/Card";
 import { articles } from "@/data/articles";
 import { motion } from "framer-motion";
 import Breadcrumb from "@/components/Breadcrumb";
+import { useCallback } from "react";
+import { usePullToRefresh } from "@/hooks/usePullToRefresh";
+import { RefreshCw } from "lucide-react";
 
 export default function ArticlesPage() {
+    // Pull-to-refresh
+    const handleRefresh = useCallback(async () => {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        window.location.reload();
+    }, []);
+
+    const { isPulling, pullDistance } = usePullToRefresh(handleRefresh);
 
     return (
-        <main className="max-w-6xl mx-auto px-4 py-12">
+        <main className="max-w-6xl mx-auto px-4 py-12 relative">
+            {/* Pull-to-refresh indicator */}
+            {pullDistance > 0 && (
+                <motion.div
+                    className="fixed top-0 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center"
+                    style={{
+                        transform: `translateX(-50%) translateY(${Math.min(pullDistance - 40, 60)}px)`,
+                    }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: pullDistance > 40 ? 1 : 0 }}
+                >
+                    <div className={`bg-white rounded-full p-3 shadow-lg border-2 ${isPulling ? 'border-[var(--color-primary)]' : 'border-gray-300'}`}>
+                        <RefreshCw
+                            className={`w-5 h-5 ${isPulling ? 'text-[var(--color-primary)] animate-spin' : 'text-gray-400'}`}
+                            style={{ transform: `rotate(${pullDistance * 2}deg)` }}
+                        />
+                    </div>
+                </motion.div>
+            )}
+
             <Breadcrumb />
 
             <motion.h1
@@ -43,7 +72,7 @@ export default function ArticlesPage() {
                             </p>
                             <Link
                                 href={`/articles/${article.id}`}
-                                className="text-xl font-bold text-[var(--color-primary)] hover:underline mb-4 block"
+                                className="text-xl font-bold text-[var(--color-primary)] md:hover:underline mb-4 block active:opacity-70 touch-manipulation transition-opacity"
                             >
                                 {article.title}
                             </Link>
