@@ -2,6 +2,7 @@ import { musiques } from "@/data/musiques";
 import Card from "@/components/Card";
 import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumb";
+import { Music2 } from "lucide-react";
 
 export default function MusicPage() {
     return (
@@ -11,6 +12,26 @@ export default function MusicPage() {
             <h1 className="text-4xl font-serif font-bold mb-10 border-b-2 border-[var(--color-secondary)] pb-2">
                 Les artistes qui ont marqué nos séries
             </h1>
+
+            {/* Lien vers les playlists */}
+            <Link href="/music/playlists">
+                <Card className="mb-10 cursor-pointer bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 border-2 border-[var(--color-primary)]/30 hover:border-[var(--color-primary)] transition-all hover:shadow-lg">
+                    <div className="flex items-center gap-4">
+                        <div className="w-14 h-14 bg-[var(--color-primary)] rounded-xl flex items-center justify-center shadow-md">
+                            <Music2 className="w-8 h-8 text-white" />
+                        </div>
+                        <div className="flex-1">
+                            <h3 className="text-2xl font-serif font-bold text-[var(--color-primary)] mb-1">
+                                Découvrir les Playlists
+                            </h3>
+                            <p className="text-[var(--color-dark)]">
+                                Des sélections par mood : nostalgie, mélancolie, réconfort, énergie et nuits d'ado
+                            </p>
+                        </div>
+                        <span className="text-2xl">→</span>
+                    </div>
+                </Card>
+            </Link>
 
             <section className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {musiques.map((artiste) => (
