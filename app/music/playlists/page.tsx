@@ -60,9 +60,9 @@ function PlaylistCard({ playlist, index }: { playlist: any; index: number }) {
           onMouseLeave={() => setIsHovered(false)}
         >
           {/* Cover Image Placeholder */}
-          <div className="relative h-48 bg-gradient-to-br from-black/10 to-black/30 flex items-center justify-center overflow-hidden">
+          <div className="relative h-40 sm:h-48 bg-gradient-to-br from-black/10 to-black/30 flex items-center justify-center overflow-hidden">
             <motion.div
-              className="text-8xl"
+              className="text-6xl sm:text-8xl"
               animate={{
                 scale: isHovered ? 1.2 : 1,
                 rotate: isHovered ? 5 : 0
@@ -89,12 +89,12 @@ function PlaylistCard({ playlist, index }: { playlist: any; index: number }) {
           </div>
 
           {/* Content */}
-          <div className="p-5 bg-white/80 backdrop-blur-sm">
-            <h3 className="text-xl font-serif font-bold text-gray-900 mb-2 group-hover:text-[var(--color-primary)] transition-colors">
+          <div className="p-4 sm:p-5 bg-white/80 backdrop-blur-sm">
+            <h3 className="text-lg sm:text-xl font-serif font-bold text-gray-900 mb-2 group-hover:text-[var(--color-primary)] transition-colors">
               {playlist.title}
             </h3>
 
-            <p className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">
+            <p className="text-sm text-gray-600 mb-4 line-clamp-3 sm:line-clamp-2 leading-relaxed">
               {playlist.description}
             </p>
 

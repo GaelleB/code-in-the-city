@@ -78,27 +78,27 @@ export default function SeriesPage() {
 
       {/* Paragraphe d'introduction */}
       <motion.p
-        className="mb-6 text-lg text-[var(--color-dark)] italic"
+        className="mb-6 text-base sm:text-lg text-[var(--color-dark)] italic leading-relaxed max-w-3xl"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        Ces séries m&apos;ont tenue éveillée bien après le générique.<br />
-        Pas pour l&apos;intrigue. Pas pour le suspense.<br />
-        Mais parce qu&apos;elles disaient des choses que je ressentais sans savoir les formuler.<br />
-        Elles ont été mes refuges, mes repères, mes compagnonnes de route.<br />
+        Ces séries m&apos;ont tenue éveillée bien après le générique.<br className="hidden sm:block" />
+        Pas pour l&apos;intrigue. Pas pour le suspense.<br className="hidden sm:block" />
+        Mais parce qu&apos;elles disaient des choses que je ressentais sans savoir les formuler.<br className="hidden sm:block" />
+        Elles ont été mes refuges, mes repères, mes compagnonnes de route.<br className="hidden sm:block" />
         Dans chaque fiche, tu trouveras plus qu&apos;un résumé : tu entreras dans un bout de mon histoire… et peut-être un peu dans la tienne.
       </motion.p>
 
       <motion.h1
-        className="text-4xl font-serif font-bold mb-8 border-b border-[var(--color-secondary)] pb-2"
+        className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mb-8 border-b border-[var(--color-secondary)] pb-2"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         Toutes les séries
         {(selectedTagIds.length > 0 || yearRange.start !== 1998 || yearRange.end !== 2025) && (
-          <span className="text-2xl text-gray-500 ml-3">
+          <span className="text-lg sm:text-xl md:text-2xl text-gray-500 ml-2 sm:ml-3 block sm:inline mt-2 sm:mt-0">
             ({filteredSeries.length} résultat{filteredSeries.length > 1 ? 's' : ''})
           </span>
         )}

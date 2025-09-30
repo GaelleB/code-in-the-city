@@ -49,21 +49,21 @@ export default function Header() {
             <button
                 onClick={toggleMenu}
                 aria-label={isOpen ? "Close menu" : "Open menu"}
-                className="md:hidden absolute top-6 right-4 p-2 text-[var(--color-dark)]"
+                className="md:hidden absolute top-6 right-4 p-3 text-[var(--color-dark)] hover:bg-[var(--color-secondary)]/20 rounded-lg transition-colors touch-manipulation"
             >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
+                {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
 
             {/* Nav mobile */}
             {isOpen && (
-                <nav className="md:hidden mt-4">
-                    <ul className="flex flex-col items-center space-y-4 py-4 text-base font-medium bg-[rgba(255,255,255,0.9)]">
+                <nav className="md:hidden mt-4 animate-fade-in">
+                    <ul className="flex flex-col items-center space-y-2 py-4 px-4 text-lg font-medium bg-white/95 backdrop-blur-sm rounded-lg shadow-lg mx-4">
                         {links.map(({ label, href }) => (
-                        <li key={href}>
+                        <li key={href} className="w-full">
                             <Link
                             href={href}
                             onClick={() => setIsOpen(false)}
-                            className="hover:underline"
+                            className="block w-full text-center py-3 px-4 hover:bg-[var(--color-secondary)]/20 rounded-lg transition-all touch-manipulation active:scale-95"
                             >
                             {label}
                             </Link>
