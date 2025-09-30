@@ -3,6 +3,7 @@ import { series, Serie } from '../data/series';
 import { articles, Article } from '../data/articles';
 import { musiques, Artiste } from '../data/musiques';
 import { lieux, Lieu } from '../data/lieux';
+import { genreTags } from '../data/tags';
 
 export interface SearchResultItem {
   id: number;
@@ -72,14 +73,29 @@ export function useSearchPage(query: string): GroupedResults {
     const artistesResults: SearchResultItem[] = [];
     const lieuxResults: SearchResultItem[] = [];
 
-    // Recherche dans les séries
+    // Recherche dans les séries (y compris dans les tags)
     series.forEach((serie: Serie) => {
       const titleMatch = fuzzyMatch(serie.title, query);
       const originalTitleMatch = fuzzyMatch(serie.originalTitle, query);
       const synopsisMatch = fuzzyMatch(serie.synopsis, query);
-      const bestMatch = Math.max(titleMatch.score, originalTitleMatch.score, synopsisMatch.score);
 
-      if (titleMatch.match || originalTitleMatch.match || synopsisMatch.match) {
+      // Recherche dans les tags de genre
+      const serieTagIds = require('../data/tags').seriesTagsMapping[serie.id] || [];
+      const tagMatches = serieTagIds.map((tagId: string) => {
+        const tag = genreTags.find(t => t.id === tagId);
+        if (!tag) return { match: false, score: 0 };
+        return fuzzyMatch(tag.label, query);
+      });
+      const bestTagMatch = Math.max(...tagMatches.map(m => m.score), 0);
+
+      const bestMatch = Math.max(
+        titleMatch.score,
+        originalTitleMatch.score,
+        synopsisMatch.score,
+        bestTagMatch
+      );
+
+      if (titleMatch.match || originalTitleMatch.match || synopsisMatch.match || bestTagMatch > 0) {
         seriesResults.push({
           id: serie.id,
           title: serie.title,

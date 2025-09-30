@@ -6,6 +6,7 @@ import { series } from "@/data/series";
 import { musiques, Artiste } from "@/data/musiques";
 import { chansonsEntendues } from "@/data/chansons-entendues";
 import { lieux } from "@/data/lieux";
+import { getTagsBySerie } from "@/data/tags";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -23,6 +24,7 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
     );
     const entry = chansonsEntendues.find((c) => c.serieId === serie.id);
     const chansons = entry?.chansons ?? [];
+    const tags = getTagsBySerie(serie.id);
 
     return (
         <main className="max-w-4xl mx-auto px-4 py-16">
@@ -48,7 +50,7 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
                 </motion.p>
             )}
 
-            <motion.p 
+            <motion.p
                 className="italic text-gray-600 mb-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -56,6 +58,27 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
             >
                 {serie.years}
             </motion.p>
+
+            {/* Tags émotionnels */}
+            {tags.length > 0 && (
+                <motion.div
+                    className="flex flex-wrap gap-2 mb-6"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.35 }}
+                >
+                    {tags.map((tag) => (
+                        <Link
+                            key={tag.id}
+                            href={`/series?tag=${tag.id}`}
+                            className={`px-3 py-1 text-xs font-sans font-medium rounded-full border transition-all hover:scale-105 ${tag.color}`}
+                            title={tag.description}
+                        >
+                            {tag.label}
+                        </Link>
+                    ))}
+                </motion.div>
+            )}
 
             <motion.p
                 className="text-[var(--color-dark)] leading-relaxed mb-8 text-justify"
