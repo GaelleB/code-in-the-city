@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { series } from "@/data/series";
 import { musiques } from "@/data/musiques";
+import { getAllPlaylists } from "@/data/playlists";
 // import { lieux } from "@/data/lieux";
 
 interface BreadcrumbItem {
@@ -43,8 +44,22 @@ export default function Breadcrumb() {
     else if (segments[0] === "music") {
       breadcrumbs.push({ label: "Musique", href: "/music" });
 
+      // Section playlists
+      if (segments[1] === "playlists") {
+        breadcrumbs.push({ label: "Playlists", href: "/music/playlists" });
+
+        // Page détail playlist
+        if (segments[2]) {
+          const playlistId = parseInt(segments[2]);
+          const playlists = getAllPlaylists();
+          const playlist = playlists.find(p => p.id === playlistId);
+          if (playlist) {
+            breadcrumbs.push({ label: playlist.title });
+          }
+        }
+      }
       // Page détail artiste
-      if (segments[1]) {
+      else if (segments[1]) {
         const artisteId = parseInt(segments[1]);
         const artiste = musiques.find(a => a.id === artisteId);
         if (artiste) {
@@ -90,7 +105,7 @@ export default function Breadcrumb() {
 
   return (
     <nav className="breadcrumb mb-6" aria-label="Fil d'Ariane">
-      <ol className="flex items-center space-x-2 text-sm text-[var(--color-dark)]/70">
+      <ol className="flex items-center space-x-2 text-base text-[var(--color-dark)]/70">
         {breadcrumbs.map((item, index) => (
           <li key={index} className="flex items-center">
             {index > 0 && (

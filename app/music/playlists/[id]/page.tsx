@@ -59,24 +59,19 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
 
   return (
     <main className="min-h-screen">
-      <Breadcrumb />
+      <div className="max-w-6xl mx-auto px-4 pt-6">
+        <Breadcrumb />
+      </div>
 
-      {/* Header avec gradient coloré */}
+      {/* Header avec effet glassmorphism */}
       <motion.div
-        className={`relative bg-gradient-to-br ${colorClass} text-black overflow-hidden`}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
+        className="relative overflow-hidden py-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
       >
-        {/* Pattern décoratif */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle, black 1px, transparent 1px)',
-            backgroundSize: '30px 30px'
-          }} />
-        </div>
-
-        <div className="max-w-6xl mx-auto px-4 py-16 relative z-10">
+        <div className="max-w-6xl mx-auto px-4 relative z-10">
+          <div className="rounded-2xl p-8 backdrop-blur-md bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 border border-[var(--color-primary)]/20 shadow-xl">
           <div className="flex flex-col md:flex-row gap-8 items-start md:items-end">
             {/* Cover */}
             <motion.div
@@ -123,6 +118,7 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
                 </div>
               </div>
             </motion.div>
+          </div>
           </div>
         </div>
       </motion.div>

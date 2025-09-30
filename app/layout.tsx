@@ -70,7 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="bg-white text-black font-serif">
+      <body className="text-black font-serif">
         <Header />
         {children}
       </body>

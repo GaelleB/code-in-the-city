@@ -68,10 +68,7 @@ function PlaylistCard({ playlist, index }: PlaylistCardProps) {
     >
       <Link href={`/music/playlists/${playlist.id}`}>
         <motion.div
-          className={`group relative bg-gradient-to-br ${colorClass} backdrop-blur-sm
-                     border rounded-2xl overflow-hidden transition-all duration-300
-                     md:hover:scale-105 md:hover:shadow-2xl md:hover:shadow-black/20 cursor-pointer
-                     active:scale-[0.97] touch-manipulation`}
+          className={`group relative bg-gradient-to-br ${colorClass} backdrop-blur-sm border rounded-2xl overflow-hidden transition-all duration-300 md:hover:scale-105 md:hover:shadow-2xl md:hover:shadow-black/20 cursor-pointer active:scale-[0.97] touch-manipulation`}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           whileTap={{ scale: 0.97 }}
@@ -208,12 +205,12 @@ export default function PlaylistsPage() {
 
       <Breadcrumb />
 
-      {/* Header */}
+      {/* Header avec effet glassmorphism */}
       <motion.div
-        className="mb-12"
+        className="mb-12 p-6 bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 rounded-2xl border border-[var(--color-primary)]/20"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
       >
         <div className="flex items-center gap-3 mb-4">
           <Music2 className="w-10 h-10 text-[var(--color-primary)]" />
@@ -222,9 +219,10 @@ export default function PlaylistsPage() {
           </h1>
         </div>
 
-        <p className="text-lg text-gray-600 leading-relaxed max-w-3xl">
-          Des playlists pour chaque humeur, chaque moment.
-          Ces chansons qui ont habité nos séries préférées, réunies par ambiance et par émotion.
+        <p className="text-lg text-gray-600 leading-relaxed max-w-3xl italic">
+          Chaque playlist contient des morceaux soigneusement sélectionnés
+          parmi les bandes originales de mes séries cultes. Une façon de revivre ces moments magiques,
+          une chanson à la fois.
         </p>
       </motion.div>
 
@@ -234,20 +232,6 @@ export default function PlaylistsPage() {
           <PlaylistCard key={playlist.id} playlist={playlist} index={index} />
         ))}
       </div>
-
-      {/* Fun fact */}
-      <motion.div
-        className="mt-16 p-6 bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 rounded-2xl border border-[var(--color-primary)]/20"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.6 }}
-      >
-        <p className="text-sm text-gray-700 italic leading-relaxed">
-          💡 <strong>Le saviez-vous ?</strong> Chaque playlist contient des morceaux soigneusement sélectionnés
-          parmi les bandes originales de vos séries cultes. Une façon de revivre ces moments magiques,
-          une chanson à la fois.
-        </p>
-      </motion.div>
     </main>
   );
 }
