@@ -9,6 +9,15 @@ import GenreFilter from "@/components/GenreFilter";
 import TimelineFilter from "@/components/TimelineFilter";
 import { useMemo, useState, useCallback } from "react";
 
+export const metadata = {
+  title: 'Toutes les séries',
+  description: 'Découvrez toutes mes séries cultes : Dawson\'s Creek, Grey\'s Anatomy, One Tree Hill, Gilmore Girls et plus. Fiches détaillées, anecdotes et musiques.',
+  openGraph: {
+    title: 'Toutes les séries | Code in the City',
+    description: 'Découvrez toutes mes séries cultes avec fiches détaillées, anecdotes et musiques.',
+  },
+};
+
 export default function SeriesPage() {
   const [selectedTagIds, setSelectedTagIds] = useState<string[]>([]);
   const [yearRange, setYearRange] = useState<{ start: number; end: number }>({

@@ -5,6 +5,15 @@ import { articles } from "@/data/articles";
 import { motion } from "framer-motion";
 import Breadcrumb from "@/components/Breadcrumb";
 
+export const metadata = {
+  title: 'Articles sur le développement web',
+  description: 'Articles personnels sur mon parcours de développeuse web : HTML, CSS, JavaScript, React, et réflexions sur le code.',
+  openGraph: {
+    title: 'Articles | Code in the City',
+    description: 'Articles personnels sur mon parcours de développeuse web et mes réflexions sur le code.',
+  },
+};
+
 export default function ArticlesPage() {
 
     return (

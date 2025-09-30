@@ -7,6 +7,7 @@ import { musiques, Artiste } from "@/data/musiques";
 import { chansonsEntendues } from "@/data/chansons-entendues";
 import { lieux } from "@/data/lieux";
 import { getTagsBySerie } from "@/data/tags";
+import { generateSerieJsonLd } from "./metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -25,9 +26,18 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
     const entry = chansonsEntendues.find((c) => c.serieId === serie.id);
     const chansons = entry?.chansons ?? [];
     const tags = getTagsBySerie(serie.id);
+    const jsonLd = generateSerieJsonLd(params.id);
 
     return (
         <main className="max-w-4xl mx-auto px-4 py-16">
+            {/* JSON-LD structured data */}
+            {jsonLd && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                />
+            )}
+
             <Breadcrumb />
 
             <motion.h1
@@ -577,7 +587,7 @@ export default function SerieDetail({ params }: { params: { id: string } }) {
                 <div className="mt-12">
                     <Image
                         src={serie.image}
-                        alt={serie.title}
+                        alt={`Affiche promotionnelle de la série ${serie.title} (${serie.years})`}
                         width={800}
                         height={600}
                         className="rounded-lg shadow-md mx-auto"
