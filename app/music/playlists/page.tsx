@@ -19,13 +19,13 @@ function estimateDuration(trackCount: number): string {
   return `${minutes} min`;
 }
 
-// Mapping des moods vers des couleurs
+// Mapping des moods vers des couleurs (tons beige/crème vintage)
 const moodColors = {
-  nostalgie: "from-amber-500/20 to-orange-600/20 border-amber-500/30",
-  mélancolie: "from-blue-500/20 to-indigo-600/20 border-blue-500/30",
-  réconfort: "from-green-500/20 to-emerald-600/20 border-green-500/30",
-  énergie: "from-pink-500/20 to-rose-600/20 border-pink-500/30",
-  nuit: "from-purple-500/20 to-violet-600/20 border-purple-500/30",
+  nostalgie: "from-amber-50 to-orange-100 border-amber-200",
+  mélancolie: "from-stone-50 to-neutral-100 border-stone-200",
+  réconfort: "from-yellow-50 to-amber-50 border-yellow-200",
+  énergie: "from-orange-50 to-amber-100 border-orange-200",
+  nuit: "from-slate-50 to-stone-100 border-slate-200",
 };
 
 const moodEmojis = {

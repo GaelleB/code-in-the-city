@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { Search, X } from 'lucide-react';
+import { useEffect, useRef, useMemo } from 'react';
+import { Search, X, Sparkles } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useSearch, SearchResult } from '../hooks/useSearch';
+import { getAllPlaylists } from '../data/playlists';
 
 export default function SearchBar() {
   const router = useRouter();
@@ -70,16 +71,52 @@ export default function SearchBar() {
     clearSearch();
   };
 
+  // Suggestions de playlists basées sur des mots-clés
+  const playlistSuggestions = useMemo(() => {
+    if (!query.trim()) return [];
+
+    const queryLower = query.toLowerCase();
+    const playlists = getAllPlaylists();
+    const suggestions: { title: string; url: string; mood: string }[] = [];
+
+    // Mots-clés pour chaque mood
+    const moodKeywords = {
+      nostalgie: ['nostalgie', 'souvenir', '2000s', 'passé', 'retour'],
+      mélancolie: ['mélancolie', 'triste', 'pluie', 'automne', 'cafard'],
+      réconfort: ['réconfort', 'doux', 'calme', 'cocon', 'apaisé'],
+      énergie: ['énergie', 'positif', 'joie', 'motivation', 'heureux'],
+      nuit: ['nuit', 'insomnie', 'ado', 'soir', 'tard'],
+    };
+
+    Object.entries(moodKeywords).forEach(([mood, keywords]) => {
+      if (keywords.some(keyword => queryLower.includes(keyword))) {
+        const playlist = playlists.find(p => p.mood === mood);
+        if (playlist && suggestions.length < 2) {
+          suggestions.push({
+            title: playlist.title,
+            url: `/music/playlists/${playlist.id}`,
+            mood: playlist.mood,
+          });
+        }
+      }
+    });
+
+    return suggestions;
+  }, [query]);
+
   // Badge de type
   const getTypeBadge = (type: string) => {
     const badges = {
-      serie: { label: 'Série', color: 'bg-purple-100 text-purple-700 border border-purple-300' },
-      article: { label: 'Article', color: 'bg-blue-100 text-blue-700 border border-blue-300' },
-      artiste: { label: 'Artiste', color: 'bg-pink-100 text-pink-700 border border-pink-300' },
+      serie: { label: 'Série', color: 'bg-purple-100 text-purple-700 border border-purple-300', icon: '📺' },
+      article: { label: 'Article', color: 'bg-blue-100 text-blue-700 border border-blue-300', icon: '📝' },
+      artiste: { label: 'Artiste', color: 'bg-pink-100 text-pink-700 border border-pink-300', icon: '🎤' },
+      chanson: { label: 'Chanson', color: 'bg-green-100 text-green-700 border border-green-300', icon: '🎵' },
+      playlist: { label: 'Playlist', color: 'bg-orange-100 text-orange-700 border border-orange-300', icon: '🎧' },
     };
-    const badge = badges[type as keyof typeof badges];
+    const badge = badges[type as keyof typeof badges] || badges.article;
     return (
-      <span className={`text-xs px-2 py-0.5 rounded-full font-sans font-medium ${badge.color}`}>
+      <span className={`text-xs px-2 py-0.5 rounded-full font-sans font-medium flex items-center gap-1 ${badge.color}`}>
+        <span>{badge.icon}</span>
         {badge.label}
       </span>
     );
@@ -96,7 +133,7 @@ export default function SearchBar() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => query.trim() && results.length > 0 && setIsOpen(true)}
-          placeholder="Rechercher une série, un article, un artiste..."
+          placeholder="Rechercher une série, chanson, playlist, artiste..."
           className="w-full pl-12 pr-12 py-3 bg-white border-2 border-[var(--color-dark)] rounded-lg text-black placeholder-gray-500 focus:outline-none focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 transition-all font-sans text-sm"
         />
         {query && (
@@ -152,6 +189,30 @@ export default function SearchBar() {
               </button>
             ))}
           </div>
+
+          {/* Suggestions de playlists */}
+          {playlistSuggestions.length > 0 && (
+            <div className="px-4 py-3 bg-gradient-to-r from-orange-50 to-pink-50 border-t border-orange-200">
+              <div className="flex items-center gap-2 mb-2">
+                <Sparkles className="w-4 h-4 text-orange-600" />
+                <span className="text-xs font-semibold text-orange-700 uppercase tracking-wide">
+                  Tu cherches peut-être :
+                </span>
+              </div>
+              <div className="space-y-1">
+                {playlistSuggestions.map((suggestion, idx) => (
+                  <Link
+                    key={idx}
+                    href={suggestion.url}
+                    onClick={clearSearch}
+                    className="block text-sm text-orange-900 hover:text-orange-700 hover:underline font-medium"
+                  >
+                    🎧 {suggestion.title} <span className="text-xs text-orange-600">({suggestion.mood})</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Footer */}
           <div className="px-4 py-2 border-t-2 border-[var(--color-dark)] bg-gray-50 text-xs text-gray-600 font-sans flex items-center justify-between">

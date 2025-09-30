@@ -8,15 +8,16 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Breadcrumb from "@/components/Breadcrumb";
 import MusicEmbed from "@/components/MusicEmbed";
-import { Music2, Clock, Headphones, ExternalLink, Sparkles } from "lucide-react";
+import { Music2, Clock, Headphones, ExternalLink, Sparkles, Play } from "lucide-react";
+import { useState } from "react";
 
-// Mapping des moods vers des couleurs
+// Mapping des moods vers des couleurs (tons beige/crème vintage)
 const moodColors = {
-  nostalgie: "from-amber-500 to-orange-600",
-  mélancolie: "from-blue-500 to-indigo-600",
-  réconfort: "from-green-500 to-emerald-600",
-  énergie: "from-pink-500 to-rose-600",
-  nuit: "from-purple-500 to-violet-600",
+  nostalgie: "from-amber-100 to-orange-200",
+  mélancolie: "from-stone-100 to-neutral-200",
+  réconfort: "from-yellow-100 to-amber-100",
+  énergie: "from-orange-100 to-amber-200",
+  nuit: "from-slate-100 to-stone-200",
 };
 
 const moodEmojis = {
@@ -40,6 +41,7 @@ function estimateDuration(trackCount: number): string {
 
 export default function PlaylistDetailPage({ params }: { params: { id: string } }) {
   const playlist = getPlaylistById(Number(params.id));
+  const [selectedTrackIndex, setSelectedTrackIndex] = useState(0);
 
   if (!playlist) {
     return notFound();
@@ -53,21 +55,23 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
   const colorClass = moodColors[playlist.mood as keyof typeof moodColors];
   const emoji = moodEmojis[playlist.mood as keyof typeof moodEmojis];
 
+  const selectedTrack = playlist.tracks[selectedTrackIndex];
+
   return (
     <main className="min-h-screen">
       <Breadcrumb />
 
       {/* Header avec gradient coloré */}
       <motion.div
-        className={`relative bg-gradient-to-br ${colorClass} text-white overflow-hidden`}
+        className={`relative bg-gradient-to-br ${colorClass} text-black overflow-hidden`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
       >
         {/* Pattern décoratif */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+            backgroundImage: 'radial-gradient(circle, black 1px, transparent 1px)',
             backgroundSize: '30px 30px'
           }} />
         </div>
@@ -76,7 +80,7 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
           <div className="flex flex-col md:flex-row gap-8 items-start md:items-end">
             {/* Cover */}
             <motion.div
-              className="w-64 h-64 bg-black/20 backdrop-blur-sm rounded-3xl shadow-2xl flex items-center justify-center border-4 border-white/20"
+              className="w-64 h-64 bg-white/30 backdrop-blur-sm rounded-3xl shadow-2xl flex items-center justify-center border-4 border-gray-300/50"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -96,16 +100,16 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
                 <span className="text-sm font-medium uppercase tracking-widest">Playlist</span>
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-serif font-bold mb-4 leading-tight">
+              <h1 className="text-3xl md:text-4xl font-serif font-bold mb-4 leading-tight">
                 {playlist.title}
               </h1>
 
-              <p className="text-lg mb-6 text-white/90 leading-relaxed max-w-2xl">
+              <p className="text-lg mb-6 text-gray-800 leading-relaxed max-w-2xl">
                 {playlist.description}
               </p>
 
               {/* Stats */}
-              <div className="flex items-center gap-6 text-sm font-medium">
+              <div className="flex items-center gap-6 text-sm font-medium text-gray-900">
                 <div className="flex items-center gap-2">
                   <Headphones className="w-4 h-4" />
                   <span>{playlist.tracks.length} titres</span>
@@ -114,30 +118,12 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
                   <Clock className="w-4 h-4" />
                   <span>{estimateDuration(playlist.tracks.length)}</span>
                 </div>
-                <div className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full capitalize">
+                <div className="px-3 py-1 bg-black/10 backdrop-blur-sm rounded-full capitalize">
                   {playlist.mood}
                 </div>
               </div>
             </motion.div>
           </div>
-
-          {/* Message Spotify */}
-          <motion.div
-            className="mt-8"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <div className="inline-flex items-start gap-3 px-6 py-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
-              <Music2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
-              <div className="text-sm">
-                <p className="font-semibold mb-1">💡 Retrouver ces titres sur Spotify</p>
-                <p className="text-white/80">
-                  Cherche les artistes et titres listés ci-dessous pour créer ta propre playlist !
-                </p>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </motion.div>
 
@@ -161,16 +147,23 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
               return (
                 <motion.div
                   key={index}
-                  className="group flex items-center gap-4 px-6 py-4 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0"
+                  className={`group flex items-center gap-4 px-6 py-4 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0 cursor-pointer ${
+                    selectedTrackIndex === index ? 'bg-[var(--color-primary)]/10 border-l-4 border-l-[var(--color-primary)]' : ''
+                  }`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: 0.6 + index * 0.05 }}
+                  onClick={() => setSelectedTrackIndex(index)}
                 >
-                  {/* Numéro */}
+                  {/* Numéro / Play icon */}
                   <div className="w-8 text-center">
-                    <span className="text-gray-400 font-mono font-medium group-hover:text-[var(--color-primary)] transition-colors">
-                      {index + 1}
-                    </span>
+                    {selectedTrackIndex === index ? (
+                      <Play className="w-4 h-4 mx-auto text-[var(--color-primary)] fill-[var(--color-primary)]" />
+                    ) : (
+                      <span className="text-gray-400 font-mono font-medium group-hover:text-[var(--color-primary)] transition-colors">
+                        {index + 1}
+                      </span>
+                    )}
                   </div>
 
                   {/* Info track */}
@@ -218,26 +211,27 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
           </div>
         </motion.div>
 
-        {/* Lecteur d'exemple pour le premier morceau */}
-        {playlist.tracks.length > 0 && (
+        {/* Lecteur dynamique pour la chanson sélectionnée */}
+        {selectedTrack && (
           <motion.div
+            key={selectedTrackIndex}
             className="mt-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
+            transition={{ duration: 0.5 }}
           >
             <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-3">
               <Headphones className="w-6 h-6 text-[var(--color-primary)]" />
-              Écouter un extrait
+              Écouter : {selectedTrack.songTitle}
             </h2>
             <MusicEmbed
               type="youtube"
               trackId=""
-              artistName={playlist.tracks[0].artistName}
-              trackName={playlist.tracks[0].songTitle}
+              artistName={selectedTrack.artistName}
+              trackName={selectedTrack.songTitle}
             />
-            <p className="text-xs text-gray-500 mt-3 italic">
-              💡 Le lecteur recherchera automatiquement "{playlist.tracks[0].artistName} - {playlist.tracks[0].songTitle}"
+            <p className="text-xs text-gray-400 mt-2">
+              ✨ Clique sur une chanson dans la liste pour changer le morceau
             </p>
           </motion.div>
         )}

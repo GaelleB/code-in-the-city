@@ -81,9 +81,6 @@ export async function generateStaticParams() {
                     artistName={artiste.nom}
                     trackName={artiste.bo[0]}
                 />
-                <p className="text-xs text-gray-500 mt-2 italic">
-                    💡 Le lecteur recherchera "{artiste.nom} - {artiste.bo[0]}" automatiquement
-                </p>
                 </div>
             )}
             </section>

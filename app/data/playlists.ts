@@ -191,7 +191,7 @@ export const playlists: Playlist[] = [
         year: 2009
       },
       {
-        serieId: 4,
+        serieId: 6,
         songTitle: "Breathe (2AM)",
         artistName: "Anna Nalick",
         mood: "réconfort",
@@ -253,7 +253,7 @@ export const playlists: Playlist[] = [
   },
   {
     id: 5,
-    title: "Nuits d'ado",
+    title: "Nuits éveillées",
     mood: "nuit",
     description: "Ces chansons qu'on écoutait en boucle la nuit, dans notre lit, en pensant à quelqu'un ou à personne. L'insomnie des cœurs qui réfléchissent trop.",
     coverImage: "/images/playlist-nuit.jpg",
@@ -287,7 +287,7 @@ export const playlists: Playlist[] = [
         year: 2008
       },
       {
-        serieId: 4,
+        serieId: 6,
         songTitle: "Breathe (2AM)",
         artistName: "Anna Nalick",
         mood: "nuit",

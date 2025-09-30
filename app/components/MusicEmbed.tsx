@@ -51,8 +51,42 @@ export default function MusicEmbed({
     setIsLoaded(true);
   };
 
-  // Fallback avec lien externe
-  if (hasError || !trackId) {
+  // Si pas de trackId, afficher un bouton direct vers YouTube Music
+  if (!trackId && artistName) {
+    const youtubeMusicSearchUrl = `https://music.youtube.com/search?q=${encodeURIComponent(
+      `${artistName} ${trackName || ""}`
+    )}`;
+
+    return (
+      <motion.a
+        href={youtubeMusicSearchUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block bg-gradient-to-br from-red-50 to-pink-50 rounded-xl overflow-hidden border-2 border-red-200 shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] cursor-pointer"
+        style={{ minHeight: height }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4 }}
+      >
+        <div className="flex items-center justify-center h-full px-6 py-8">
+          <div className="text-center">
+            <div className="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg hover:bg-red-600 transition-colors">
+              <Play className="w-10 h-10 text-white ml-1" fill="white" />
+            </div>
+            <h3 className="font-bold text-gray-900 mb-2 text-lg">
+              {trackName || "Cette chanson"}
+            </h3>
+            <p className="text-sm text-gray-600">
+              {artistName}
+            </p>
+          </div>
+        </div>
+      </motion.a>
+    );
+  }
+
+  // Fallback avec lien externe si erreur
+  if (hasError) {
     return (
       <motion.div
         className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl overflow-hidden border-2 border-gray-300 flex items-center justify-center"
@@ -63,27 +97,19 @@ export default function MusicEmbed({
         <div className="text-center px-6 py-4">
           <AlertCircle className="w-8 h-8 text-gray-500 mx-auto mb-3" />
           <p className="text-sm text-gray-600 mb-3">
-            {hasError
-              ? "Lecteur non disponible"
-              : "Aucun lecteur configuré"}
+            Lecteur non disponible
           </p>
           {artistName && (
             <a
-              href={
-                type === "spotify"
-                  ? `https://open.spotify.com/search/${encodeURIComponent(
-                      `${artistName} ${trackName || ""}`
-                    )}`
-                  : `https://www.youtube.com/results?search_query=${encodeURIComponent(
-                      `${artistName} ${trackName || ""}`
-                    )}`
-              }
+              href={`https://music.youtube.com/search?q=${encodeURIComponent(
+                `${artistName} ${trackName || ""}`
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-primary)] text-white text-sm font-medium rounded-lg hover:bg-[var(--color-primary)]/90 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-red-500 text-white text-sm font-medium rounded-lg hover:bg-red-600 transition-colors"
             >
               <Play className="w-4 h-4" />
-              Rechercher sur {type === "spotify" ? "Spotify" : "YouTube"}
+              Rechercher sur YouTube Music
             </a>
           )}
         </div>
