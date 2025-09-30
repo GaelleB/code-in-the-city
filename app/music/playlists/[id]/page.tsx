@@ -7,6 +7,7 @@ import { musiques } from "@/data/musiques";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Breadcrumb from "@/components/Breadcrumb";
+import MusicEmbed from "@/components/MusicEmbed";
 import { Music2, Clock, Headphones, ExternalLink, Sparkles } from "lucide-react";
 
 // Mapping des moods vers des couleurs
@@ -216,6 +217,30 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
             })}
           </div>
         </motion.div>
+
+        {/* Lecteur d'exemple pour le premier morceau */}
+        {playlist.tracks.length > 0 && (
+          <motion.div
+            className="mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+          >
+            <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-3">
+              <Headphones className="w-6 h-6 text-[var(--color-primary)]" />
+              Écouter un extrait
+            </h2>
+            <MusicEmbed
+              type="youtube"
+              trackId=""
+              artistName={playlist.tracks[0].artistName}
+              trackName={playlist.tracks[0].songTitle}
+            />
+            <p className="text-xs text-gray-500 mt-3 italic">
+              💡 Le lecteur recherchera automatiquement "{playlist.tracks[0].artistName} - {playlist.tracks[0].songTitle}"
+            </p>
+          </motion.div>
+        )}
 
         {/* Playlists similaires */}
         {similarPlaylists.length > 0 && (

@@ -5,6 +5,7 @@ import { getSeriesForArtist } from "../../../utils/relations";
 import Link from "next/link";
 import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumb";
+import MusicEmbed from "@/components/MusicEmbed";
 
 export async function generateStaticParams() {
     return musiques.map((artiste) => ({
@@ -63,12 +64,28 @@ export async function generateStaticParams() {
 
         {artiste.bo.length > 0 && (
             <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-2">Chansons entendues</h2>
-            <ul className="list-disc list-inside text-[var(--color-dark)] space-y-1">
+            <h2 className="text-2xl font-semibold mb-4">Chansons entendues</h2>
+            <ul className="list-disc list-inside text-[var(--color-dark)] space-y-1 mb-6">
                 {artiste.bo.map((chanson, index) => (
                 <li key={index}>{chanson}</li>
                 ))}
             </ul>
+
+            {/* Exemple de lecteur pour le premier morceau */}
+            {artiste.bo.length > 0 && (
+                <div className="mt-6">
+                <h3 className="text-lg font-semibold mb-3 text-gray-700">🎵 Écouter un extrait</h3>
+                <MusicEmbed
+                    type="youtube"
+                    trackId=""
+                    artistName={artiste.nom}
+                    trackName={artiste.bo[0]}
+                />
+                <p className="text-xs text-gray-500 mt-2 italic">
+                    💡 Le lecteur recherchera "{artiste.nom} - {artiste.bo[0]}" automatiquement
+                </p>
+                </div>
+            )}
             </section>
         )}
         </main>
