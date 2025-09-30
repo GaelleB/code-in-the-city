@@ -15,8 +15,10 @@ export default function Hero() {
                     src="/images/hero-nyc-taxi.jpg"
                     alt="Taxi à New York sur le pont de Brooklyn"
                     fill
+                    sizes="100vw"
                     className="object-cover object-bottom"
                     priority
+                    quality={85}
                 />
             </motion.div>
             <motion.div 

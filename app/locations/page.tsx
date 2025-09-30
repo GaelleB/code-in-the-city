@@ -90,6 +90,7 @@ export default function LocationPage() {
                             fill
                             sizes="(max-width: 768px) 100vw, 50vw"
                             className="film-strip-image pointer-events-none"
+                            loading="lazy"
                             />
 
                             {/* Contenu de la carte */}

@@ -42,8 +42,10 @@ export default function About() {
                     <Image
                         src="/images/gaelle.jpg"
                         alt="Portrait de Gaëlle"
-                        layout="fill"
-                        objectFit="cover"
+                        fill
+                        sizes="(max-width: 768px) 160px, 160px"
+                        className="object-cover"
+                        loading="lazy"
                     />
                 </div>
 

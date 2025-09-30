@@ -5,9 +5,18 @@ import { series } from "@/data/series";
 import { getTagsBySerie, getTagsWithCount } from "@/data/tags";
 import { motion, AnimatePresence } from "framer-motion";
 import Breadcrumb from "@/components/Breadcrumb";
-import GenreFilter from "@/components/GenreFilter";
-import TimelineFilter from "@/components/TimelineFilter";
+import dynamic from "next/dynamic";
 import { useMemo, useState, useCallback } from "react";
+
+const GenreFilter = dynamic(() => import("@/components/GenreFilter"), {
+  loading: () => <div className="h-20 animate-pulse bg-gray-200 rounded-lg" />,
+  ssr: false,
+});
+
+const TimelineFilter = dynamic(() => import("@/components/TimelineFilter"), {
+  loading: () => <div className="h-32 animate-pulse bg-gray-200 rounded-lg" />,
+  ssr: false,
+});
 
 export const metadata = {
   title: 'Toutes les séries',
