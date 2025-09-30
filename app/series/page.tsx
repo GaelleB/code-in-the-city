@@ -2,27 +2,29 @@
 import Card from "@/components/Card";
 import Link from "next/link";
 import { series } from "@/data/series";
-import { getTagsBySerie, genreTags, getTagsWithCount } from "@/data/tags";
-import { motion } from "framer-motion";
+import { getTagsBySerie, getTagsWithCount } from "@/data/tags";
+import { motion, AnimatePresence } from "framer-motion";
 import Breadcrumb from "@/components/Breadcrumb";
-import { useSearchParams } from "next/navigation";
-import { useMemo } from "react";
+import GenreFilter from "@/components/GenreFilter";
+import { useMemo, useState } from "react";
 
 export default function SeriesPage() {
-  const searchParams = useSearchParams();
-  const selectedTag = searchParams.get('tag');
+  const [selectedTagIds, setSelectedTagIds] = useState<string[]>([]);
 
-  // Filtrer les séries selon le tag sélectionné
+  // Filtrer les séries selon les tags sélectionnés (sélection multiple)
   const filteredSeries = useMemo(() => {
-    if (!selectedTag) return series;
+    if (selectedTagIds.length === 0) return series;
+
     return series.filter((serie) => {
-      const tags = getTagsBySerie(serie.id);
-      return tags.some((tag) => tag.id === selectedTag);
+      const serieTags = getTagsBySerie(serie.id);
+      const serieTagIds = serieTags.map(tag => tag.id);
+
+      // La série doit avoir AU MOINS UN des tags sélectionnés
+      return selectedTagIds.some(selectedId => serieTagIds.includes(selectedId));
     });
-  }, [selectedTag]);
+  }, [selectedTagIds]);
 
   const tagsWithCount = getTagsWithCount();
-  const currentTagLabel = genreTags.find((tag) => tag.id === selectedTag)?.label;
 
   return (
     <main className="max-w-6xl mx-auto px-4 py-12">
@@ -35,69 +37,64 @@ export default function SeriesPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        Ces séries m'ont tenue éveillée bien après le générique.<br />
-        Pas pour l'intrigue. Pas pour le suspense.<br />
-        Mais parce qu'elles disaient des choses que je ressentais sans savoir les formuler.<br />
+        Ces séries m&apos;ont tenue éveillée bien après le générique.<br />
+        Pas pour l&apos;intrigue. Pas pour le suspense.<br />
+        Mais parce qu&apos;elles disaient des choses que je ressentais sans savoir les formuler.<br />
         Elles ont été mes refuges, mes repères, mes compagnonnes de route.<br />
-        Dans chaque fiche, tu trouveras plus qu'un résumé : tu entreras dans un bout de mon histoire… et peut-être un peu dans la tienne.
+        Dans chaque fiche, tu trouveras plus qu&apos;un résumé : tu entreras dans un bout de mon histoire… et peut-être un peu dans la tienne.
       </motion.p>
 
       <motion.h1
-        className="text-4xl font-serif font-bold mb-6 border-b border-[var(--color-secondary)] pb-2"
+        className="text-4xl font-serif font-bold mb-8 border-b border-[var(--color-secondary)] pb-2"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        {selectedTag ? `Séries - ${currentTagLabel}` : 'Toutes les séries'}
+        Toutes les séries
+        {selectedTagIds.length > 0 && (
+          <span className="text-2xl text-gray-500 ml-3">
+            ({filteredSeries.length} résultat{filteredSeries.length > 1 ? 's' : ''})
+          </span>
+        )}
       </motion.h1>
 
-      {/* Filtres par tags */}
+      {/* GenreFilter */}
       <motion.div
-        className="mb-8 flex flex-wrap gap-2"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.3 }}
+        className="mb-10"
       >
-        <Link
-          href="/series"
-          className={`px-4 py-2 rounded-full border-2 font-sans font-medium transition-all hover:scale-105 ${
-            !selectedTag
-              ? 'bg-[var(--color-dark)] text-white border-[var(--color-dark)]'
-              : 'bg-white text-gray-700 border-gray-300 hover:border-[var(--color-dark)]'
-          }`}
-        >
-          Toutes ({series.length})
-        </Link>
-        {tagsWithCount.map((tag) => (
-          <Link
-            key={tag.id}
-            href={`/series?tag=${tag.id}`}
-            className={`px-4 py-2 rounded-full border font-sans font-medium transition-all hover:scale-105 ${
-              selectedTag === tag.id
-                ? tag.color
-                : 'bg-white text-gray-600 border-gray-300 hover:border-gray-400'
-            }`}
-            title={tag.description}
-          >
-            {tag.label} ({tag.count})
-          </Link>
-        ))}
+        <GenreFilter
+          tags={tagsWithCount}
+          onFilterChange={setSelectedTagIds}
+          totalItems={series.length}
+        />
       </motion.div>
 
-      <section className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {filteredSeries.map((serie, index) => {
-          const tags = getTagsBySerie(serie.id);
-          return (
-            <motion.div
-              key={serie.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.4,
-                delay: 0.4 + index * 0.1,
-                ease: "easeOut"
-              }}
-            >
+      <AnimatePresence mode="wait">
+        <motion.section
+          key={selectedTagIds.join('-')}
+          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {filteredSeries.map((serie, index) => {
+            const tags = getTagsBySerie(serie.id);
+            return (
+              <motion.div
+                key={serie.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.05,
+                  ease: "easeOut"
+                }}
+              >
               <Card className="h-full flex flex-col">
                 <h3 className="text-2xl font-serif font-bold mb-2">{serie.title}</h3>
                 <p className="text-sm italic text-[var(--color-text-dark)] mb-3">
@@ -134,10 +131,11 @@ export default function SeriesPage() {
                   Lire la fiche →
                 </Link>
               </Card>
-            </motion.div>
-          );
-        })}
-      </section>
+              </motion.div>
+            );
+          })}
+        </motion.section>
+      </AnimatePresence>
     </main>
   );
 }
