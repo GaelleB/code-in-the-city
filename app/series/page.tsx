@@ -6,23 +6,60 @@ import { getTagsBySerie, getTagsWithCount } from "@/data/tags";
 import { motion, AnimatePresence } from "framer-motion";
 import Breadcrumb from "@/components/Breadcrumb";
 import GenreFilter from "@/components/GenreFilter";
-import { useMemo, useState } from "react";
+import TimelineFilter from "@/components/TimelineFilter";
+import { useMemo, useState, useCallback } from "react";
 
 export default function SeriesPage() {
   const [selectedTagIds, setSelectedTagIds] = useState<string[]>([]);
+  const [yearRange, setYearRange] = useState<{ start: number; end: number }>({
+    start: 1998,
+    end: 2025
+  });
 
-  // Filtrer les séries selon les tags sélectionnés (sélection multiple)
+  // Fonction pour extraire l'année de début d'une série
+  const getSerieStartYear = (serie: typeof series[0]): number => {
+    const match = serie.years.match(/^\d{4}/);
+    return match ? parseInt(match[0]) : 0;
+  };
+
+  // Fonction pour extraire l'année de fin d'une série
+  const getSerieEndYear = (serie: typeof series[0]): number => {
+    const match = serie.years.match(/–\s*(\d{4}|\(en cours\))/);
+    if (match) {
+      return match[1] === '(en cours)' ? 2025 : parseInt(match[1]);
+    }
+    return getSerieStartYear(serie);
+  };
+
+  // Callback pour le changement de période
+  const handleYearRangeChange = useCallback((start: number, end: number) => {
+    setYearRange({ start, end });
+  }, []);
+
+  // Filtrer les séries selon les tags ET la période
   const filteredSeries = useMemo(() => {
-    if (selectedTagIds.length === 0) return series;
+    let filtered = series;
 
-    return series.filter((serie) => {
-      const serieTags = getTagsBySerie(serie.id);
-      const serieTagIds = serieTags.map(tag => tag.id);
+    // Filtre par tags
+    if (selectedTagIds.length > 0) {
+      filtered = filtered.filter((serie) => {
+        const serieTags = getTagsBySerie(serie.id);
+        const serieTagIds = serieTags.map(tag => tag.id);
+        return selectedTagIds.some(selectedId => serieTagIds.includes(selectedId));
+      });
+    }
 
-      // La série doit avoir AU MOINS UN des tags sélectionnés
-      return selectedTagIds.some(selectedId => serieTagIds.includes(selectedId));
+    // Filtre par période
+    filtered = filtered.filter((serie) => {
+      const startYear = getSerieStartYear(serie);
+      const endYear = getSerieEndYear(serie);
+
+      // La série doit avoir été diffusée pendant la période sélectionnée
+      return !(endYear < yearRange.start || startYear > yearRange.end);
     });
-  }, [selectedTagIds]);
+
+    return filtered;
+  }, [selectedTagIds, yearRange]);
 
   const tagsWithCount = getTagsWithCount();
 
@@ -51,30 +88,45 @@ export default function SeriesPage() {
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         Toutes les séries
-        {selectedTagIds.length > 0 && (
+        {(selectedTagIds.length > 0 || yearRange.start !== 1998 || yearRange.end !== 2025) && (
           <span className="text-2xl text-gray-500 ml-3">
             ({filteredSeries.length} résultat{filteredSeries.length > 1 ? 's' : ''})
           </span>
         )}
       </motion.h1>
 
-      {/* GenreFilter */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.3 }}
-        className="mb-10"
-      >
-        <GenreFilter
-          tags={tagsWithCount}
-          onFilterChange={setSelectedTagIds}
-          totalItems={series.length}
-        />
-      </motion.div>
+      {/* Filtres */}
+      <div className="space-y-8 mb-10">
+        {/* GenreFilter */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+        >
+          <GenreFilter
+            tags={tagsWithCount}
+            onFilterChange={setSelectedTagIds}
+            totalItems={series.length}
+          />
+        </motion.div>
+
+        {/* TimelineFilter */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
+        >
+          <TimelineFilter
+            minYear={1998}
+            maxYear={2025}
+            onYearRangeChange={handleYearRangeChange}
+          />
+        </motion.div>
+      </div>
 
       <AnimatePresence mode="wait">
         <motion.section
-          key={selectedTagIds.join('-')}
+          key={`${selectedTagIds.join('-')}-${yearRange.start}-${yearRange.end}`}
           className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
