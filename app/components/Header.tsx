@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import SearchBar from "./SearchBar";
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -25,6 +26,11 @@ export default function Header() {
             <p className="mt-2 italic text-sm md:text-base">
                 Series, Sounds & Stories
             </p>
+
+            {/* Barre de recherche */}
+            <div className="mt-6 flex justify-center px-4">
+                <SearchBar />
+            </div>
 
             {/* Nav desktop */}
             <nav className="hidden md:block mt-4">
