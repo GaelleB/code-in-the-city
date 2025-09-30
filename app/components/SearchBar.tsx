@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { Search, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useSearch, SearchResult } from '../hooks/useSearch';
 
 export default function SearchBar() {
@@ -27,17 +28,24 @@ export default function SearchBar() {
     const handleKeyDownWrapper = (e: KeyboardEvent) => {
       handleKeyDown(e);
 
-      // Gérer l'entrée sur un résultat sélectionné
-      if (e.key === 'Enter' && selectedIndex >= 0 && results[selectedIndex]) {
+      // Gérer l'entrée
+      if (e.key === 'Enter' && query.trim()) {
         e.preventDefault();
-        router.push(results[selectedIndex].url);
+
+        // Si un résultat est sélectionné, y aller directement
+        if (selectedIndex >= 0 && results[selectedIndex]) {
+          router.push(results[selectedIndex].url);
+        } else {
+          // Sinon, aller à la page de recherche complète
+          router.push(`/search?q=${encodeURIComponent(query)}`);
+        }
         clearSearch();
       }
     };
 
     window.addEventListener('keydown', handleKeyDownWrapper);
     return () => window.removeEventListener('keydown', handleKeyDownWrapper);
-  }, [handleKeyDown, selectedIndex, results, router, clearSearch]);
+  }, [handleKeyDown, selectedIndex, results, router, clearSearch, query]);
 
   // Fermer le dropdown en cliquant à l'extérieur
   useEffect(() => {
@@ -146,8 +154,15 @@ export default function SearchBar() {
           </div>
 
           {/* Footer */}
-          <div className="px-4 py-2 border-t-2 border-[var(--color-dark)] bg-gray-50 text-xs text-gray-600 font-sans">
-            <span>Utilisez ↑↓ pour naviguer, ↵ pour sélectionner, Esc pour fermer</span>
+          <div className="px-4 py-2 border-t-2 border-[var(--color-dark)] bg-gray-50 text-xs text-gray-600 font-sans flex items-center justify-between">
+            <span>↑↓ naviguer • ↵ sélectionner • Esc fermer</span>
+            <Link
+              href={`/search?q=${encodeURIComponent(query)}`}
+              onClick={clearSearch}
+              className="text-[var(--color-accent)] hover:underline font-medium"
+            >
+              Voir tous les résultats →
+            </Link>
           </div>
         </div>
       )}
