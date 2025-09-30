@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import SearchBar from "./SearchBar";
+import PrefetchLink from "./PrefetchLink";
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -37,9 +37,9 @@ export default function Header() {
                 <ul className="flex justify-center space-x-6 text-sm md:text-base font-medium">
                 {links.map(({ label, href }) => (
                     <li key={href}>
-                    <Link href={href} className="hover:underline">
+                    <PrefetchLink href={href} className="hover:underline">
                         {label}
-                    </Link>
+                    </PrefetchLink>
                     </li>
                 ))}
                 </ul>
@@ -60,13 +60,13 @@ export default function Header() {
                     <ul className="flex flex-col items-center space-y-2 py-4 px-4 text-lg font-medium bg-white/95 backdrop-blur-sm rounded-lg shadow-lg mx-4">
                         {links.map(({ label, href }) => (
                         <li key={href} className="w-full">
-                            <Link
+                            <PrefetchLink
                             href={href}
                             onClick={() => setIsOpen(false)}
                             className="block w-full text-center py-3 px-4 hover:bg-[var(--color-secondary)]/20 rounded-lg transition-all touch-manipulation active:scale-95"
                             >
                             {label}
-                            </Link>
+                            </PrefetchLink>
                         </li>
                         ))}
                     </ul>
