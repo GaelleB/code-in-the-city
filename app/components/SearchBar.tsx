@@ -134,7 +134,7 @@ export default function SearchBar() {
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => query.trim() && results.length > 0 && setIsOpen(true)}
           placeholder="Rechercher une série, chanson, playlist, artiste..."
-          className="w-full pl-12 pr-12 py-3 bg-white border-2 border-[var(--color-dark)] rounded-lg text-black placeholder-gray-500 focus:outline-none focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 transition-all font-sans text-sm"
+          className="w-full pl-12 pr-12 py-3 bg-white border-2 border-[var(--color-secondary)] rounded-lg text-black placeholder-gray-500 focus:outline-none focus:border-[var(--color-secondary)] focus:ring-1 focus:ring-[var(--color-secondary)]/30 transition-all font-sans text-sm"
         />
         {query && (
           <button
