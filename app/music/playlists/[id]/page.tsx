@@ -52,7 +52,6 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
     .filter(p => p.id !== playlist.id && p.mood === playlist.mood)
     .slice(0, 2);
 
-  const colorClass = moodColors[playlist.mood as keyof typeof moodColors];
   const emoji = moodEmojis[playlist.mood as keyof typeof moodEmojis];
 
   const selectedTrack = playlist.tracks[selectedTrackIndex];

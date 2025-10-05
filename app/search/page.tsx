@@ -144,13 +144,7 @@ function SearchResults() {
   if (total === 0) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-16">
-        <Breadcrumb
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Recherche', href: '/search' },
-            { label: query, href: `/search?q=${encodeURIComponent(query)}` },
-          ]}
-        />
+        <Breadcrumb />
         <div className="text-center py-20">
           <Search className="w-16 h-16 mx-auto text-gray-300 mb-4" />
           <h1 className="text-3xl font-bold text-[var(--color-dark)] mb-2">
@@ -173,13 +167,7 @@ function SearchResults() {
   // Résultats trouvés
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <Breadcrumb
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Recherche', href: '/search' },
-          { label: query, href: `/search?q=${encodeURIComponent(query)}` },
-        ]}
-      />
+      <Breadcrumb />
 
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-[var(--color-dark)] mb-2">
