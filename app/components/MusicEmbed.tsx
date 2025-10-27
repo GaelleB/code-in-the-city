@@ -62,7 +62,7 @@ export default function MusicEmbed({
         href={youtubeMusicSearchUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="block bg-gradient-to-br from-red-50 to-pink-50 rounded-xl overflow-hidden border-2 border-red-200 shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] cursor-pointer"
+        className="block bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 rounded-xl overflow-hidden border border-[var(--color-primary)]/20 shadow-xl hover:shadow-2xl hover:border-[var(--color-primary)]/40 transition-all hover:scale-[1.02] cursor-pointer"
         style={{ minHeight: height }}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -70,7 +70,7 @@ export default function MusicEmbed({
       >
         <div className="flex items-center justify-center h-full px-6 py-8">
           <div className="text-center">
-            <div className="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg hover:bg-red-600 transition-colors">
+            <div className="w-20 h-20 bg-[var(--color-primary)] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg hover:brightness-110 transition-all">
               <Play className="w-10 h-10 text-white ml-1" fill="white" />
             </div>
             <h3 className="font-bold text-gray-900 mb-2 text-lg">
@@ -89,7 +89,7 @@ export default function MusicEmbed({
   if (hasError) {
     return (
       <motion.div
-        className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl overflow-hidden border-2 border-gray-300 flex items-center justify-center"
+        className="bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 rounded-xl overflow-hidden border border-[var(--color-primary)]/20 shadow-xl flex items-center justify-center"
         style={{ height }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -106,7 +106,7 @@ export default function MusicEmbed({
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-red-500 text-white text-sm font-medium rounded-lg hover:bg-red-600 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-primary)] text-white text-sm font-medium rounded-lg hover:brightness-110 transition-all"
             >
               <Play className="w-4 h-4" />
               Rechercher sur YouTube Music
@@ -119,7 +119,7 @@ export default function MusicEmbed({
 
   return (
     <motion.div
-      className="relative bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl overflow-hidden border-2 border-gray-300 shadow-lg"
+      className="relative bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 rounded-xl overflow-hidden border border-[var(--color-primary)]/20 shadow-xl"
       style={{ height }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -147,7 +147,7 @@ export default function MusicEmbed({
         <>
           {/* Loading indicator */}
           {!isLoaded && (
-            <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
+            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-[var(--color-primary)]/20 to-[var(--color-secondary)]/20">
               <Loader2 className="w-8 h-8 text-[var(--color-primary)] animate-spin" />
             </div>
           )}

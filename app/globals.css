@@ -4,10 +4,10 @@
 @theme {
   --color-background-body: #f9f5f0;
   --color-dark: #383c45;
-  --color-primary: #1ab1dd;
+  --color-primary: #4a4a4a;
   --color-secondary: #f1cd52;
-  --color-accent-1: #1fcfb7;
-  --color-accent-2: #11f09b;
+  --color-accent-1: #5a5a5a;
+  --color-accent-2: #2d2d2d;
   --color-text-light: #ffffff;
   --color-text-dark: #000000;
 }

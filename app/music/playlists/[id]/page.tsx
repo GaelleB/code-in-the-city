@@ -11,15 +11,6 @@ import MusicEmbed from "@/components/MusicEmbed";
 import { Music2, Clock, Headphones, Sparkles, Play } from "lucide-react";
 import { useState } from "react";
 
-// Mapping des moods vers des couleurs (tons beige/crème vintage)
-const moodColors = {
-  nostalgie: "from-amber-100 to-orange-200",
-  mélancolie: "from-stone-100 to-neutral-200",
-  réconfort: "from-yellow-100 to-amber-100",
-  énergie: "from-orange-100 to-amber-200",
-  nuit: "from-slate-100 to-stone-200",
-};
-
 const moodEmojis = {
   nostalgie: "🌅",
   mélancolie: "🍂",
@@ -70,11 +61,11 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
         transition={{ duration: 0.5, delay: 0.6 }}
       >
         <div className="max-w-6xl mx-auto px-4 relative z-10">
-          <div className="rounded-2xl p-8 backdrop-blur-md bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 border border-[var(--color-primary)]/20 shadow-xl">
+          <div className="rounded-2xl p-8 md bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 border border-[var(--color-primary)]/20 shadow-xl">
           <div className="flex flex-col md:flex-row gap-8 items-start md:items-end">
             {/* Cover */}
             <motion.div
-              className="w-64 h-64 bg-white/30 backdrop-blur-sm rounded-3xl shadow-2xl flex items-center justify-center border-4 border-gray-300/50"
+              className="rounded-2xl p-8 backdrop-blur-md bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 border border-[var(--color-primary)]/20 shadow-xl"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -134,7 +125,7 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
             Tracklist
           </h2>
 
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+          <div className="bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 rounded-2xl shadow-xl overflow-hidden border border-[var(--color-primary)]/20">
             {playlist.tracks.map((track, index) => {
               const serie = series.find(s => s.id === track.serieId);
               const artiste = track.artistId ? musiques.find(a => a.id === track.artistId) : null;
@@ -142,8 +133,8 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
               return (
                 <motion.div
                   key={index}
-                  className={`group flex items-center gap-4 px-6 py-4 md:hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0 cursor-pointer active:bg-gray-100 touch-manipulation ${
-                    selectedTrackIndex === index ? 'bg-[var(--color-primary)]/10 border-l-4 border-l-[var(--color-primary)]' : ''
+                  className={`group flex items-center gap-4 px-6 py-4 md:hover:bg-[var(--color-primary)]/5 transition-all border-b border-[var(--color-primary)]/10 last:border-b-0 cursor-pointer active:bg-[var(--color-primary)]/10 touch-manipulation ${
+                    selectedTrackIndex === index ? 'bg-[var(--color-primary)]/20 border-l-4 border-l-[var(--color-primary)]' : ''
                   }`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -249,21 +240,20 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
 
             <div className="grid gap-6 md:grid-cols-2">
               {similarPlaylists.map((similarPlaylist) => {
-                const similarColorClass = moodColors[similarPlaylist.mood as keyof typeof moodColors];
                 const similarEmoji = moodEmojis[similarPlaylist.mood as keyof typeof moodEmojis];
 
                 return (
                   <Link key={similarPlaylist.id} href={`/music/playlists/${similarPlaylist.id}`}>
-                    <div className={`group bg-gradient-to-br ${similarColorClass} rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:scale-105`}>
+                    <div className="group bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 border border-[var(--color-primary)]/20 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:border-[var(--color-primary)]/40 transition-all hover:scale-105">
                       <div className="flex items-center gap-4 p-6">
-                        <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center text-4xl">
+                        <div className="w-20 h-20 bg-gradient-to-br from-[var(--color-primary)]/30 to-[var(--color-secondary)]/30 backdrop-blur-sm rounded-xl flex items-center justify-center text-4xl shadow-md">
                           {similarEmoji}
                         </div>
-                        <div className="flex-1 text-white">
-                          <h3 className="text-xl font-serif font-bold mb-1 group-hover:underline">
+                        <div className="flex-1">
+                          <h3 className="text-xl font-serif font-bold mb-1 text-gray-900 group-hover:text-[var(--color-primary)] transition-colors">
                             {similarPlaylist.title}
                           </h3>
-                          <p className="text-sm text-white/80">
+                          <p className="text-sm text-gray-600">
                             {similarPlaylist.tracks.length} titres • {estimateDuration(similarPlaylist.tracks.length)}
                           </p>
                         </div>
