@@ -94,8 +94,8 @@ export default function LocationPage() {
                             />
 
                             {/* Contenu de la carte */}
-                            <div className="film-card relative z-10">
-                            <Card className="bg-white">
+                            <div className="film-card relative z-10 ">
+                            <Card className="bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 border border-[var(--color-primary)]/20 shadow-xl">
                                 <NarrativeTitle index={idx} />
                                 <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-2">
                                 <span className="text-xl">🎥</span> {lieu.nom}
@@ -113,10 +113,10 @@ export default function LocationPage() {
                                         {seriesForLocation.map((serie) => (
                                         <Link key={serie.id} href={`/series/${serie.id}`}>
                                             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium
-                                                           bg-[var(--color-primary)]/10 text-[var(--color-primary)]
-                                                           border border-[var(--color-primary)]/20
-                                                           hover:bg-[var(--color-primary)]/20 hover:border-[var(--color-primary)]/40
-                                                           transition-all duration-200 cursor-pointer">
+                                                            bg-[var(--color-primary)]/10 text-[var(--color-primary)]
+                                                            border border-[var(--color-primary)]/20
+                                                            hover:bg-[var(--color-primary)]/20 hover:border-[var(--color-primary)]/40
+                                                            transition-all duration-200 cursor-pointer">
                                             <span className="text-base">📺</span>
                                             <span>{serie.title}</span>
                                             </span>
