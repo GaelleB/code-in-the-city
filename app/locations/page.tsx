@@ -95,7 +95,7 @@ export default function LocationPage() {
 
                             {/* Contenu de la carte */}
                             <div className="film-card relative z-10 ">
-                            <Card className="bg-gradient-to-r from-[var(--color-primary)]/10 to-[var(--color-secondary)]/10 border border-[var(--color-primary)]/20 shadow-xl">
+                            <Card className="bg-white">
                                 <NarrativeTitle index={idx} />
                                 <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-2">
                                 <span className="text-xl">🎥</span> {lieu.nom}
