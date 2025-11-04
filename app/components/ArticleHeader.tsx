@@ -14,7 +14,7 @@ export default function ArticleHeader({
     title,
     date,
     readingTime = "5 min read",
-    author = "Par Gaëlle"
+    author = "Par Gaelle"
 }: ArticleHeaderProps) {
     return (
         <motion.header
@@ -23,27 +23,27 @@ export default function ArticleHeader({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >
-            {/* Catégorie */}
-            <p className="text-xs uppercase tracking-[0.3em] text-gray-600 mb-4 font-medium">
+            {/* Categorie */}
+            <p className="typo-small uppercase tracking-[0.3em] text-gray-600 mb-4 font-medium">
                 {category}
             </p>
 
             {/* Titre */}
-            <h1 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
+            <h1 className="typo-h1 font-serif font-bold mb-6">
                 {title}
             </h1>
 
-            {/* Métadonnées */}
-            <div className="flex items-center justify-center gap-3 text-sm text-gray-600 mb-6">
+            {/* Metadonnees */}
+            <div className="flex items-center justify-center gap-3 typo-small text-gray-600 mb-6">
                 <time>{date}</time>
-                <span>|</span>
+                <span aria-hidden>|</span>
                 <span>{readingTime}</span>
-                <span>|</span>
+                <span aria-hidden>|</span>
                 <span className="italic">{author}</span>
             </div>
 
-            {/* Ligne de séparation */}
-            <div className="w-24 h-[2px] bg-[var(--color-secondary)] mx-auto"></div>
+            {/* Ligne de separation */}
+            <div className="w-24 h-[2px] bg-[var(--color-secondary)] mx-auto" />
         </motion.header>
     );
 }
