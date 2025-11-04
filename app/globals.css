@@ -13,13 +13,27 @@
 }
 
 body {
-  background-image: url('/images/wallpaper.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
   background-color: #f9f5f0;
   font-family: 'Playfair Display', serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.015) 2px,
+      rgba(0,0,0,0.015) 4px
+    );
+  pointer-events: none;
+  z-index: 0;
 }
 
 .font-cursive {
@@ -61,44 +75,3 @@ button, a, [role="button"] {
   }
 }
 
-/* Film overlay : bande pellicule superposée sur le contenu */
-.film-overlay {
-  position: relative;
-  overflow: visible;
-}
-
-.film-overlay > * {
-  position: relative;
-  z-index: 1;
-}
-
-.film-overlay::before {
-  content: "";
-  position: absolute;
-  left: 0; right: 0;
-  height: 48px;
-  background: url("/images/film-strip.png") repeat-x;
-  background-size: auto 55px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* Bande du haut */
-.film-overlay::before { top: 8px; }
-
-/* Bande du bas, retournée */
-.film-overlay::after  {
-  bottom: 40px;
-  transform: rotate(180deg);
-}
-
-.film-strip-container {
-  position: relative;
-}
-
-.film-strip-image {
-  object-fit: cover;
-  opacity: 0;
-  transition: transform 0.3s ease;
-  z-index: 0;
-}
