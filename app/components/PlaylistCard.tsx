@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Music2, Clock, Headphones } from "lucide-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
-// Fonction pour estimer la durée moyenne d'une playlist (3min30 par track)
+// Fonction pour estimer la duree moyenne d'une playlist (3min30 par piste)
 function estimateDuration(trackCount: number): string {
   const totalMinutes = trackCount * 3.5;
   const hours = Math.floor(totalMinutes / 60);
@@ -17,12 +17,12 @@ function estimateDuration(trackCount: number): string {
   return `${minutes} min`;
 }
 
-const moodEmojis = {
-  nostalgie: "🌅",
-  mélancolie: "🍂",
-  réconfort: "☕",
-  énergie: "⚡",
-  nuit: "🌙",
+const moodEmojis: Record<string, string> = {
+  nostalgie: "🎞️",
+  melancolie: "🌧️",
+  reconfort: "☕",
+  energie: "⚡",
+  nuit: "🌌"
 };
 
 interface PlaylistCardProps {
@@ -41,7 +41,14 @@ interface PlaylistCardProps {
 
 export default function PlaylistCard({ playlist, index }: PlaylistCardProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const emoji = moodEmojis[playlist.mood as keyof typeof moodEmojis];
+
+  const emoji = useMemo(() => {
+    const normalizedMood = playlist.mood
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+    return moodEmojis[normalizedMood] ?? "🎧";
+  }, [playlist.mood]);
 
   return (
     <motion.div
@@ -64,10 +71,10 @@ export default function PlaylistCard({ playlist, index }: PlaylistCardProps) {
           }}
           whileTap={{ scale: 0.97 }}
         >
-          {/* Cover Image Placeholder */}
+          {/* Illustration */}
           <div className="relative h-40 sm:h-48 bg-gradient-to-br from-[var(--color-primary)]/20 to-[var(--color-secondary)]/20 flex items-center justify-center overflow-hidden">
             <motion.div
-              className="text-6xl sm:text-8xl"
+              className="text-[6rem] sm:text-[8rem]"
               animate={{
                 scale: isHovered ? 1.2 : 1,
                 rotate: isHovered ? 5 : 0
@@ -77,7 +84,7 @@ export default function PlaylistCard({ playlist, index }: PlaylistCardProps) {
               {emoji}
             </motion.div>
 
-            {/* Play icon on hover */}
+            {/* Icône lecture au survol */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{
@@ -93,18 +100,18 @@ export default function PlaylistCard({ playlist, index }: PlaylistCardProps) {
             </motion.div>
           </div>
 
-          {/* Content */}
+          {/* Contenu */}
           <div className="p-4 sm:p-5">
-            <h3 className="text-lg sm:text-xl font-serif font-bold text-gray-900 mb-2 group-hover:text-[var(--color-primary)] transition-colors">
+            <h3 className="typo-h3 font-serif font-bold text-gray-900 mb-2 group-hover:text-[var(--color-primary)] transition-colors">
               {playlist.title}
             </h3>
 
-            <p className="text-sm text-gray-700 mb-4 line-clamp-3 sm:line-clamp-2 leading-relaxed">
+            <p className="typo-small text-gray-700 mb-4 line-clamp-3 sm:line-clamp-2 leading-relaxed">
               {playlist.description}
             </p>
 
-            {/* Stats */}
-            <div className="flex items-center gap-4 text-xs text-gray-600 mb-3">
+            {/* Statistiques */}
+            <div className="flex items-center gap-4 typo-tiny text-gray-600 mb-3">
               <div className="flex items-center gap-1.5">
                 <Headphones className="w-3.5 h-3.5" />
                 <span className="font-medium">{playlist.tracks.length} titres</span>
@@ -115,7 +122,7 @@ export default function PlaylistCard({ playlist, index }: PlaylistCardProps) {
               </div>
             </div>
 
-            {/* Preview des 3 premiers titres au hover */}
+            {/* Apercu des trois premiers titres au survol */}
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{
@@ -126,13 +133,13 @@ export default function PlaylistCard({ playlist, index }: PlaylistCardProps) {
               className="overflow-hidden"
             >
               <div className="pt-3 border-t border-gray-300 space-y-1.5">
-                {playlist.tracks.slice(0, 3).map((track, idx: number) => (
+                {playlist.tracks.slice(0, 3).map((track, idx) => (
                   <motion.div
-                    key={idx}
+                    key={`${track.songTitle}-${idx}`}
                     initial={{ x: -10, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: idx * 0.05 }}
-                    className="flex items-start gap-2 text-xs"
+                    className="flex items-start gap-2 typo-tiny"
                   >
                     <span className="text-gray-400 font-mono mt-0.5">{idx + 1}.</span>
                     <div className="flex-1 min-w-0">
@@ -142,7 +149,7 @@ export default function PlaylistCard({ playlist, index }: PlaylistCardProps) {
                   </motion.div>
                 ))}
                 {playlist.tracks.length > 3 && (
-                  <p className="text-xs text-gray-500 italic pt-1">
+                  <p className="typo-tiny text-gray-500 italic pt-1">
                     +{playlist.tracks.length - 3} autres titres...
                   </p>
                 )}
@@ -150,9 +157,9 @@ export default function PlaylistCard({ playlist, index }: PlaylistCardProps) {
             </motion.div>
           </div>
 
-          {/* Mood badge */}
+          {/* Badge d'ambiance */}
           <div className="absolute top-3 right-3">
-            <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-medium text-gray-700 rounded-full shadow-md capitalize border border-gray-200">
+            <span className="px-3 py-1 bg-white/90 backdrop-blur-sm typo-tiny font-medium text-gray-700 rounded-full shadow-md capitalize border border-gray-200">
               {playlist.mood}
             </span>
           </div>
