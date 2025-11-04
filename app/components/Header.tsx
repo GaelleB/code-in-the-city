@@ -1,12 +1,28 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import SearchBar from "./SearchBar";
 import PrefetchLink from "./PrefetchLink";
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const [currentDate, setCurrentDate] = useState("");
     const toggleMenu = () => setIsOpen(!isOpen);
+
+    useEffect(() => {
+        const formatDate = () => {
+            const date = new Date();
+            const formatted = new Intl.DateTimeFormat('fr-FR', {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            }).format(date);
+            // Capitaliser la première lettre
+            return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+        };
+        setCurrentDate(formatDate());
+    }, []);
 
     const links = [
         { label: "Home", href: "/" },
@@ -14,42 +30,66 @@ export default function Header() {
         { label: "Articles", href: "/articles" },
         { label: "Series", href: "/series" },
         { label: "Music", href: "/music" },
-        { label: "Filming locations", href: "/locations" },
+        { label: "Locations", href: "/locations" },
     ];
 
     return (
-        <header className="relative border-b border-[var(--color-dark)] text-center py-6 text-[var(--color-text-dark)] font-serif">
-            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-wide uppercase">
-                Code in the City
-            </h1>
-
-            <p className="mt-2 italic text-sm md:text-base">
-                Series, Sounds & Stories
-            </p>
-
-            {/* Barre de recherche */}
-            <div className="mt-6 flex justify-center px-4">
+        <header className="relative text-center py-8 text-[var(--color-text-dark)] font-serif">
+            {/* Barre de recherche - Position absolue en haut à droite */}
+            <div className="hidden md:block absolute top-8 right-8">
                 <SearchBar />
             </div>
 
-            {/* Nav desktop */}
-            <nav className="hidden md:block mt-4">
-                <ul className="flex justify-center space-x-6 text-sm md:text-base font-medium">
-                {links.map(({ label, href }) => (
-                    <li key={href}>
-                    <PrefetchLink href={href} className="hover:underline">
-                        {label}
-                    </PrefetchLink>
-                    </li>
-                ))}
+            {/* Date du jour */}
+            <p className="text-xs md:text-sm text-gray-600 italic mb-4">
+                {currentDate}
+            </p>
+
+            {/* Bordure supérieure double */}
+            <div className="w-full border-t-4 border-double border-[var(--color-secondary)] mb-6"></div>
+
+            {/* Titre principal */}
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-[0.15em] uppercase">
+                Code in the City
+            </h1>
+
+            {/* Bordure inférieure double */}
+            <div className="w-full border-b-4 border-double border-[var(--color-secondary)] mt-6 mb-4"></div>
+
+            {/* Sous-titre avec ornements */}
+            <p className="text-xs md:text-sm tracking-wider text-gray-700">
+                • Series, Sounds & Stories •
+            </p>
+
+            {/* Nav desktop - style journal avec séparateurs */}
+            <nav className="hidden md:block mt-6">
+                <ul className="flex justify-center items-center text-xs tracking-[0.2em] uppercase font-medium">
+                    {links.map(({ label, href }, index) => (
+                        <li key={href} className="flex items-center">
+                            <PrefetchLink
+                                href={href}
+                                className="hover:underline underline-offset-4 px-3 py-2 transition-all"
+                            >
+                                {label}
+                            </PrefetchLink>
+                            {index < links.length - 1 && (
+                                <span className="text-gray-400">|</span>
+                            )}
+                        </li>
+                    ))}
                 </ul>
             </nav>
+
+            {/* Barre de recherche mobile - centrée */}
+            <div className="md:hidden mt-6 flex justify-center px-4">
+                <SearchBar />
+            </div>
 
             {/* Bouton hamburger mobile */}
             <button
                 onClick={toggleMenu}
                 aria-label={isOpen ? "Close menu" : "Open menu"}
-                className="md:hidden absolute top-6 right-4 p-3 text-[var(--color-dark)] hover:bg-[var(--color-secondary)]/20 rounded-lg transition-colors touch-manipulation"
+                className="md:hidden absolute top-8 right-4 p-3 text-[var(--color-dark)] hover:bg-[var(--color-secondary)]/20 rounded-lg transition-colors touch-manipulation"
             >
                 {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
