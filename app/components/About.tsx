@@ -26,7 +26,7 @@ export default function About() {
                     duration: 1,
                     ease: "power2.out",
                     stagger: 0.2,
-                    delay: 0.4,
+                    delay: 0.4
                 }
             );
         }
@@ -41,7 +41,7 @@ export default function About() {
                 >
                     <Image
                         src="/images/gaelle.jpg"
-                        alt="Portrait de Gaëlle"
+                        alt="Portrait de Gaelle"
                         fill
                         sizes="(max-width: 768px) 160px, 160px"
                         className="object-cover"
@@ -50,48 +50,49 @@ export default function About() {
                 </div>
 
                 <div ref={textRef}>
-                    <h1 className="text-4xl font-serif font-bold mb-6 border-b-2 border-[var(--color-secondary)] pb-2">
-                        À propos
+                    <h1 className="typo-h1 font-serif font-bold mb-6 border-b-2 border-[var(--color-secondary)] pb-2">
+                        A propos
                     </h1>
 
-                    <p className="text-lg leading-relaxed text-[var(--color-dark)] mb-4">
-                        Je suis Gaëlle, développeuse web passionnée par les séries, la musique et les histoires qui nous façonnent.
-                        Ce blog, c’est mon espace d’expression, entre storytelling et code, New York et Tree Hill.
+                    <p className="typo-body text-[var(--color-dark)] mb-4">
+                        Je suis Gaelle, developpeuse web passionnee par les series, la musique et les histoires
+                        qui nous faconnent. Ce blog est mon espace d&apos;expression, entre storytelling et code,
+                        New York et Tree Hill.
                     </p>
-                    <p className="text-lg leading-relaxed text-[var(--color-dark)] mb-4">
-                        Ici, je mêle souvenirs et savoir-faire, inspirations et intuitions. Tu y trouveras autant de lignes de code que de lignes de vie.
+                    <p className="typo-body text-[var(--color-dark)] mb-4">
+                        Ici, je mele souvenirs et savoir-faire, inspirations et intuitions. Tu y trouveras autant
+                        de lignes de code que de lignes de vie.
                     </p>
-                    <p className="text-lg leading-relaxed text-[var(--color-dark)] mb-4">
-                        Entre Brooklyn et Tree Hill, j’écris mes souvenirs en HTML.
+                    <p className="typo-body text-[var(--color-dark)] mb-4">
+                        Entre Brooklyn et Tree Hill, j&apos;ecris mes souvenirs en HTML.
                     </p>
-                    <p className="text-lg leading-relaxed text-[var(--color-dark)] mb-4">
-                        Un blog comme un vieux journal. Codé, mais vivant.
+                    <p className="typo-body text-[var(--color-dark)] mb-4">
+                        Un blog comme un vieux journal. Code, mais vivant.
                     </p>
                 </div>
             </div>
 
-            <section className="mt-16 max-w-3xl mx-auto text-[var(--color-dark)] text-lg leading-relaxed">
+            <section className="mt-16 max-w-3xl mx-auto text-[var(--color-dark)] typo-body">
                 <hr className="border-t border-[var(--color-secondary)] mb-8" />
                 <p className="mb-4">
-                    Il y a des choses qu’on garde en soi pendant des années.
-                    Des séries qu’on revoit comme des vieilles photos.
-                    Des chansons qui nous ramènent à une chambre d’ado, une chaîne hi-fi, un pull trop grand.
-                    Des lieux qui nous hantent, même si on n’y a jamais mis les pieds.
+                    Il y a des choses que l&apos;on garde en soi pendant des annees. Des series que l&apos;on
+                    revoit comme des vieilles photos. Des chansons qui nous ramencent a une chambre d&apos;ado, une
+                    chaine hi-fi, un pull trop grand. Des lieux qui nous hantent, meme si on n&apos;y a jamais mis les
+                    pieds.
                 </p>
                 <p className="mb-4">
-                    <em>Code in the City</em> est né de tout ça.
-                    D’un besoin de poser quelque part ce que je ressens quand je code, quand je regarde une scène, quand j’écoute une musique et que tout revient.
-                    C’est un blog, oui. Mais c’est surtout un carnet. Un journal.
-                    Un endroit pour réunir mes histoires, celles qu’on vit derrière un écran ou au fond d’un souvenir.
+                    <em>Code in the City</em> est ne de tout cela. D&apos;un besoin de poser quelque part ce que je
+                    ressens quand je code, quand je regarde une scene, quand j&apos;ecoute une musique et que tout
+                    revient. C&apos;est un blog, oui. Mais c&apos;est surtout un carnet. Un journal. Un endroit pour
+                    reunir mes histoires, celles que l&apos;on vit derriere un ecran ou au fond d&apos;un souvenir.
                 </p>
                 <p className="mb-4">
-                    Ici, je parle de séries comme on parle de personnes qu’on aime.
-                    Je relie les lieux à mes rêves de voyage, les musiques à mes émotions, le code à ce que je suis.
-                    Je ne cherche pas à convaincre, à vendre ou à plaire à tout le monde.
-                    Je cherche juste à créer un espace vrai.
+                    Ici, je parle de series comme on parle de personnes que l&apos;on aime. Je relie les lieux a mes
+                    reves de voyage, les musiques a mes emotions, le code a ce que je suis. Je ne cherche pas a
+                    convaincre, a vendre ou a plaire a tout le monde. Je cherche juste a creer un espace vrai.
                 </p>
                 <p className="italic">
-                    Et si toi aussi, tu penses qu’un <code>console.log</code> peut contenir un bout de ton cœur,
+                    Et si toi aussi, tu penses qu&apos;un <code>console.log</code> peut contenir un bout de ton coeur,
                     alors bienvenue.
                 </p>
             </section>
