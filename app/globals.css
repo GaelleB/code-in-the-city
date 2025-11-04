@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
-@theme {
+:root {
   --color-background-body: #f9f5f0;
   --color-dark: #383c45;
   --color-primary: #000000;
@@ -10,11 +10,57 @@
   --color-accent-2: #333333;
   --color-text-light: #ffffff;
   --color-text-dark: #000000;
+
+  /* Typography scale coherente */
+  --font-size-h1: 3.5rem;      /* 56px - Titre article */
+  --font-size-h2: 2rem;        /* 32px - Sections */
+  --font-size-h3: 1.5rem;      /* 24px - Sous-sections */
+  --font-size-body: 1.125rem;  /* 18px - Corps de texte */
+  --font-size-small: 0.875rem; /* 14px - Metadonnees */
+  --font-size-tiny: 0.75rem;   /* 12px - Numero d'edition */
+
+  --line-height-tight: 1.2;    /* Titres */
+  --line-height-relaxed: 1.8;  /* Body */
+  --line-height-normal: 1.5;   /* Small */
+}
+
+@layer utilities {
+  .typo-h1 {
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-tight);
+  }
+
+  .typo-h2 {
+    font-size: var(--font-size-h2);
+    line-height: var(--line-height-tight);
+  }
+
+  .typo-h3 {
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-tight);
+  }
+
+  .typo-body {
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .typo-small {
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-normal);
+  }
+
+  .typo-tiny {
+    font-size: var(--font-size-tiny);
+    line-height: var(--line-height-normal);
+  }
 }
 
 body {
-  background-color: #f9f5f0;
+  background-color: var(--color-background-body);
   font-family: 'Playfair Display', serif;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-relaxed);
 }
 
 body::before {
@@ -29,8 +75,8 @@ body::before {
       0deg,
       transparent,
       transparent 2px,
-      rgba(0,0,0,0.015) 2px,
-      rgba(0,0,0,0.015) 4px
+      rgba(0, 0, 0, 0.015) 2px,
+      rgba(0, 0, 0, 0.015) 4px
     );
   pointer-events: none;
   z-index: 0;
@@ -55,14 +101,16 @@ body::before {
   animation: fade-in-up 0.8s ease-out both;
 }
 
-/* Désactiver le tap highlight sur mobile */
+/* Desactiver le tap highlight sur mobile */
 * {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 }
 
-/* Améliorer les interactions tactiles */
-button, a, [role="button"] {
+/* Ameliorer les interactions tactiles */
+button,
+a,
+[role="button"] {
   touch-action: manipulation;
   user-select: none;
   -webkit-user-select: none;
@@ -75,9 +123,9 @@ button, a, [role="button"] {
   }
 }
 
-/* ===== TYPOGRAPHIE ÉDITORIALE ===== */
+/* ===== TYPOGRAPHIE EDITORIALE ===== */
 
-/* Lettrine (Drop Cap) - première lettre en grand */
+/* Lettrine (Drop Cap) - premiere lettre en grand */
 .drop-cap::first-letter {
   float: left;
   font-size: 4.5rem;
@@ -89,10 +137,10 @@ button, a, [role="button"] {
   color: #000;
 }
 
-/* Corps d'article avec typographie soignée */
+/* Corps d'article avec typographie soignee */
 .article-body {
-  font-size: 1.125rem;
-  line-height: 1.8;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-relaxed);
   max-width: 65ch;
   margin-left: auto;
   margin-right: auto;
@@ -121,7 +169,7 @@ button, a, [role="button"] {
 
 /* Sous-titres h2 style journal */
 .article-body h2 {
-  font-size: 0.875rem;
+  font-size: var(--font-size-small);
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-weight: 700;
@@ -133,14 +181,14 @@ button, a, [role="button"] {
 
 /* Sous-titres h3 style serif */
 .article-body h3 {
-  font-size: 1.5rem;
+  font-size: var(--font-size-h3);
   font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 1rem;
   font-family: 'Playfair Display', serif;
 }
 
-/* Séparateur de fin d'article */
+/* Separateur de fin d'article */
 .article-separator {
   text-align: center;
   margin: 3rem 0;
@@ -148,4 +196,3 @@ button, a, [role="button"] {
   letter-spacing: 1rem;
   color: #9ca3af;
 }
-
