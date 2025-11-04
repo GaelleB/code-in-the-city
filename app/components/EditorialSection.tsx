@@ -22,10 +22,10 @@ export default function EditorialSection({
         >
             {/* Titre de section avec ligne en dessous */}
             <div className="mb-8">
-                <h2 className="text-xs lg:text-sm uppercase tracking-[0.3em] font-bold mb-3">
+                <h2 className="typo-h2 font-serif uppercase tracking-[0.1em] mb-3">
                     {title}
                 </h2>
-                <div className="w-full h-[2px] bg-black"></div>
+                <div className="w-full h-px bg-black" />
             </div>
 
             {/* Contenu de la section */}
@@ -33,8 +33,8 @@ export default function EditorialSection({
                 {children}
             </div>
 
-            {/* Bordure de séparation subtile en bas */}
-            <div className="mt-12 lg:mt-16 w-full h-[1px] bg-gray-300"></div>
+            {/* Bordure de separation subtile en bas */}
+            <div className="mt-12 lg:mt-16 w-full h-px bg-gray-300" />
         </motion.section>
     );
 }
