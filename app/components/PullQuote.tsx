@@ -15,12 +15,12 @@ export default function PullQuote({ children, author }: PullQuoteProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
         >
-            <blockquote className="text-2xl md:text-3xl font-serif italic text-center leading-relaxed text-gray-800 px-4 md:px-12">
+            <blockquote className="typo-h2 font-serif italic text-center text-gray-800 px-4 md:px-12">
                 "{children}"
             </blockquote>
             {author && (
-                <p className="text-center text-sm uppercase tracking-wider text-gray-600 mt-4">
-                    — {author}
+                <p className="text-center typo-tiny uppercase tracking-[0.2em] text-gray-600 mt-4">
+                    -- {author}
                 </p>
             )}
         </motion.div>
