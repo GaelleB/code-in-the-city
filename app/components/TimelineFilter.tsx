@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 interface TimelineFilterProps {
   minYear: number;
@@ -14,7 +14,7 @@ export default function TimelineFilter({
   minYear,
   maxYear,
   onYearRangeChange,
-  className = ''
+  className = ""
 }: TimelineFilterProps) {
   const [startYear, setStartYear] = useState(minYear);
   const [endYear, setEndYear] = useState(maxYear);
@@ -24,14 +24,14 @@ export default function TimelineFilter({
   }, [startYear, endYear, onYearRangeChange]);
 
   const handleStartChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(e.target.value);
+    const value = parseInt(e.target.value, 10);
     if (value <= endYear) {
       setStartYear(value);
     }
   };
 
   const handleEndChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(e.target.value);
+    const value = parseInt(e.target.value, 10);
     if (value >= startYear) {
       setEndYear(value);
     }
@@ -44,33 +44,33 @@ export default function TimelineFilter({
 
   const isFiltered = startYear !== minYear || endYear !== maxYear;
 
-  // Calcul pour positionner les thumbs du slider
+  // Calcul pour positionner les curseurs du slider
   const startPercent = ((startYear - minYear) / (maxYear - minYear)) * 100;
   const endPercent = ((endYear - minYear) / (maxYear - minYear)) * 100;
 
   return (
-    <div className={`${className}`}>
-      {/* En-tête */}
+    <div className={className}>
+      {/* En-tete */}
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-serif font-semibold text-[var(--color-dark)]">
-          Filtrer par période
+        <h3 className="typo-h3 font-serif font-semibold text-[var(--color-dark)]">
+          Filtrer par periode
         </h3>
         {isFiltered && (
           <motion.button
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             onClick={resetRange}
-            className="px-3 py-1.5 text-sm font-sans font-medium text-gray-600 hover:text-black border border-gray-300 rounded-full hover:border-[var(--color-dark)] transition-all"
+            className="px-3 py-1.5 typo-small font-sans font-medium text-gray-600 hover:text-black border border-gray-300 rounded-full hover:border-[var(--color-dark)] transition-all"
           >
-            Réinitialiser
+            Reinitialiser
           </motion.button>
         )}
       </div>
 
-      {/* Affichage de la période sélectionnée */}
+      {/* Affichage de la periode selectionnee */}
       <div className="mb-6 text-center">
         <motion.p
-          className="text-2xl font-bold text-[var(--color-dark)]"
+          className="typo-h2 font-bold text-[var(--color-dark)]"
           key={`${startYear}-${endYear}`}
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -80,7 +80,7 @@ export default function TimelineFilter({
             <span>{startYear}</span>
           ) : (
             <>
-              {startYear} <span className="text-gray-400 mx-2">—</span> {endYear}
+              {startYear} <span className="text-gray-400 mx-2">-</span> {endYear}
             </>
           )}
         </motion.p>
@@ -100,7 +100,7 @@ export default function TimelineFilter({
           }}
         />
 
-        {/* Markers de décennies */}
+        {/* Marques des decennies */}
         <div className="relative h-12 mb-2">
           {[1990, 2000, 2010, 2020].map((decade) => {
             if (decade < minYear || decade > maxYear) return null;
@@ -115,12 +115,12 @@ export default function TimelineFilter({
               >
                 <div
                   className={`w-1 h-6 rounded-full transition-colors ${
-                    isInRange ? 'bg-[var(--color-primary)]' : 'bg-gray-300'
+                    isInRange ? "bg-[var(--color-primary)]" : "bg-gray-300"
                   }`}
                 />
                 <span
-                  className={`block text-xs font-sans mt-1 transition-colors ${
-                    isInRange ? 'text-[var(--color-dark)] font-medium' : 'text-gray-400'
+                  className={`block typo-tiny font-sans mt-1 transition-colors ${
+                    isInRange ? "text-[var(--color-dark)] font-medium" : "text-gray-400"
                   }`}
                 >
                   {decade}
@@ -130,7 +130,7 @@ export default function TimelineFilter({
           })}
         </div>
 
-        {/* Sliders superposés */}
+        {/* Sliders superposes */}
         <div className="relative h-12">
           {/* Slider pour startYear */}
           <input
@@ -156,15 +156,15 @@ export default function TimelineFilter({
         </div>
       </div>
 
-      {/* Légende */}
-      <div className="flex items-center justify-center gap-4 text-sm text-gray-600 font-sans">
+      {/* Legende */}
+      <div className="flex items-center justify-center gap-4 typo-small text-gray-600 font-sans">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-gray-300" />
-          <span>Non sélectionné</span>
+          <span>Non selectionne</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-[var(--color-primary)]" />
-          <span>Sélectionné</span>
+          <span>Selectionne</span>
         </div>
       </div>
 
