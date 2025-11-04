@@ -7,6 +7,7 @@ import PrefetchLink from "./PrefetchLink";
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [currentDate, setCurrentDate] = useState("");
+    const [editionNumber, setEditionNumber] = useState("");
     const toggleMenu = () => setIsOpen(!isOpen);
 
     useEffect(() => {
@@ -21,7 +22,24 @@ export default function Header() {
             // Capitaliser la première lettre
             return formatted.charAt(0).toUpperCase() + formatted.slice(1);
         };
+
+        const getEditionNumber = () => {
+            const date = new Date();
+            const year = date.getFullYear();
+            // Volume = année - 2024 (2025 = Vol. 1)
+            const volume = year - 2024;
+
+            // Numéro = semaine de l'année
+            const startOfYear = new Date(year, 0, 1);
+            const diff = date.getTime() - startOfYear.getTime();
+            const oneWeek = 1000 * 60 * 60 * 24 * 7;
+            const weekNumber = Math.ceil(diff / oneWeek);
+
+            return `Vol. ${volume} • No. ${weekNumber}`;
+        };
+
         setCurrentDate(formatDate());
+        setEditionNumber(getEditionNumber());
     }, []);
 
     const links = [
@@ -41,8 +59,13 @@ export default function Header() {
             </div>
 
             {/* Date du jour */}
-            <p className="text-xs md:text-sm text-gray-600 italic mb-4">
+            <p className="text-xs md:text-sm text-gray-600 italic mb-1">
                 {currentDate}
+            </p>
+
+            {/* Numéro d'édition */}
+            <p className="text-[0.65rem] md:text-xs uppercase tracking-[0.2em] text-gray-500 mb-4">
+                {editionNumber}
             </p>
 
             {/* Bordure supérieure double */}
