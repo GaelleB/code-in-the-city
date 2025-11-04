@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { motion } from "framer-motion";
@@ -46,10 +46,8 @@ export default function PlaylistDetailPage({ params }: { params: { id: string } 
     .filter((p) => p.id !== playlist.id && p.mood === playlist.mood)
     .slice(0, 2);
 
-  const emoji = useMemo(() => {
-    const normalizedMood = normalizeMood(playlist.mood);
-    return moodEmojis[normalizedMood] ?? "🎧";
-  }, [playlist.mood]);
+  const normalizedMood = normalizeMood(playlist.mood);
+  const emoji = moodEmojis[normalizedMood] ?? "🎧";
 
   const selectedTrack = playlist.tracks[selectedTrackIndex];
 
