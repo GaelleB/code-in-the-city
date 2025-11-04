@@ -75,3 +75,77 @@ button, a, [role="button"] {
   }
 }
 
+/* ===== TYPOGRAPHIE ÉDITORIALE ===== */
+
+/* Lettrine (Drop Cap) - première lettre en grand */
+.drop-cap::first-letter {
+  float: left;
+  font-size: 4.5rem;
+  line-height: 0.85;
+  font-weight: 700;
+  margin-right: 0.5rem;
+  margin-top: 0.1rem;
+  font-family: 'Playfair Display', serif;
+  color: #000;
+}
+
+/* Corps d'article avec typographie soignée */
+.article-body {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.article-body p {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .article-body p {
+    text-align: justify;
+  }
+}
+
+/* Blockquote style journal */
+.article-body blockquote {
+  border-left: 4px solid var(--color-secondary);
+  padding-left: 2rem;
+  margin: 2rem 0;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #4b5563;
+}
+
+/* Sous-titres h2 style journal */
+.article-body h2 {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #d1d5db;
+}
+
+/* Sous-titres h3 style serif */
+.article-body h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+}
+
+/* Séparateur de fin d'article */
+.article-separator {
+  text-align: center;
+  margin: 3rem 0;
+  font-size: 1.5rem;
+  letter-spacing: 1rem;
+  color: #9ca3af;
+}
+
