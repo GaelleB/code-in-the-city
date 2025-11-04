@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { Search, ExternalLink } from "lucide-react";
 import Breadcrumb from "../components/Breadcrumb";
 import { useSearchPage, type SearchResultItem } from "../hooks/useSearchPage";
+import Image from "next/image";
 
 function SearchResults() {
   const searchParams = useSearchParams();
@@ -57,7 +58,7 @@ function SearchResults() {
               <div className="flex gap-4">
                 {result.image && (
                   <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
-                    <img
+                    <Image
                       src={result.image}
                       alt={result.title}
                       className="w-full h-full object-cover"
@@ -168,7 +169,7 @@ function SearchResults() {
         </h1>
         <p className="typo-small text-gray-600 font-sans">
           <span className="font-medium">{total}</span> resultat{total > 1 ? "s" : ""} pour{" "}
-          <span className="font-medium text-black">"{query}"</span>
+          <span className="font-medium text-black">&quot;{query}&quot;</span>
         </p>
       </div>
 

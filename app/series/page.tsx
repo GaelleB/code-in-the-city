@@ -42,6 +42,7 @@ export default function SeriesPage() {
   };
 
   // Extraire l'annee de fin d'une serie
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getSerieEndYear = (serie: typeof series[0]): number => {
     const match = serie.years.match(/-\s*(\d{4}|\(en cours\))/);
     if (match) {
@@ -74,7 +75,7 @@ export default function SeriesPage() {
     });
 
     return filtered;
-  }, [selectedTagIds, yearRange]);
+  }, [getSerieEndYear, selectedTagIds, yearRange.end, yearRange.start]);
 
   const tagsWithCount = getTagsWithCount();
 

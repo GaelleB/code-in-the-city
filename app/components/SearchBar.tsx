@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useSearch, SearchResult } from '../hooks/useSearch';
 import { getAllPlaylists } from '../data/playlists';
+import Image from 'next/image';
 
 export default function SearchBar() {
   const router = useRouter();
@@ -168,7 +169,7 @@ export default function SearchBar() {
                 {/* Image */}
                 {result.image && (
                   <div className="flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
-                    <img
+                    <Image
                       src={result.image}
                       alt={result.title}
                       className="w-full h-full object-cover"

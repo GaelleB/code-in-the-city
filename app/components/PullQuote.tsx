@@ -16,7 +16,7 @@ export default function PullQuote({ children, author }: PullQuoteProps) {
             transition={{ duration: 0.6 }}
         >
             <blockquote className="typo-h2 font-serif italic text-center text-gray-800 px-4 md:px-12">
-                "{children}"
+                &quot;{children}&quot;
             </blockquote>
             {author && (
                 <p className="text-center typo-tiny uppercase tracking-[0.2em] text-gray-600 mt-4">
